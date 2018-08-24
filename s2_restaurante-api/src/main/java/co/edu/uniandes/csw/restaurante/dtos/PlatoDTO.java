@@ -20,7 +20,7 @@ public class PlatoDTO {
      public Long getId(){
         return id ;
     }
-    public Strig getName(){
+    public String getName(){
         return name ;
     }
     public Integer getPrecio(){
@@ -32,7 +32,7 @@ public class PlatoDTO {
     public void setName(String pName){
          name=pName ;
     }
-    public viod setPrecio (Integer pPrecio){
+    public void setPrecio (Integer pPrecio){
         precio = pPrecio ;
     }
     
