@@ -9,33 +9,31 @@ package co.edu.uniandes.csw.restaurante.dtos;
  *
  * @author iy.barbosa
  */
-public class CalificacionDTO {
+public class PlatoDTO {
     private Long id;
     private String name;
-    //private SucursalDTO sucursal;
-    
-    public CalificacionDTO (){
-    
+    private Integer precio;
+     
+    public PlatoDTO (){
+        
     }
-    
-    public Long getId(){
+     public Long getId(){
         return id ;
     }
     public Strig getName(){
         return name ;
     }
-    //public SucursalDTO getSucursar(){
-      //  return sucursal ;
-    //}
-    
+    public Integer getPrecio(){
+       return precio ;
+    }
     public void setId(Long pId){
         id = pId ;
     }
     public void setName(String pName){
          name=pName ;
     }
-    //public viod setSucursar(SucursalDTO pSucur){
-      //   sucursal=pSucur ;
-    //}
+    public viod setPrecio (Integer pPrecio){
+        precio = pPrecio ;
+    }
     
 }
