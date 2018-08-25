@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.restaurante.resources;
+import co.edu.uniandes.csw.restaurante.dtos.DomicilioDTO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -19,19 +20,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 /**
  *
- * @author iy.barbosa
+ * @author estudiante
  */
-@Path("calificaciones")
-@Produces("calificacion/json")
-@Consumes("calificacion/json")
+@Path("Domicilio")
+@Produces("Domicilio/json")
+@Consumes("Domicilio/json")
 @RequestScoped
-public class CalificacionResources {
-   
+public class DomicilioResource {
     @POST
-    
-    public CalificacionDTO createCalificacion (CalificacionDTO  calificacion ) {
-        return calificacion;
+    public DomicilioDTO createDomicilio(DomicilioDTO domicilio)
+    {
+        return domicilio;
     }
-    
-    
 }

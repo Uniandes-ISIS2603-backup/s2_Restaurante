@@ -21,7 +21,7 @@ public class CalificacionDTO {
     public Long getId(){
         return id ;
     }
-    public Strig getName(){
+    public String getName(){
         return name ;
     }
     //public SucursalDTO getSucursar(){
