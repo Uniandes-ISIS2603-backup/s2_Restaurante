@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author j.prieto
  */
-public class ClienteDetailDTO extends ClienteDTO {
+public class ClienteDetailDTO extends ClienteDTO| {
 
     /**
      * Tarjeta del cliente

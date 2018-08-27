@@ -5,26 +5,33 @@
  */
 package co.edu.uniandes.csw.restaurante.resources;
 
-import co.edu.uniandes.csw.restaurante.dtos.DomicilioDTO;
 import co.edu.uniandes.csw.restaurante.dtos.PuntoDTO;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
  *
  * @author estudiante
  */
-@Path("punto")
-@Produces("punto/json")
-@Consumes("punto/json")
+@Path("puntos")
+@Produces("application/json")
+@Consumes("application/json")
 @RequestScoped
 public class PuntoResource {
     @POST
     public PuntoDTO createPunto(PuntoDTO punto)
     {
         return punto;
+    }
+    
+    @GET
+    @Path("puntosId: \\d+")
+    public PuntoDTO getPunto(@PathParam("puntosId") Long puntosId){
+        return null;
     }
 }
