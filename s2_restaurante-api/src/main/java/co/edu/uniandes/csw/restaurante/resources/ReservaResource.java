@@ -13,13 +13,21 @@ import javax.ws.rs.*;
  * @author ja.ortega
  */
 @Path("reservas")
-@Produces("reserva/json")
-@Consumes("reserva/json")
+@Produces("application/json")
+@Consumes("application/json")
 @RequestScoped
 public class ReservaResource {
+    
+    
     @POST
-    public ReservaDTO createDomicilio(ReservaDTO reserva)
+    public ReservaDTO createReserva(ReservaDTO reserva)
     {
         return reserva;
+    }
+    
+    @GET
+    @Path("(reservasId: \\d+)")
+    public ReservaDTO darReserva(){
+        return null;
     }
 }
