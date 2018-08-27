@@ -35,18 +35,18 @@ public class RestauranteDTO {
      *
      * @param entity RestauranteEntity
      */
-    public RestauranteDTO(RestauranteEntity entity) {
-        this.nombre = entity.getNombre();
-    }
+//    public RestauranteDTO(RestauranteEntity entity) {
+//        this.nombre = entity.getNombre();
+//    }
 
     /**
      * Convertir DTO a Entity
      *
      * @return Un Entity con los valores del DTO
      */
-    public RestauranteEntity toEntity() {
-        RestauranteEntity entity = new RestauranteEntity();
-        entity.setNombre(this.nombre);
-        return entity;
-    }
+//    public RestauranteEntity toEntity() {
+//        RestauranteEntity entity = new RestauranteEntity();
+//        entity.setNombre(this.nombre);
+//        return entity;
+//    }
 }

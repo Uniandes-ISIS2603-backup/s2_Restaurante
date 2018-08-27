@@ -31,11 +31,11 @@ public class ClienteDTO {
      *
      * @param entity ClienteEntity
      */
-    public ClienteDTO(ClienteEntity entity) {
-        this.id = entity.getId();
-        this.nombre = entity.getNombre();
-        this.metodoPago = entity.getMetodoPago();
-    }
+//    public ClienteDTO(ClienteEntity entity) {
+//        this.id = entity.getId();
+//        this.nombre = entity.getNombre();
+//        this.metodoPago = entity.getMetodoPago();
+//    }
 
     /**
      * Retorna el ID del cliente
@@ -90,11 +90,11 @@ public class ClienteDTO {
      *
      * @return Entity con los valores del DTO
      */
-    public ClienteEntity toEntity() {
-        ClienteEntity entity = new ClienteEntity();
-        cliente.setId(this.id);
-        cliente.setNombre(this.nombre);
-        cliente.setMetodoPago(this.metodoPago);
-        return entity;
-    }
+//    public ClienteEntity toEntity() {
+//        ClienteEntity entity = new ClienteEntity();
+//        cliente.setId(this.id);
+//        cliente.setNombre(this.nombre);
+//        cliente.setMetodoPago(this.metodoPago);
+//        return entity;
+//    }
 }
