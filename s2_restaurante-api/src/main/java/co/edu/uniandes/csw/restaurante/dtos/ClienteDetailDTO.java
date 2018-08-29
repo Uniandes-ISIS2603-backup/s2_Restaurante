@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author j.prieto
  */
-public class ClienteDetailDTO extends ClienteDTO| {
+public class ClienteDetailDTO /*extends ClienteDTO */{
 
     /**
      * Tarjeta del cliente
@@ -38,10 +38,11 @@ public class ClienteDetailDTO extends ClienteDTO| {
      *
      * @param entity, ClienteEntity a converit a DTO
      */
-    public ClienteDeatilDTO(ClienteEntity entity) {
+    public ClienteDetailDTO(/*ClienteEntity entity*/) {
+        //super(entity);
         //Crea un RestauranteDTO con el entity que llega
-        super(entity);
-        if (entity != null) {
+    
+        /*if (entity != null) {
             tarjeta = entity.getTarjeta();
             calificacion = entity.getCalificacion();
             //Crea la lista de reservas y le adiciona las que tiene el entity
@@ -55,7 +56,7 @@ public class ClienteDetailDTO extends ClienteDTO| {
                 domiclios.add(new DomicilioDTO(entityDomicilio));
             }
         }
-
+        */
     }
 
     /**
@@ -63,6 +64,7 @@ public class ClienteDetailDTO extends ClienteDTO| {
      *
      * @return un ClienteEntity con base en el DTO actual
      */
+    /*
     @Override
     public ClienteEntity toEntity() {
         ClienteEntity entity = super.toEntity();
@@ -92,7 +94,7 @@ public class ClienteDetailDTO extends ClienteDTO| {
         }
         return entity;
     }
-
+    */
     /**
      * Retorna la tarjeta del cliente
      *
