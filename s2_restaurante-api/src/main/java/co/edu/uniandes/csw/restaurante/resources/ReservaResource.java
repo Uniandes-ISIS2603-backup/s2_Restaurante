@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.restaurante.resources;
 import co.edu.uniandes.csw.restaurante.dtos.ReservaDTO;
+import java.util.logging.Level;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 
@@ -26,8 +27,8 @@ public class ReservaResource {
     }
     
     @GET
-    @Path("(reservasId: \\d+)")
-    public ReservaDTO darReserva(){
+    @Path("{reservasId: \\d+}")
+    public ReservaDTO deleteEditorial(@PathParam("reservasId") Long reservasId) {
         return null;
     }
 }
