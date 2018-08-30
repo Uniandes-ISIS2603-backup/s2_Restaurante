@@ -21,11 +21,11 @@ public class PlatoResource {
     @Produces("application/json")
     @Consumes("application/json")
     @RequestScoped
-    public class CalificacionResources {
+    public class PlatoResources {
    
         @POST
     
-        public PlatoDTO createCalificacion ( PlatoDTO  plato ) {
+        public PlatoDTO PlatoCalificacion ( PlatoDTO  plato ) {
             return plato;
         }
     
