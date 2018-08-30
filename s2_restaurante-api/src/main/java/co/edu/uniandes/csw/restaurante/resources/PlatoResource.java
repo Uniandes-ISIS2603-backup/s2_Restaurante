@@ -17,9 +17,9 @@ import javax.ws.rs.Produces;
  * @author iy.barbosa
  */
 public class PlatoResource {
-    @Path("calificaciones")
-    @Produces("calificacion/json")
-    @Consumes("calificacion/json")
+    @Path("platos")
+    @Produces("application/json")
+    @Consumes("application/json")
     @RequestScoped
     public class CalificacionResources {
    

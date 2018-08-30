@@ -23,8 +23,8 @@ import javax.ws.rs.WebApplicationException;
  * @author iy.barbosa
  */
 @Path("calificaciones")
-@Produces("calificacion/json")
-@Consumes("calificacion/json")
+@Produces("application/json")
+@Consumes("application/json")
 @RequestScoped
 public class CalificacionResources {
    

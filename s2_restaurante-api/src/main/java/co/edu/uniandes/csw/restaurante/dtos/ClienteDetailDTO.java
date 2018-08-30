@@ -11,7 +11,8 @@ import java.util.ArrayList;
  *
  * @author j.prieto
  */
-public class ClienteDetailDTO extends ClienteDTO {
+
+public class ClienteDetailDTO /*extends ClienteDTO */{
 
     /**
      * Tarjeta del cliente
@@ -38,61 +39,64 @@ public class ClienteDetailDTO extends ClienteDTO {
      *
      * @param entity, ClienteEntity a converit a DTO
      */
-//    public ClienteDeatilDTO(ClienteEntity entity) {
-//        //Crea un RestauranteDTO con el entity que llega
-//        super(entity);
-//        if (entity != null) {
-//            tarjeta = entity.getTarjeta();
-//            calificacion = entity.getCalificacion();
-//            //Crea la lista de reservas y le adiciona las que tiene el entity
-//            reservas = new ArrayList<>();
-//            for (ReservaEntity entityReserva : entity.getReservas()) {
-//                reservas.add(new ReservaDTO(entityReserva));
-//            }
-//            //Crea la lista de domicilios y le adiciona las que tiene el entity
-//            domicilios = new ArrayList<>();
-//            for (DomicilioEntity entityDomicilio : entity.getDomicilios()) {
-//                domiclios.add(new DomicilioDTO(entityDomicilio));
-//            }
-//        }
-//
-//    }
+
+    public ClienteDetailDTO(/*ClienteEntity entity*/) {
+        //super(entity);
+        //Crea un RestauranteDTO con el entity que llega
+    
+        /*if (entity != null) {
+            tarjeta = entity.getTarjeta();
+            calificacion = entity.getCalificacion();
+            //Crea la lista de reservas y le adiciona las que tiene el entity
+            reservas = new ArrayList<>();
+            for (ReservaEntity entityReserva : entity.getReservas()) {
+                reservas.add(new ReservaDTO(entityReserva));
+            }
+            //Crea la lista de domicilios y le adiciona las que tiene el entity
+            domicilios = new ArrayList<>();
+            for (DomicilioEntity entityDomicilio : entity.getDomicilios()) {
+                domiclios.add(new DomicilioDTO(entityDomicilio));
+            }
+        }
+        */
+    }
 
     /**
      * Transformar un DTO a un Entity
      *
      * @return un ClienteEntity con base en el DTO actual
      */
-//    @Override
-//    public ClienteEntity toEntity() {
-//        ClienteEntity entity = super.toEntity();
-//        //Agrega al nuevo Entity la tarjeta del DTO
-//        if (tarjeta != null) {
-//            entity.setTarjeta(tarjeta.toEntity());
-//        }
-//        //Agrega al nuevo Entity la calificación del DTO
-//        if (calificacion != null) {
-//            entity.setCalificacion(calificacion.toEntity());
-//        }
-//        //Agrega al nuevo Entity la lista de domicilios del DTO
-//        if (domicilios != null) {
-//            ArrayList<DomicilioEntity> domiciliosEntity = new ArrayList<>();
-//            for (DomicilioDTO domicilioDTO : domicilios) {
-//                domiciliosEntity.add(domicilioDTO.toEntity());
-//            }
-//            entity.setDomicilios(domiciliosEntity);
-//        }
-//        //Agrega al nuevo Entity la lista de reservas del DTO 
-//        if (reservas != null) {
-//            ArrayList<ReservaEntity> reservasEntity = new ArrayList<>();
-//            for (ReservaDTO reservaDTO : reservas) {
-//                reservasEntity.add(reservaDTO.toEntity());
-//            }
-//            entity.setClientes(reservasEntity);
-//        }
-//        return entity;
-//    }
-
+    /*
+    @Override
+    public ClienteEntity toEntity() {
+        ClienteEntity entity = super.toEntity();
+        //Agrega al nuevo Entity la tarjeta del DTO
+        if (tarjeta != null) {
+            entity.setTarjeta(tarjeta.toEntity());
+        }
+        //Agrega al nuevo Entity la calificación del DTO
+        if (calificacion != null) {
+            entity.setCalificacion(calificacion.toEntity());
+        }
+        //Agrega al nuevo Entity la lista de domicilios del DTO
+        if (domicilios != null) {
+            ArrayList<DomicilioEntity> domiciliosEntity = new ArrayList<>();
+            for (DomicilioDTO domicilioDTO : domicilios) {
+                domiciliosEntity.add(domicilioDTO.toEntity());
+            }
+            entity.setDomicilios(domiciliosEntity);
+        }
+        //Agrega al nuevo Entity la lista de reservas del DTO 
+        if (reservas != null) {
+            ArrayList<ReservaEntity> reservasEntity = new ArrayList<>();
+            for (ReservaDTO reservaDTO : reservas) {
+                reservasEntity.add(reservaDTO.toEntity());
+            }
+            entity.setClientes(reservasEntity);
+        }
+        return entity;
+    }
+    */
     /**
      * Retorna la tarjeta del cliente
      *
