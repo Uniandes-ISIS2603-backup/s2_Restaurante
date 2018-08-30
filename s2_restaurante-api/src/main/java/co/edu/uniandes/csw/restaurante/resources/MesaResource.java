@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package co.edu.uniandes.csw.restaurante.resources;
-import co.edu.uniandes.csw.restaurante.dtos.CalificacionDTO;
+import co.edu.uniandes.csw.restaurante.dtos.MesaDTO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -18,20 +19,21 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+
 /**
  *
- * @author iy.barbosa
+ * @author jp.romero12
  */
-@Path("calificaciones")
-@Produces("calificacion/json")
-@Consumes("calificacion/json")
+@Path("Mesa")
+@Produces("Mesa/json")
+@Consumes("Mesa/json")
 @RequestScoped
-public class CalificacionResources {
-   
-    @POST
+public class MesaResource {
     
-    public CalificacionDTO createCalificacion (CalificacionDTO  calificacion ) {
-        return calificacion;
+    @POST
+    public MesaDTO createMesa(MesaDTO mesa)
+    {
+        return mesa;
     }
     
     
