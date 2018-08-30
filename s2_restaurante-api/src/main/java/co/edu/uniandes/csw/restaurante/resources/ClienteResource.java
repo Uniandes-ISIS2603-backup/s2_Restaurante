@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
  *
  * @author j.prieto
  */
-@Path("/clientes")
+@Path("clientes")
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless
@@ -83,7 +83,7 @@ public class ClienteResource {
      */
     @GET
     //Como recibimos dígitos, ponemos d+
-    @Path("{clientesId: \\d+")
+    @Path("{clientesId: \\d+}")
     public ClienteDetailDTO getBook(@PathParam("clientesId") Long clientesId) {
 //        LOGGER.log(Level.INFO, "ClienteResource getCliente: input: {0}", clientesId);
 //        ClienteEntity clienteEntity = clienteLogic.getCliente(clientesId);
