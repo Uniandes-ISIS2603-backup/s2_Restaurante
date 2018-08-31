@@ -22,7 +22,7 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author j.prieto
+ * @author Juliana Prieto Arcila
  */
 @Path("clientes")
 @Produces("application/json")

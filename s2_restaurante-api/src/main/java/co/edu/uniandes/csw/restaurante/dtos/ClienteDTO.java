@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.restaurante.dtos;
 
 /**
  *
- * @author j.prieto
+ * @author Juliana Prieto Arcila
  */
 public class ClienteDTO {
 
