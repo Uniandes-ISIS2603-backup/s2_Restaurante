@@ -1,0 +1,333 @@
+{
+	"info": {
+		"_postman_id": "9e01dae7-9753-4595-a6e0-3189b020743f",
+		"name": "Cliente Tests",
+		"description": "# Introduction\nLa presente colección realiza peticiones simples que reciben un valor nulo.\n\n# Overview\nPeticiones GET, POST, PUT y DELETE se hacen al servidor.\n\n# Authentication\nEl API será usado para realizar pruebas.\n\n# Error Codes\n404 si el recurso no existe.\n500 si hay un error interno.\n202 si no hay contenido en la respuesta.\n\n# Rate limit\nPor el momento no hay límite de peticiones para los usuarios.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Obtiene la colección de clientes de la aplicación."
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/s2_restaurante/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"s2_restaurante",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Crear un nuevo cliente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f17681a8-a74b-4313-ab65-972dbd3d63a5",
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_name_e\",data.name);",
+							"postman.setGlobalVariable(\"new_id_e\",data.id);",
+							"tests[\"No genera error en el Post\"] == responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Pepito Perez\", \"metodoPago\":\"efectivo\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Crea un nuevo cliente."
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/s2_restaurante/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"s2_restaurante",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Obtener la información de un cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/s2_restaurante-api/api/clientes/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"id"
+					]
+				},
+				"description": "Consulta un cliente de la aplicación. La petición no tiene cuerpo. Se envía el ID del cliente deseado por la URL de la petición."
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/s2_restaurante/clientes/id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"s2_restaurante",
+								"clientes",
+								"id"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Actualiza la información de un cliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/s2_restaurante-api/api/clientes/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"id"
+					]
+				},
+				"description": "Actualiza un cliente de la aplicación. La petición debe contener los nuevos datos del cliente que desea modificarse. Se envía el ID del cliente deseado por la URL de la petición."
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/s2_restaurante/clientes/id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"s2_restaurante",
+								"clientes",
+								"id"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Eliminar cliente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/s2_restaurante-api/api/clientes/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"id"
+					]
+				},
+				"description": "Elimina un cliente de la aplicación. La petición no tiene cuerpo. Se envía el ID del cliente que desea eliminarse por la URL de la petición."
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/s2_restaurante/clientes/id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"s2_restaurante",
+								"clientes",
+								"id"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1e228095-0459-491c-b17d-20607a7e9926",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "91ae0278-8f55-4e0a-9d62-d1db9da474fa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

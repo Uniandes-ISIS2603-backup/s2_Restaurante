@@ -25,10 +25,47 @@ public class ReservaResource {
     {
         return reserva;
     }
-    
+       /**
+     * Retorna la reserva con el id asociado recibido en la URL.
+     *
+     * @param reservasId Identificador de la reserva que se desea borrar.
+     * Este debe ser una cadena de dígitos.
+     */    
     @GET
     @Path("{reservasId: \\d+}")
-    public ReservaDTO deleteEditorial(@PathParam("reservasId") Long reservasId) {
+    public ReservaDTO getReserva(@PathParam("reservasId") Long reservasId) {
         return null;
+    }
+     /**
+     * Retorna la colección de todas las reservas existentes.
+     *
+     */    
+    @GET
+    public ReservaDTO getReservas() {
+        return null;
+    }
+    
+     /**
+     * Actualiza la reserva con el id asociado recibido en la URL.
+     * 
+     * @param reservasId Identificador de la reserva que se desea borrar.
+     * Este debe ser una cadena de dígitos.
+     */
+    @PUT
+    @Path("{reservasId: \\d+}")
+    public ReservaDTO updateReserva(@PathParam("reservasId") Long reservasId) {
+        return null;
+    }
+    
+     /**
+     * Borra la reserva con el id asociado recibido en la URL.
+     *
+     * @param reservasId Identificador de la reserva que se desea borrar.
+     * Este debe ser una cadena de dígitos.
+     */
+    @DELETE
+    @Path("{reservasId: \\d+}")
+    public void deleteReserva(@PathParam("reservasId") Long reservasId) {
+       
     }
 }
