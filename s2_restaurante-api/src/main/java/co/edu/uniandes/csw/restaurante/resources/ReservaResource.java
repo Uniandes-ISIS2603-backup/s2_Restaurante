@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.restaurante.resources;
 import co.edu.uniandes.csw.restaurante.dtos.ReservaDTO;
+import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 
@@ -20,10 +22,14 @@ import javax.ws.rs.*;
 public class ReservaResource {
     
     
+    
+    private static final Logger LOGGER = Logger.getLogger(ReservaResource.class.getName());
+
+    
     @POST
     public ReservaDTO createReserva(ReservaDTO reserva)
     {
-        return reserva;
+        return null;
     }
        /**
      * Retorna la reserva con el id asociado recibido en la URL.

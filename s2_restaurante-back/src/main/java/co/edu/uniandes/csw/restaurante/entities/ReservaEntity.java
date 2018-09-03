@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.restaurante.entities;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
@@ -13,7 +14,7 @@ import java.util.Date;
  *
  * @author Juan Ortega. 
  */
-public class ReservaEntity implements java.io.Serializable{
+public class ReservaEntity extends BaseEntity implements Serializable{
     
     private static final long serialVersionUID =1L;
     @javax.persistence.Id
