@@ -45,98 +45,98 @@ public class ReservaPersistence {
     }
     
     
-//    /**
-//     * Devuelve todas las reservas de la base de datos.
-//     *
-//     * @return una lista con todas las reservas que encuentre en la base de
-//     * datos, "select u from ReservaEntity u" es como un "select * from
-//     * ReservaEntity;" - "SELECT * FROM table_name" en SQL.
-//     */
-//    public List<ReservaEntity> findAll() {
-//        LOGGER.log(Level.INFO, "Consultando todas las reservas");
-//        // Se crea un query para buscar todas las reservas en la base de datos.
-//        TypedQuery query = em.createQuery("select u from ReservaEntity u", ReservaEntity.class);
-//        // Note que en el query se hace uso del método getResultList() que obtiene una lista de reservas.
-//        return query.getResultList();
-//    }
-//    
-//    /**
-//     * Busca si hay alguna reserva con el id que se envía de argumento
-//     *
-//     * @param reservaId: id correspondiente a la reserva buscada.
-//     * @return una reserva.
-//     */
-//    public ReservaEntity find(Long reservaId) {
-//        LOGGER.log(Level.INFO, "Consultando reserva con id={0}", reservaId);
-//        /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
-//        el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
-//        Suponga que es algo similar a "select * from ReservaEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
-//         */
-//        return em.find(ReservaEntity.class, reservaId);
-//    }
-//    
-//    /**
-//     * Actualiza una reserva.
-//     *
-//     * @param reservaEntity : la reserva que viene con los nuevos cambios.
-//     * Por ejemplo el nombre pudo cambiar. En ese caso, se haria uso del método
-//     * update.
-//     * @return una reserva con los cambios aplicados.
-//     */
-//    public ReservaEntity update(ReservaEntity reservaEntity) {
-//        LOGGER.log(Level.INFO, "Actualizando reserva con id = {0}", reservaEntity.getId());
-//        /* Note que hacemos uso de un método propio del EntityManager llamado merge() que recibe como argumento
-//        la reserva con los cambios, esto es similar a 
-//        "UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;" en SQL.
-//         */
-//        LOGGER.log(Level.INFO, "Saliendo de actualizar la reserva con id = {0}", reservaEntity.getId());
-//        return em.merge(reservaEntity);
-//    }
-//    
-//    /**
-//     * Borra una reserva de la base de datos recibiendo como argumento el id
-//     * de la reserva
-//     *
-//     * @param reservaId: id correspondiente a la reserva a borrar.
-//     */
-//    public void delete(Long reservaId) {
-//        LOGGER.log(Level.INFO, "Borrando reserva con id = {0}", reservaId);
-//        // Se hace uso de mismo método que esta explicado en public ReservaEntity find(Long id) para obtener la reserva a borrar.
-//        ReservaEntity entity = em.find(ReservaEntity.class, reservaId);
-//        /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
-//         EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
-//         Es similar a "delete from ReservaEntity where id=id;" - "DELETE FROM table_name WHERE condition;" en SQL.*/
-//        em.remove(entity);
-//        LOGGER.log(Level.INFO, "Saliendo de borrar la reserva con id = {0}", reservaId);
-//    }
-//    
-//    
-//    /**
-//     * Busca si hay alguna reserva con el nombre que se envía de argumento
-//     *
-//     * @param name: Nombre de la reserva que se está buscando
-//     * @return null si no existe ninguna reserva con el nombre del argumento.
-//     * Si existe alguna devuelve la primera.
-//     */
-//    public ReservaEntity findByName(String name) {
-//        LOGGER.log(Level.INFO, "Consultando reserva por nombre ", name);
-//        // Se crea un query para buscar reserva con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-//        TypedQuery query = em.createQuery("Select e From ReservaEntity e where e.name = :name", ReservaEntity.class);
-//        // Se remplaza el placeholder ":name" con el valor del argumento 
-//        query = query.setParameter("name", name);
-//        // Se invoca el query se obtiene la lista resultado
-//        List<ReservaEntity> sameName = query.getResultList();
-//        ReservaEntity result;
-//        if (sameName == null) {
-//            result = null;
-//        } else if (sameName.isEmpty()) {
-//            result = null;
-//        } else {
-//            result = sameName.get(0);
-//        }
-//        LOGGER.log(Level.INFO, "Saliendo de consultar reserva por nombre ", name);
-//        return result;
-//    }
+    /**
+     * Devuelve todas las reservas de la base de datos.
+     *
+     * @return una lista con todas las reservas que encuentre en la base de
+     * datos, "select u from ReservaEntity u" es como un "select * from
+     * ReservaEntity;" - "SELECT * FROM table_name" en SQL.
+     */
+    public List<ReservaEntity> findAll() {
+        LOGGER.log(Level.INFO, "Consultando todas las reservas");
+        // Se crea un query para buscar todas las reservas en la base de datos.
+        TypedQuery query = em.createQuery("select u from ReservaEntity u", ReservaEntity.class);
+        // Note que en el query se hace uso del método getResultList() que obtiene una lista de reservas.
+        return query.getResultList();
+    }
+    
+    /**
+     * Busca si hay alguna reserva con el id que se envía de argumento
+     *
+     * @param reservaId: id correspondiente a la reserva buscada.
+     * @return una reserva.
+     */
+    public ReservaEntity find(Long reservaId) {
+        LOGGER.log(Level.INFO, "Consultando reserva con id={0}", reservaId);
+        /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
+        el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
+        Suponga que es algo similar a "select * from ReservaEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
+         */
+        return em.find(ReservaEntity.class, reservaId);
+    }
+    
+    /**
+     * Actualiza una reserva.
+     *
+     * @param reservaEntity : la reserva que viene con los nuevos cambios.
+     * Por ejemplo el nombre pudo cambiar. En ese caso, se haria uso del método
+     * update.
+     * @return una reserva con los cambios aplicados.
+     */
+    public ReservaEntity update(ReservaEntity reservaEntity) {
+        LOGGER.log(Level.INFO, "Actualizando reserva con id = {0}", reservaEntity.getId());
+        /* Note que hacemos uso de un método propio del EntityManager llamado merge() que recibe como argumento
+        la reserva con los cambios, esto es similar a 
+        "UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;" en SQL.
+         */
+        LOGGER.log(Level.INFO, "Saliendo de actualizar la reserva con id = {0}", reservaEntity.getId());
+        return em.merge(reservaEntity);
+    }
+    
+    /**
+     * Borra una reserva de la base de datos recibiendo como argumento el id
+     * de la reserva
+     *
+     * @param reservaId: id correspondiente a la reserva a borrar.
+     */
+    public void delete(Long reservaId) {
+        LOGGER.log(Level.INFO, "Borrando reserva con id = {0}", reservaId);
+        // Se hace uso de mismo método que esta explicado en public ReservaEntity find(Long id) para obtener la reserva a borrar.
+        ReservaEntity entity = em.find(ReservaEntity.class, reservaId);
+        /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
+         EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
+         Es similar a "delete from ReservaEntity where id=id;" - "DELETE FROM table_name WHERE condition;" en SQL.*/
+        em.remove(entity);
+        LOGGER.log(Level.INFO, "Saliendo de borrar la reserva con id = {0}", reservaId);
+    }
+    
+    
+    /**
+     * Busca si hay alguna reserva con el nombre que se envía de argumento
+     *
+     * @param name: Nombre de la reserva que se está buscando
+     * @return null si no existe ninguna reserva con el nombre del argumento.
+     * Si existe alguna devuelve la primera.
+     */
+    public ReservaEntity findByName(String name) {
+        LOGGER.log(Level.INFO, "Consultando reserva por nombre ", name);
+        // Se crea un query para buscar reserva con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+        TypedQuery query = em.createQuery("Select e From ReservaEntity e where e.name = :name", ReservaEntity.class);
+        // Se remplaza el placeholder ":name" con el valor del argumento 
+        query = query.setParameter("name", name);
+        // Se invoca el query se obtiene la lista resultado
+        List<ReservaEntity> sameName = query.getResultList();
+        ReservaEntity result;
+        if (sameName == null) {
+            result = null;
+        } else if (sameName.isEmpty()) {
+            result = null;
+        } else {
+            result = sameName.get(0);
+        }
+        LOGGER.log(Level.INFO, "Saliendo de consultar reserva por nombre ", name);
+        return result;
+    }
     
 }
 
