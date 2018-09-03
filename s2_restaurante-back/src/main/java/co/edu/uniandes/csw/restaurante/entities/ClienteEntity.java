@@ -38,13 +38,6 @@ public class ClienteEntity extends BaseEntity implements Serializable {
 //    @OneToMany(mappedBy = "domicilio", cascade = CascadeType.PERSIST, orphanRemoval = true)
 //    private List<DomicilioEntity> domicilios = new ArrayList<DomicilioEntity>();
     
-    
-    /**
-     * Identificador del cliente
-     */
-    @javax.persistence.Id
-    private Long id;
-
     /**
      * Nombre del cliente
      */
@@ -65,22 +58,7 @@ public class ClienteEntity extends BaseEntity implements Serializable {
 //        this.nombre = entity.getNombre();
 //        this.metodoPago = entity.getMetodoPago();
 //    }
-    /**
-     * Retorna el ID del cliente
-     */
-    public Long getId() {
-        return this.id;
-    }
-
-    /**
-     * Modifica el ID del cliente
-     *
-     * @param pId - nuevo ID
-     */
-    public void setId(Long pId) {
-        this.id = pId;
-    }
-
+    
     /**
      * Retorna el nombre del cliente
      *

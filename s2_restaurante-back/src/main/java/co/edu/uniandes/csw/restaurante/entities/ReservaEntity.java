@@ -17,8 +17,6 @@ import java.util.Date;
 public class ReservaEntity extends BaseEntity implements Serializable{
     
     private static final long serialVersionUID =1L;
-    @javax.persistence.Id
-    private Long id;
     private Date hora;
     private Integer cantidadPersonas;
 
@@ -30,14 +28,6 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     
     
     
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Date getHora() {
         return hora;
     }
