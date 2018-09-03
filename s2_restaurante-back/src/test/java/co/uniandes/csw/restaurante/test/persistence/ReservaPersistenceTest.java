@@ -173,17 +173,17 @@ public class ReservaPersistenceTest {
         Assert.assertEquals(newEntity.getCantidadPersonas(), resp.getCantidadPersonas());
     }
 
-    /**
-     * Prueba para consultar una Reserva por nombre.
-     */
-    @Test
-    public void findReservaByNameTest() {
-        ReservaEntity entity = data.get(0);
-        ReservaEntity newEntity = reservaPersistencia.findById(entity.getCantidadPersonas());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getCantidadPersonas(), newEntity.getCantidadPersonas());
-
-        newEntity = reservaPersistencia.findById(null);
-        Assert.assertNull(newEntity);
-    }
+//    /**
+//     * Prueba para consultar una Reserva por nombre.
+//     */
+//    @Test
+//    public void findReservaByNameTest() {
+//        ReservaEntity entity = data.get(0);
+//        ReservaEntity newEntity = reservaPersistencia.findById(entity.getCantidadPersonas());
+//        Assert.assertNotNull(newEntity);
+//        Assert.assertEquals(entity.getCantidadPersonas(), newEntity.getCantidadPersonas());
+//
+//        newEntity = reservaPersistencia.findById(null);
+//        Assert.assertNull(newEntity);
+//    }
 }
