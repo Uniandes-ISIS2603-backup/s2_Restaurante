@@ -18,7 +18,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author Juliana Prieto Arcila
  */
-@Entity
+@javax.persistence.Entity
 public class ClienteEntity extends BaseEntity implements Serializable {
 
 //    @PodamExclude
@@ -42,6 +42,7 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     /**
      * Identificador del cliente
      */
+    @javax.persistence.Id
     private Long id;
 
     /**
