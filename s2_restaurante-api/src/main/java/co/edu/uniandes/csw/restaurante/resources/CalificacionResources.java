@@ -28,11 +28,53 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class CalificacionResources {
    
+    /**
+     * Crea una nueva calificacion con la informacion dada
+     * @param calificacion la calificacion que se desea guardar
+     * @return 
+     */
     @POST
     
     public CalificacionDTO createCalificacion (CalificacionDTO  calificacion ) {
         return calificacion;
     }
+     /**
+     * Busca la calificacion con el ID asociado recibido en la URL y lo devuelve.
+     *
+     * @param calificacionesId Identificador del plato que se esta buscando. 
+     */
+    @GET
+    @Path("{calificacionesId: \\d+}")
+        public CalificacionDTO getCalificacion(@PathParam("calificacionesId") Long calificacionesId) {
+            return null;
+        }
+        
+        /**
+     * Borra la calificacion con el ID asociado recibido en la URL.
+     *
+     * @param calificacionesId Identificador del cliente que se desea borrar. Este debe ser
+     * una cadena de dígitos.
+     */
     
+    @DELETE
+         @Path("{calificacionesId: \\d+}")
+        public void deleteCalificacion (@PathParam("calificacionesId") Long calificacionesId)
+        {
+            
+        }
+       
+            /**
+     * Actualiza la calificacion con el id asociado recibido en la URL.
+     * 
+     * @param calificacionesId Identificador de la calificaion.
+     * Este debe ser una cadena de dígitos.
+     */
+    @PUT
+    @Path("{calificacionesId: \\d+}")
+    public CalificacionDTO updateReserva(@PathParam("calificacionesId") Long calificacionesId)
+    {
+        return null;
+    }
     
-}
+    }
+    
