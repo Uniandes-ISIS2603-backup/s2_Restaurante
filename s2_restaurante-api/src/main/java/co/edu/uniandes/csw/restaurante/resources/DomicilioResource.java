@@ -19,6 +19,12 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @RequestScoped
 public class DomicilioResource {
+
+    /**
+     *
+     * @param domicilio
+     * @return
+     */
     @POST
     public DomicilioDTO createDomicilio(DomicilioDTO domicilio)
     {

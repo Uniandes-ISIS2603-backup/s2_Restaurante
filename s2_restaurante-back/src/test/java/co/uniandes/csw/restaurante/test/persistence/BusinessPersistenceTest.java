@@ -7,7 +7,7 @@ package co.uniandes.csw.restaurante.test.persistence;
 
 /**
  *
- * @author estudiante
+ * @author starbugs
  */
 public class BusinessPersistenceTest {
     

@@ -23,12 +23,23 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @RequestScoped
 public class PuntoResource {
+
+    /**
+     *
+     * @param punto
+     * @return
+     */
     @POST
     public PuntoDTO createPunto(PuntoDTO punto)
     {
         return punto;
     }
     
+    /**
+     *
+     * @param puntosId
+     * @return
+     */
     @GET
     @Path("puntosId: \\d+")
     public PuntoDTO getPunto(@PathParam("puntosId") Long puntosId){
