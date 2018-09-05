@@ -1,85 +1,75 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+MIT License
+
+Copyright (c) 2017 Universidad de los Andes - ISIS2603
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
  */
 package co.edu.uniandes.csw.restaurante.entities;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
+
 /**
+ * Clase que representa un autor en la persistencia y permite su serialización
  *
- * @author estudiante
+ * @author iy.barbosa
  */
-public class PlatoEntity {
+@javax.persistence.Entity
+public class PlatoEntity extends BaseEntity implements Serializable {
+
+
+//    @PodamExclude
+//    @ManyToOne
+//    private SucursalEntity sucursal;
+
+    /**
+     * Nombre del plato
+     */
+    private String nombre;
     
     /**
-     * Identificador del plato
+     * Precio del plato
      */
-    private Long id;
-    
-     /**
-     * Nombre del platp
-     */
-    private String name;
-     /**
-     * precio del plato
-     */
-    private Integer precio;
-    
-     /**
-     * Constructor vacio
-     */
-    public PlatoEntity(){
-        
+    private Double precio;
+
+    public String getNombre() {
+        return nombre;
     }
-    
-    /**
-     * Retorna el Id del plato
-     */
-     public Long getId(){
-        return id ;
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-     
-   /**
-     * Retorna el nombre del plato
-     */
-    public String getName(){
-        return name ;
+
+    public Double getPrecio() {
+        return precio;
     }
-    
-    /**
-     * Retorna el precio del plato
-     */
-    public Integer getPrecio(){
-       return precio ;
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
-    
-      /**
-     * Modifica el Id del plato 
-     * 
-     * * @param pId - nuevo ID
-     */
-    public void setId(Long pId){
-        id = pId ;
-    }
-    
-     /**
-     * Modifica el nombre del plato
-     * 
-     * * @param pName - nuevo ID
-     */
-    public void setName(String pName){
-         name=pName ;
-    }
-      /**
-     * Modifica el precio del plato 
-     * 
-     * * @param pPrecio - nuevo ID
-     */
-    public void setPrecio (Integer pPrecio){
-        precio = pPrecio ;
-    }
-    
-    
-     
-    
 }
