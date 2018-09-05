@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.restaurante.dtos;
 
-import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
+//import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
 
 /**
  *
@@ -106,23 +106,23 @@ public class CalificacionDTO {
      *
      * @param entity CalificacionEntity
      */
-    public CalificacionDTO(CalificacionEntity entity) {
-       // this.id = entity.getId();
-     
-    }
+//    public CalificacionDTO(CalificacionEntity entity) {
+//       // this.id = entity.getId();
+//     
+//    }
     
      /**
      * Convierte un DTO a Entity
      *
      * @return Entity con los valores del DTO
      */
-    public CalificacionEntity toEntity() {
-       CalificacionEntity entity = new CalificacionEntity();
-       //calificacion.setId(this.id);
-      // cliente.setNombre(this.nombre);
-       //cliente.setMetodoPago(this.metodoPago);
-       return entity;
-   }
+//    public CalificacionEntity toEntity() {
+//       CalificacionEntity entity = new CalificacionEntity();
+//       //calificacion.setId(this.id);
+//      // cliente.setNombre(this.nombre);
+//       //cliente.setMetodoPago(this.metodoPago);
+//       return entity;
+//   }
    
     
 }
