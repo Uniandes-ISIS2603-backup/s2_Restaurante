@@ -25,14 +25,7 @@ public class PlatoDTO {
      /**
      * precio del plato
      */
-    private Integer precio;
-    
-     /**
-     * Constructor vacio
-     */
-    public PlatoDTO (){
-        
-    }
+    private Double precio;
     
     /**
      * Retorna el Id del plato
@@ -51,7 +44,7 @@ public class PlatoDTO {
     /**
      * Retorna el precio del plato
      */
-    public Integer getPrecio(){
+    public Double getPrecio(){
        return precio ;
     }
     
@@ -77,7 +70,7 @@ public class PlatoDTO {
      * 
      * * @param pPrecio - nuevo ID
      */
-    public void setPrecio (Integer pPrecio){
+    public void setPrecio (Double pPrecio){
         precio = pPrecio ;
     }
     
