@@ -7,6 +7,9 @@ package co.edu.uniandes.csw.restaurante.dtos;
 
 //import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
 
+import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
+
+
 /**
  *
  * @author iy.barbosa
@@ -20,7 +23,7 @@ public class CalificacionDTO {
     /**
      * puntaje que da el cliente en la calificacion
      */
-    private Integer puntaje;
+    private Double puntaje;
     /**
      * sucursal la cual se esta calificando
      */
@@ -30,19 +33,10 @@ public class CalificacionDTO {
      */
     private ClienteDTO cliente ;
     
-    
-    /**
-     * constructor vacio 
-     */
-    public CalificacionDTO (){
-    
-    }
-    
-    
     /**
      * Retorna el puntaje de la calificacion
      */
-    public Integer getPuntaje() {
+    public Double getPuntaje() {
         return puntaje;
     }
     
@@ -51,7 +45,7 @@ public class CalificacionDTO {
      *
      * @param pPuntaje - nuevo ID
      */
-    public void setPuntaje(Integer pPuntaje) {
+    public void setPuntaje(Double pPuntaje) {
         this.puntaje = pPuntaje;
     }
     
@@ -102,27 +96,28 @@ public class CalificacionDTO {
     }
     
     /**
-     * Construye un CalificacionDTO a partir de un CalificacionEntity
+     * Construye un PlatoDTO a partir de un PlatoEntity
      *
-     * @param entity CalificacionEntity
+     * @param entity PlatoEntity
      */
-//    public CalificacionDTO(CalificacionEntity entity) {
-//       // this.id = entity.getId();
-//     
-//    }
+    public CalificacionDTO(CalificacionDTO entity) {
+       // this.id = entity.getId();
+     
+    }
     
      /**
      * Convierte un DTO a Entity
      *
      * @return Entity con los valores del DTO
      */
-//    public CalificacionEntity toEntity() {
-//       CalificacionEntity entity = new CalificacionEntity();
-//       //calificacion.setId(this.id);
-//      // cliente.setNombre(this.nombre);
-//       //cliente.setMetodoPago(this.metodoPago);
-//       return entity;
-//   }
+    public CalificacionEntity toEntity() {
+       CalificacionEntity entity = new CalificacionEntity();
+       //calificacion.setId(this.id);
+      // cliente.setNombre(this.nombre);
+       //cliente.setMetodoPago(this.metodoPago);
+       return entity;
+    }
+
    
     
 }
