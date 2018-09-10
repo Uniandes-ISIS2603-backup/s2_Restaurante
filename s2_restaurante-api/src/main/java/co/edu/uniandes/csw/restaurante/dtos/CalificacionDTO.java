@@ -5,37 +5,119 @@
  */
 package co.edu.uniandes.csw.restaurante.dtos;
 
+//import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
+
+import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
+
+
 /**
  *
  * @author iy.barbosa
  */
 public class CalificacionDTO {
+    
+    /**
+     * Identificador de la calificacion
+     */
     private Long id;
-    private String name;
-    //private SucursalDTO sucursal;
+    /**
+     * puntaje que da el cliente en la calificacion
+     */
+    private Double puntaje;
+    /**
+     * sucursal la cual se esta calificando
+     */
+    private SucursalDTO sucursal;
+    /**
+     * cliente que califica la sucursal 
+     */
+    private ClienteDTO cliente ;
     
-    public CalificacionDTO (){
-    
+    /**
+     * Retorna el puntaje de la calificacion
+     */
+    public Double getPuntaje() {
+        return puntaje;
     }
     
+    /**
+     * Modifica el puntaje de la calificacion
+     *
+     * @param pPuntaje - nuevo ID
+     */
+    public void setPuntaje(Double pPuntaje) {
+        this.puntaje = pPuntaje;
+    }
+    
+    /**
+     * Retorna la sucuarsal que se esta calificando
+     */
+    public SucursalDTO getSucursal() {
+        return sucursal;
+    }
+
+    /**
+     * Modifica el puntaje de la calificacion
+     *
+     * @param pSucursal - nuevo ID
+     */
+    public void setSucursal(SucursalDTO pSucursal) {
+        this.sucursal = pSucursal;
+    }
+    /**
+     * Retorna el cliente que califica
+     */
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+    /**
+     * Modifica el puntaje de la calificacion
+     *
+     * @param pCliente - nuevo ID
+     */
+    public void setCliente(ClienteDTO pCliente) {
+        this.cliente = pCliente;
+    }
+    /**
+     * Retorna el Id de la calificacion
+     */
     public Long getId(){
         return id ;
     }
-    public String getName(){
-        return name ;
-    }
-    //public SucursalDTO getSucursar(){
-      //  return sucursal ;
-    //}
     
+    /**
+     * Modifica el Id  de la calificacion
+     *
+     * @param pId - nuevo ID
+     */
     public void setId(Long pId){
         id = pId ;
     }
-    public void setName(String pName){
-         name=pName ;
+    
+    /**
+     * Construye un PlatoDTO a partir de un PlatoEntity
+     *
+     * @param entity PlatoEntity
+     */
+    public CalificacionDTO(CalificacionDTO entity) {
+       // this.id = entity.getId();
+     
     }
-    //public viod setSucursar(SucursalDTO pSucur){
-      //   sucursal=pSucur ;
-    //}
+    
+     /**
+     * Convierte un DTO a Entity
+     *
+     * @return Entity con los valores del DTO
+     */
+    public CalificacionEntity toEntity() {
+       CalificacionEntity entity = new CalificacionEntity();
+       //calificacion.setId(this.id);
+      // cliente.setNombre(this.nombre);
+       //cliente.setMetodoPago(this.metodoPago);
+       return entity;
+    }
+
+   
     
 }

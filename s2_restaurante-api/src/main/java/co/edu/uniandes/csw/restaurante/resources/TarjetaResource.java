@@ -23,6 +23,12 @@ import javax.ws.rs.Produces;
 @Consumes("tarjeta/json")
 @RequestScoped
 public class TarjetaResource {
+
+    /**
+     *
+     * @param tarjeta
+     * @return
+     */
     @POST
     public TarjetaDTO createTarjeta(TarjetaDTO tarjeta)
     {

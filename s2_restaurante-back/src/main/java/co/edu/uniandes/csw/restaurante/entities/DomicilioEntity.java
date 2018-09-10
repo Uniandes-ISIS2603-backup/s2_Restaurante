@@ -6,12 +6,8 @@
 package co.edu.uniandes.csw.restaurante.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -19,25 +15,22 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author Juliana Prieto Arcila
  */
 @javax.persistence.Entity
-public class ClienteEntity extends BaseEntity implements Serializable {
-
-//    @PodamExclude
-//    @OneToOne
-//    private CalificacionEntity calificacion;
+public class DomicilioEntity extends BaseEntity implements Serializable {
     
 //    @PodamExclude
 //    @OneToOne
 //    private TarjetaEntity tarjeta;
     
     @PodamExclude
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();
+    @OneToMany(mappedBy = "domicilio", cascade = CascadeType.PERSIST, orphanRemoval = true)
     
     
-//    @PodamExclude
-//    @OneToMany(mappedBy = "domicilio", cascade = CascadeType.PERSIST, orphanRemoval = true)
-//    private List<DomicilioEntity> domicilios = new ArrayList<DomicilioEntity>();
-    
+    /**
+     * Identificador del cliente
+     */
+    @javax.persistence.Id
+    private Long id;
+
     /**
      * Nombre del cliente
      */
@@ -48,17 +41,7 @@ public class ClienteEntity extends BaseEntity implements Serializable {
      */
     private String metodoPago;
 
-    /**
-     * Construye un ClienteDTO a partir de un ClienteEntity
-     *
-     * @param entity ClienteEntity
-     */
-//    public ClienteDTO(ClienteEntity entity) {
-//        this.id = entity.getId();
-//        this.nombre = entity.getNombre();
-//        this.metodoPago = entity.getMetodoPago();
-//    }
-    
+
     /**
      * Retorna el nombre del cliente
      *

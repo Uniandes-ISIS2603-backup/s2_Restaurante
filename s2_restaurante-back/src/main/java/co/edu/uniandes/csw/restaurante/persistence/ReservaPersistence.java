@@ -111,32 +111,6 @@ public class ReservaPersistence {
     }
     
     
-    /**
-     * Busca si hay alguna reserva con el nombre que se envía de argumento
-     *
-     * @param name: Nombre de la reserva que se está buscando
-     * @return null si no existe ninguna reserva con el nombre del argumento.
-     * Si existe alguna devuelve la primera.
-     */
-    public ReservaEntity findByName(String name) {
-        LOGGER.log(Level.INFO, "Consultando reserva por nombre ", name);
-        // Se crea un query para buscar reserva con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From ReservaEntity e where e.name = :name", ReservaEntity.class);
-        // Se remplaza el placeholder ":name" con el valor del argumento 
-        query = query.setParameter("name", name);
-        // Se invoca el query se obtiene la lista resultado
-        List<ReservaEntity> sameName = query.getResultList();
-        ReservaEntity result;
-        if (sameName == null) {
-            result = null;
-        } else if (sameName.isEmpty()) {
-            result = null;
-        } else {
-            result = sameName.get(0);
-        }
-        LOGGER.log(Level.INFO, "Saliendo de consultar reserva por nombre ", name);
-        return result;
-    }
     
 }
 
