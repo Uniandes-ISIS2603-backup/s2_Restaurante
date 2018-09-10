@@ -133,25 +133,25 @@ public class ClienteLogicTest {
     }
 
     /**
-     * Prueba para crear un Author.
+     * Prueba para crear un Cliente.
      */
     @Test
-    public void createAuthorTest() {
-//        ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
-//        ClienteEntity result = authorLogic.createAuthor(newEntity);
-//        Assert.assertNotNull(result);
-//        ClienteEntity entity = em.find(ClienteEntity.class, result.getId());
-//        Assert.assertEquals(newEntity.getId(), entity.getId());
-//        Assert.assertEquals(newEntity.getName(), entity.getName());
-//        Assert.assertEquals(newEntity.getBirthDate(), entity.getBirthDate());
+    public void createClienteTest() {
+        ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
+        ClienteEntity result = clienteLogic.createCliente(newEntity);
+        Assert.assertNotNull(result);
+        ClienteEntity entity = em.find(ClienteEntity.class, result.getId());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getMetodoPago(), entity.getMetodoPago());
     }
 
     /**
-     * Prueba para consultar la lista de Authors.
+     * Prueba para consultar la lista de Clientes.
      */
     @Test
-    public void getAuthorsTest() {
-//        List<ClienteEntity> list = authorLogic.getAuthors();
+    public void getClientesTest() {
+//        List<ClienteEntity> list = clienteLogic.getAuthors();
 //        Assert.assertEquals(data.size(), list.size());
 //        for (ClienteEntity entity : list) {
 //            boolean found = false;

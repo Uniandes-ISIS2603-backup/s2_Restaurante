@@ -52,7 +52,7 @@ public class ClienteLogic {
      * @param clienteEntity Objeto de ClienteEntity con los datos nuevos
      * @return Objeto de ClienteEntity con los datos nuevos y su ID.
      */
-    public ClienteEntity createAuthor(ClienteEntity clienteEntity) {
+    public ClienteEntity createCliente(ClienteEntity clienteEntity) {
         LOGGER.log(Level.INFO, "Inicia proceso de creación del cliente");
         ClienteEntity newClienteEntity = persistence.create(clienteEntity);
         LOGGER.log(Level.INFO, "Termina proceso de creación del cliente");
@@ -64,7 +64,7 @@ public class ClienteLogic {
      *
      * @return Colección de objetos de ClienteEntity.
      */
-    public List<ClienteEntity> getAuthors() {
+    public List<ClienteEntity> getClientets() {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los clientes");
         List<ClienteEntity> lista = persistence.findAll();
         LOGGER.log(Level.INFO, "Termina proceso de consultar todos los clientes");
@@ -107,7 +107,7 @@ public class ClienteLogic {
      * @param clientesId Identificador de la instancia a eliminar.
      * @throws BusinessLogicException si el autor tiene libros asociados.
      */
-    public void deleteAuthor(Long clientesId) throws BusinessLogicException {
+    public void deleteCliente(Long clientesId) throws BusinessLogicException {
         
         /**
          * En este punto cuando elimine cliente tengo que eliminar todas sus relaciones. 

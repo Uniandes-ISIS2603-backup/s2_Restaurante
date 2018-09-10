@@ -54,7 +54,7 @@ public class ClientePersistence {
      */
     public ClienteEntity create(ClienteEntity clienteEntity) {
         LOGGER.log(Level.INFO, "Creando un cliente nuevo");
-        /* Note que hacemos uso de un método propio de EntityManager para persistir la author en la base de datos.
+        /* Note que hacemos uso de un método propio de EntityManager para persistir el cliente en la base de datos.
         Es similar a "INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);" en SQL.
          */
         em.persist(clienteEntity);
