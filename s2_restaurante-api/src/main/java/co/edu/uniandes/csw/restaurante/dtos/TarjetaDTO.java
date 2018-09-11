@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.restaurante.dtos;
 
 import co.edu.uniandes.csw.restaurante.entities.TarjetaEntity;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 public class TarjetaDTO implements Serializable{
     private Long sucuralID;
     private Long clientID;
-    private ArrayList puntos;
+    private Long id;
     
     /**
      *
@@ -32,66 +31,43 @@ public class TarjetaDTO implements Serializable{
      */
     public TarjetaDTO(TarjetaEntity tarjetaEntity) {
         if (tarjetaEntity != null) {
-            this.clientID = tarjetaEntity.getId();
+            this.id = tarjetaEntity.getId();
+            this.sucuralID = tarjetaEntity.getSucursalID();
+            this.clientID = tarjetaEntity.getClienteID();
+                   
         }
     }   
 
-    /**
-     *
-     * @return
-     */
-    public long getClientID() {
-        return clientID;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public ArrayList getPuntos() {
-        return puntos;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public long getSucuralID() {
+    public Long getSucuralID() {
         return sucuralID;
     }
 
-    /**
-     *
-     * @param clientID
-     */
-    public void setClientID(long clientID) {
+    public void setSucuralID(Long sucuralID) {
+        this.sucuralID = sucuralID;
+    }
+
+    public Long getClientID() {
+        return clientID;
+    }
+
+    public void setClientID(Long clientID) {
         this.clientID = clientID;
     }
 
-    /**
-     *
-     * @param puntos
-     */
-    public void setPuntos(ArrayList puntos) {
-        this.puntos = puntos;
+    public Long getId() {
+        return id;
     }
 
-    /**
-     *
-     * @param sucuralID
-     */
-    public void setSucuralID(long sucuralID) {
-        this.sucuralID = sucuralID;
+    public void setId(Long id) {
+        this.id = id;
     }
+
     
-    /**
-     * Convertir DTO a Entity
-     *
-     * @return Un Entity con los valores del DTO
-     */
     public TarjetaEntity toEntity() {
         TarjetaEntity tarjetaEntity = new TarjetaEntity();
-        tarjetaEntity.setId(this.clientID);
+        tarjetaEntity.setId(this.id);
+        tarjetaEntity.setClienteID(this.clientID);
+        tarjetaEntity.setSucursalID(this.sucuralID);
         return tarjetaEntity;
     }
     

@@ -35,6 +35,8 @@ public class DomicilioDTO implements Serializable{
     public DomicilioDTO(DomicilioEntity domicilioEntity) {
         if (domicilioEntity != null) {
             this.id = domicilioEntity.getId();
+            this.precio = domicilioEntity.getPrecio();
+            
         }
     } 
     /**

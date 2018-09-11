@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.restaurante.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -15,8 +17,9 @@ import java.util.Date;
 @javax.persistence.Entity
 public class PuntoEntity extends BaseEntity implements Serializable {
     
-
-    
+    @PodamExclude
+    @ManyToOne
+    private TarjetaEntity tarjeta;
 
     /**
      * fecha creacion del punto

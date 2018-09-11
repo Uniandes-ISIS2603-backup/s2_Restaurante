@@ -6,84 +6,43 @@
 package co.edu.uniandes.csw.restaurante.entities;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
- * @author Juliana Prieto Arcila
+ * @author jp.hidalgo
  */
 @javax.persistence.Entity
 public class DomicilioEntity extends BaseEntity implements Serializable {
     
-//    @PodamExclude
-//    @OneToOne
-//    private TarjetaEntity tarjeta;
+    @PodamExclude
+    @OneToOne
+    private TarjetaEntity tarjeta;
     
     @PodamExclude
-    @OneToMany(mappedBy = "domicilio", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToOne
+    private ClienteEntity cliente;
     
-    
     /**
-     * Identificador del cliente
+     * Precio domicilio
      */
-    @javax.persistence.Id
-    private Long id;
+    private Float precio;
 
-    /**
-     * Nombre del cliente
-     */
-    private String nombre;
-
-    /**
-     * Método de pago del cliente
-     */
-    private String metodoPago;
-
-
-    /**
-     * Retorna el nombre del cliente
-     *
-     * @return - nombre del cliente
-     */
-    public String getNombre() {
-        return this.nombre;
+    public TarjetaEntity getTarjeta() {
+        return tarjeta;
     }
 
-    /**
-     * Modifica el nombre del cliente
-     */
-    public void setNombre(String pNombre) {
-        this.nombre = pNombre;
+    public void setTarjeta(TarjetaEntity tarjeta) {
+        this.tarjeta = tarjeta;
     }
 
-    /**
-     * Retorna el método de pago del cliente
-     *
-     * @return
-     */
-    public String getMetodoPago() {
-        return this.metodoPago;
+    public Float getPrecio() {
+        return precio;
     }
 
-    /**
-     * Modifica el método de pago del cliente
-     */
-    public void setMetodoPago(String pMetodoPago) {
-        this.metodoPago = pMetodoPago;
+    public void setPrecio(Float precio) {
+        this.precio = precio;
     }
 
-    /**
-     * Convierte un DTO a Entity
-     *
-     * @return Entity con los valores del DTO
-     */
-//    public ClienteEntity toEntity() {
-//        ClienteEntity entity = new ClienteEntity();
-//        cliente.setId(this.id);
-//        cliente.setNombre(this.nombre);
-//        cliente.setMetodoPago(this.metodoPago);
-//        return entity;
-//    }
 }
