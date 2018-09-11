@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.restaurante.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
@@ -20,8 +21,14 @@ public class TarjetaEntity extends BaseEntity implements Serializable {
     @OneToMany
     private List<PuntoEntity> puntos;
     
-    private Long clienteID;
-    private Long sucursalID;
+    @PodamExclude
+    @OneToOne
+    private ClienteEntity clienteID;
+    
+    /*@PodamExclude
+    @OneToOne
+    private SucursalEntity sucursal;
+    */
 
     public List<PuntoEntity> getPuntos() {
         return puntos;
@@ -31,21 +38,21 @@ public class TarjetaEntity extends BaseEntity implements Serializable {
         this.puntos = puntos;
     }
 
-    public Long getClienteID() {
+    public ClienteEntity getClienteID() {
         return clienteID;
     }
 
-    public void setClienteID(Long clienteID) {
+    public void setClienteID(ClienteEntity clienteID) {
         this.clienteID = clienteID;
     }
-
-    public Long getSucursalID() {
+    /*
+    public SucurlasnEntity getSucursalID() {
         return sucursalID;
     }
 
-    public void setSucursalID(Long sucursalID) {
+    public void setSucursalID(SucursalEntity sucursalID) {
         this.sucursalID = sucursalID;
     }
-    
+    */
             
 }

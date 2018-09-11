@@ -13,8 +13,6 @@ import java.io.Serializable;
  * @author jp.hidalgo
  */
 public class TarjetaDTO implements Serializable{
-    private Long sucuralID;
-    private Long clientID;
     private Long id;
     
     /**
@@ -32,27 +30,9 @@ public class TarjetaDTO implements Serializable{
     public TarjetaDTO(TarjetaEntity tarjetaEntity) {
         if (tarjetaEntity != null) {
             this.id = tarjetaEntity.getId();
-            this.sucuralID = tarjetaEntity.getSucursalID();
-            this.clientID = tarjetaEntity.getClienteID();
                    
         }
     }   
-
-    public Long getSucuralID() {
-        return sucuralID;
-    }
-
-    public void setSucuralID(Long sucuralID) {
-        this.sucuralID = sucuralID;
-    }
-
-    public Long getClientID() {
-        return clientID;
-    }
-
-    public void setClientID(Long clientID) {
-        this.clientID = clientID;
-    }
 
     public Long getId() {
         return id;
@@ -66,8 +46,6 @@ public class TarjetaDTO implements Serializable{
     public TarjetaEntity toEntity() {
         TarjetaEntity tarjetaEntity = new TarjetaEntity();
         tarjetaEntity.setId(this.id);
-        tarjetaEntity.setClienteID(this.clientID);
-        tarjetaEntity.setSucursalID(this.sucuralID);
         return tarjetaEntity;
     }
     

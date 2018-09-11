@@ -16,26 +16,19 @@ import uk.co.jemos.podam.common.PodamExclude;
 @javax.persistence.Entity
 public class DomicilioEntity extends BaseEntity implements Serializable {
     
-    @PodamExclude
-    @OneToOne
-    private TarjetaEntity tarjeta;
     
     @PodamExclude
     @OneToOne
     private ClienteEntity cliente;
     
+    /*@PodamExclude
+    @OneToOne
+    private SucursalEntity sucural;
+    */
     /**
      * Precio domicilio
      */
     private Float precio;
-
-    public TarjetaEntity getTarjeta() {
-        return tarjeta;
-    }
-
-    public void setTarjeta(TarjetaEntity tarjeta) {
-        this.tarjeta = tarjeta;
-    }
 
     public Float getPrecio() {
         return precio;
@@ -45,4 +38,12 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
         this.precio = precio;
     }
 
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+    
 }
