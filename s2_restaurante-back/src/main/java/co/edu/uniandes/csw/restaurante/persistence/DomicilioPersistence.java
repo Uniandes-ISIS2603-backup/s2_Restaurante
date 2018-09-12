@@ -60,7 +60,54 @@ public class DomicilioPersistence {
         return query.getResultList();
     }
     
-    
+    /**
+     * Busca si hay alguna editorial con el id que se envía de argumento
+     *
+     * @param editorialsId: id correspondiente a la editorial buscada.
+     * @return una editorial.
+     */
+    public DomicilioEntity find(Long editorialsId) {
+        LOGGER.log(Level.INFO, "Consultando editorial con id={0}", editorialsId);
+        /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
+        el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
+        Suponga que es algo similar a "select * from EditorialEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
+         */
+        return em.find(DomicilioEntity.class, editorialsId);
+    }
+    /**
+     * Actualiza una editorial.
+     *
+     * @param domicilioEntity: el domicilio que viene con los nuevos cambios.
+     * Por ejemplo el nombre pudo cambiar. En ese caso, se haria uso del método
+     * update.
+     * @return una editorial con los cambios aplicados.
+     */
+    public DomicilioEntity update(DomicilioEntity domicilioEntity) {
+        LOGGER.log(Level.INFO, "Actualizando domicilio con id = {0}", domicilioEntity.getId());
+        /* Note que hacemos uso de un método propio del EntityManager llamado merge() que recibe como argumento
+        la editorial con los cambios, esto es similar a 
+        "UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;" en SQL.
+         */
+        LOGGER.log(Level.INFO, "Saliendo de actualizar el domicilio con id = {0}", domicilioEntity.getId());
+        return em.merge(domicilioEntity);
+    }
+    /**
+     *
+     * Borra una editorial de la base de datos recibiendo como argumento el id
+     * de la editorial
+     *
+     * @param domicilioId: id correspondiente a la editorial a borrar.
+     */
+    public void delete(Long domicilioId) {
+        LOGGER.log(Level.INFO, "Borrando editorial con id = {0}", domicilioId);
+        // Se hace uso de mismo método que esta explicado en public EditorialEntity find(Long id) para obtener la editorial a borrar.
+        DomicilioEntity entity = em.find(DomicilioEntity.class, domicilioId);
+        /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
+         EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
+         Es similar a "delete from EditorialEntity where id=id;" - "DELETE FROM table_name WHERE condition;" en SQL.*/
+        em.remove(entity);
+        LOGGER.log(Level.INFO, "Saliendo de borrar la editorial con id = {0}", domicilioId);
+    }
 }
 
 

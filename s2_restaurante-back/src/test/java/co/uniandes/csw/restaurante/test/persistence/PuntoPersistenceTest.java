@@ -75,7 +75,7 @@ public class PuntoPersistenceTest {
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from ClienteEntity").executeUpdate();
+        em.createQuery("delete from PuntoEntity").executeUpdate();
     }
 
     /**
@@ -103,5 +103,62 @@ public class PuntoPersistenceTest {
         PuntoEntity entity = em.find(PuntoEntity.class, result.getId());
         Assert.assertEquals(newEntity.getFecha(), entity.getFecha());
         
+    }
+     /**
+     * Prueba para consultar la lista de Puntos.
+     */
+    @Test
+    public void getPuntosTest() {
+        List<PuntoEntity> list = puntoPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (PuntoEntity ent : list) {
+            boolean found = false;
+            for (PuntoEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    /**
+     * Prueba para consultar una Punto.
+     */
+    @Test
+    public void getPuntoTest() {
+        PuntoEntity entity = data.get(0);
+        PuntoEntity newEntity = puntoPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+    }
+
+    /**
+     * Prueba para eliminar una Punto.
+     */
+    @Test
+    public void deletePuntoTest() {
+        PuntoEntity entity = data.get(0);
+        puntoPersistence.delete(entity.getId());
+        PuntoEntity deleted = em.find(PuntoEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
+    /**
+     * Prueba para actualizar una Punto.
+     */
+    @Test
+    public void updatePuntoTest() {
+        PuntoEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        PuntoEntity newEntity = factory.manufacturePojo(PuntoEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        puntoPersistence.update(newEntity);
+
+        PuntoEntity resp = em.find(PuntoEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getId(), resp.getId());
     }
 }
