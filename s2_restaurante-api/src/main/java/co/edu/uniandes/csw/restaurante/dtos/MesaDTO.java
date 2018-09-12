@@ -17,7 +17,7 @@ public class MesaDTO implements Serializable{
     public MesaDTO() {
     }
 
-    public long getNumero() {
+    public int getNumero() {
         return numero;
     }
     

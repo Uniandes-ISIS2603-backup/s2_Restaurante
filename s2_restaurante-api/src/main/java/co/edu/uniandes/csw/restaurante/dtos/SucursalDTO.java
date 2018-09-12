@@ -11,14 +11,14 @@ import java.io.Serializable;
  */
 public class SucursalDTO implements Serializable{
     
-    private long id;
+    private Long id;
     private String direccion;
     private String ciudad;
     
     public SucursalDTO() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

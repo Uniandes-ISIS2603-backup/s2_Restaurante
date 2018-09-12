@@ -34,5 +34,10 @@ public class SucursalResource {
         return sucursal;
     }
    
+    @GET
+    @Path("{sucursalesId: \\d+}")
+    public SucursalDTO deleteSucursal(@PathParam("sucursalesId") Long sucursalesId) {
+        return null;
+    }
     
 }
