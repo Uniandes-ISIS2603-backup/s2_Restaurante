@@ -14,11 +14,17 @@ import java.util.Date;
  * @author jp.hidalgo
  */
 public class PuntoDTO implements Serializable{
+    /**
+     * fecha de creacion del punto
+     */
     private Date fechaCreacion;
-    private long id;
+    /**
+     * id del punto
+     */
+    private Long id;
 
     /**
-     *
+     * constructor vacio
      */
     public PuntoDTO() {
     }
@@ -32,11 +38,12 @@ public class PuntoDTO implements Serializable{
     public PuntoDTO(PuntoEntity puntoEntity) {
         if (puntoEntity != null) {
             this.id = puntoEntity.getId();
+            this.fechaCreacion = puntoEntity.getFecha();
         }
     }  
 
     /**
-     *
+     *  retorna el id del punto
      * @return
      */
     public long getId() {
@@ -44,7 +51,7 @@ public class PuntoDTO implements Serializable{
     }
     
     /**
-     *
+     * retorna la fecha de creacion del punto
      * @return
      */
     public Date getFechaCreacion() {
@@ -52,7 +59,7 @@ public class PuntoDTO implements Serializable{
     }
 
     /**
-     *
+     * cambia el id del punto
      * @param id
      */
     public void setId(long id) {
@@ -60,7 +67,7 @@ public class PuntoDTO implements Serializable{
     }
 
     /**
-     *
+     * cambia la fecha de creacion del punto
      * @param fechaCreacion
      */
     public void setFechaCreacion(Date fechaCreacion) {
@@ -75,6 +82,7 @@ public class PuntoDTO implements Serializable{
     public PuntoEntity toEntity() {
         PuntoEntity puntoEntity = new PuntoEntity();
         puntoEntity.setId(this.id);
+        puntoEntity.setFecha(this.fechaCreacion);
         return puntoEntity;
     }
     

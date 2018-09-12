@@ -32,7 +32,7 @@ public class PuntoPersistence {
     /**
      * Método para persisitir la entidad en la base de datos.
      *
-     * @param domicilioEntity objeto domicilio que se creará en la base de datos
+     * @param puntoEntity objeto punto que se creará en la base de datos
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
     public PuntoEntity create(PuntoEntity puntoEntity) {

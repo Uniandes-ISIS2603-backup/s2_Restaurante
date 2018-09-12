@@ -6,72 +6,53 @@
 package co.edu.uniandes.csw.restaurante.entities;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
+import java.util.List;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
-
 /**
  *
- * @author Juliana Prieto Arcila
+ * @author jp.hidalgo
  */
 @javax.persistence.Entity
 public class TarjetaEntity extends BaseEntity implements Serializable {
     
+    @PodamExclude
+    @OneToMany
+    private List<PuntoEntity> puntos;
     
+    @PodamExclude
+    @OneToOne
+    private ClienteEntity clienteID;
+    
+    /*@PodamExclude
+    @OneToOne
+    private SucursalEntity sucursal;
+    */
 
-    /**
-     * Nombre del cliente
-     */
-    private String nombre;
-
-    /**
-     * Método de pago del cliente
-     */
-    private String metodoPago;
-
-
-    /**
-     * Retorna el nombre del cliente
-     *
-     * @return - nombre del cliente
-     */
-    public String getNombre() {
-        return this.nombre;
+    public List<PuntoEntity> getPuntos() {
+        return puntos;
     }
 
-    /**
-     * Modifica el nombre del cliente
-     */
-    public void setNombre(String pNombre) {
-        this.nombre = pNombre;
+    public void setPuntos(List<PuntoEntity> puntos) {
+        this.puntos = puntos;
     }
 
-    /**
-     * Retorna el método de pago del cliente
-     *
-     * @return
-     */
-    public String getMetodoPago() {
-        return this.metodoPago;
+    public ClienteEntity getClienteID() {
+        return clienteID;
     }
 
-    /**
-     * Modifica el método de pago del cliente
-     */
-    public void setMetodoPago(String pMetodoPago) {
-        this.metodoPago = pMetodoPago;
+    public void setClienteID(ClienteEntity clienteID) {
+        this.clienteID = clienteID;
+    }
+    /*
+    public SucurlasnEntity getSucursalID() {
+        return sucursalID;
     }
 
-    /**
-     * Convierte un DTO a Entity
-     *
-     * @return Entity con los valores del DTO
-     */
-//    public ClienteEntity toEntity() {
-//        ClienteEntity entity = new ClienteEntity();
-//        cliente.setId(this.id);
-//        cliente.setNombre(this.nombre);
-//        cliente.setMetodoPago(this.metodoPago);
-//        return entity;
-//    }
+    public void setSucursalID(SucursalEntity sucursalID) {
+        this.sucursalID = sucursalID;
+    }
+    */
+            
 }

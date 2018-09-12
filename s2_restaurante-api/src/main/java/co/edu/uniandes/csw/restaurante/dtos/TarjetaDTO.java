@@ -7,16 +7,13 @@ package co.edu.uniandes.csw.restaurante.dtos;
 
 import co.edu.uniandes.csw.restaurante.entities.TarjetaEntity;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
  * @author jp.hidalgo
  */
 public class TarjetaDTO implements Serializable{
-    private Long sucuralID;
-    private Long clientID;
-    private ArrayList puntos;
+    private Long id;
     
     /**
      *
@@ -32,66 +29,23 @@ public class TarjetaDTO implements Serializable{
      */
     public TarjetaDTO(TarjetaEntity tarjetaEntity) {
         if (tarjetaEntity != null) {
-            this.clientID = tarjetaEntity.getId();
+            this.id = tarjetaEntity.getId();
+                   
         }
     }   
 
-    /**
-     *
-     * @return
-     */
-    public long getClientID() {
-        return clientID;
+    public Long getId() {
+        return id;
     }
 
-    /**
-     *
-     * @return
-     */
-    public ArrayList getPuntos() {
-        return puntos;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    /**
-     *
-     * @return
-     */
-    public long getSucuralID() {
-        return sucuralID;
-    }
-
-    /**
-     *
-     * @param clientID
-     */
-    public void setClientID(long clientID) {
-        this.clientID = clientID;
-    }
-
-    /**
-     *
-     * @param puntos
-     */
-    public void setPuntos(ArrayList puntos) {
-        this.puntos = puntos;
-    }
-
-    /**
-     *
-     * @param sucuralID
-     */
-    public void setSucuralID(long sucuralID) {
-        this.sucuralID = sucuralID;
-    }
     
-    /**
-     * Convertir DTO a Entity
-     *
-     * @return Un Entity con los valores del DTO
-     */
     public TarjetaEntity toEntity() {
         TarjetaEntity tarjetaEntity = new TarjetaEntity();
-        tarjetaEntity.setId(this.clientID);
+        tarjetaEntity.setId(this.id);
         return tarjetaEntity;
     }
     

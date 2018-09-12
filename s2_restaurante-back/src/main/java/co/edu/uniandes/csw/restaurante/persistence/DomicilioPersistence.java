@@ -18,7 +18,7 @@ import javax.persistence.TypedQuery;
  * Clase que maneja la persistencia para una Reserva. Se conecta a través Entity
  * Manager de javax.persistance con la base de datos SQL.
  *
- * @author Juan Ortega
+ * @author jp.hidalgo
  */
 
 @Stateless
@@ -53,7 +53,7 @@ public class DomicilioPersistence {
      * ReservaEntity;" - "SELECT * FROM table_name" en SQL.
      */
     public List<DomicilioEntity> findAll() {
-        LOGGER.log(Level.INFO, "Consultando todas las reservas");
+        LOGGER.log(Level.INFO, "Consultando todos los domicilios");
         // Se crea un query para buscar todas las reservas en la base de datos.
         TypedQuery query = em.createQuery("select u from DomicilioEntity u", DomicilioEntity.class);
         // Note que en el query se hace uso del método getResultList() que obtiene una lista de reservas.
