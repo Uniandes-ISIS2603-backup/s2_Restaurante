@@ -35,6 +35,12 @@ public class MesaResource {
     {
         return mesa;
     }
+   
+    @GET
+    @Path("{mesasId: \\d+}")
+    public MesaDTO getMesa(@PathParam("mesasId") Long mesasId) {
+        return null;
+    }
     
     
 }

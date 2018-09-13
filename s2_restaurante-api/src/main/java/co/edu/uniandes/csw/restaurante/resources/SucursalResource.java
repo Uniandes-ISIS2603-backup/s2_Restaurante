@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.restaurante.resources;
+import co.edu.uniandes.csw.restaurante.dtos.SucursalDetailDTO;
 import co.edu.uniandes.csw.restaurante.dtos.SucursalDTO;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -22,9 +24,9 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author jp.romero12
  */
-@Path("Sucursal")
-@Produces("Sucursal/json")
-@Consumes("Sucursal/json")
+@Path("sucursales")
+@Produces("application/json")
+@Consumes("application/json")
 @RequestScoped
 public class SucursalResource {
     
@@ -35,9 +37,28 @@ public class SucursalResource {
     }
    
     @GET
+    public List<SucursalDetailDTO> getSucursales(){
+        return null;    
+    }
+    
+    @GET
     @Path("{sucursalesId: \\d+}")
-    public SucursalDTO deleteSucursal(@PathParam("sucursalesId") Long sucursalesId) {
+    public SucursalDTO getSucursal(@PathParam("sucursalesId") Long sucursalesId) {
         return null;
+    }
+    
+    @PUT
+    @Path("{sucursalesId: \\d+}")
+    public SucursalDetailDTO updateSucursal(@PathParam("sucursalesId") Long sucursalesId, SucursalDTO sucursal)
+    {
+        return null;
+    }
+    
+    @DELETE
+    @Path("{sucursalesId: \\d+}")
+    public void deleteSucursal(@PathParam("sucursalesId") Long sucursalesId)
+    {
+        
     }
     
 }
