@@ -27,7 +27,7 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     private TarjetaEntity tarjeta;
 
     @PodamExclude
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = javax.persistence.FetchType.LAZY)
     private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();
 
     @PodamExclude

@@ -5,7 +5,10 @@
  */
 package co.edu.uniandes.csw.restaurante.ejb;
 
+import co.edu.uniandes.csw.restaurante.entities.MesaEntity;
 import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
+import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.restaurante.persistence.MesaPersistence;
 import co.edu.uniandes.csw.restaurante.persistence.ReservaPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,6 +29,9 @@ public class ReservaLogic {
     @Inject
     private ReservaPersistence persistence;
     
+    @Inject
+    private MesaPersistence mesaPersistence;
+    
     /**
      * Se encarga de crear una Reservan en la base de datos.
      *
@@ -34,7 +40,12 @@ public class ReservaLogic {
      */
     public ReservaEntity createReserva(ReservaEntity reservaEntity) {
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la reserva");
-        ReservaEntity newReservaEntity = persistence.create(reservaEntity);
+        //Revisar que la mesa recibida exista.
+        MesaEntity mesa = mesaPersistence.find(reservaEntity.getMesa().getId());
+       
+        
+          ReservaEntity newReservaEntity = persistence.create(reservaEntity);
+      
         LOGGER.log(Level.INFO, "Termina proceso de creación de la reserva");
         return newReservaEntity;
     }

@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.restaurante.entities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @javax.persistence.Entity
 /**
@@ -20,11 +21,42 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     private Date hora;
     private Integer cantidadPersonas;
 
+    @PodamExclude
     @javax.persistence.ManyToOne()
     ClienteEntity cliente;
     
-//    @javax.persistence.ManyToOne()
-//    SucursalEntity sucursal;
+    @PodamExclude
+    @javax.persistence.ManyToOne()
+    SucursalEntity sucursal;
+    
+    @PodamExclude
+    @javax.persistence.ManyToOne()
+    MesaEntity mesa;
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public MesaEntity getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(MesaEntity mesa) {
+        this.mesa = mesa;
+    }
+
     
     
     

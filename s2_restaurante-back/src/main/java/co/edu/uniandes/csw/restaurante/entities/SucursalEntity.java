@@ -21,8 +21,16 @@ public class SucursalEntity extends BaseEntity implements Serializable{
     
 
     @PodamExclude
-    @OneToMany(mappedBy = "sucursal", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "sucursal", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = javax.persistence.FetchType.LAZY)
     private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();
+
+    public List<ReservaEntity> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<ReservaEntity> reservas) {
+        this.reservas = reservas;
+    }
     
     private String direccion;
     private String ciudad;
