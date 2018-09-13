@@ -38,7 +38,7 @@ public class ReservaPersistence {
         LOGGER.log(Level.INFO, "Creando una reserva nueva");
         /* Note que hacemos uso de un método propio de EntityManager para persistir la reserva en la base de datos.
         Es similar a "INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);" en SQL.
-         */
+         */ 
         em.persist(reservaEntity);
         LOGGER.log(Level.INFO, "Saliendo de crear una reserva nueva");
         return reservaEntity;
