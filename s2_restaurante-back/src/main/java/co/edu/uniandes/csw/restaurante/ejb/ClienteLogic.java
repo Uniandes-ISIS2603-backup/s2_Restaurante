@@ -52,8 +52,13 @@ public class ClienteLogic {
      * @param clienteEntity Objeto de ClienteEntity con los datos nuevos
      * @return Objeto de ClienteEntity con los datos nuevos y su ID.
      */
-    public ClienteEntity createCliente(ClienteEntity clienteEntity) {
+    public ClienteEntity createCliente(ClienteEntity clienteEntity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de creación del cliente");
+        /*Valida la regla de negocio de que los nombres de los clientes no 
+        pueden contener números*/
+        if (clienteEntity.getNombre().matches(".*\\d+.*")) {
+            throw new BusinessLogicException("El nombre del cliente no puede contener números");
+        }
         ClienteEntity newClienteEntity = persistence.create(clienteEntity);
         LOGGER.log(Level.INFO, "Termina proceso de creación del cliente");
         return newClienteEntity;
@@ -77,11 +82,12 @@ public class ClienteLogic {
      * @param clientesId Identificador de la instancia a consultar
      * @return Instancia de ClienteEntity con los datos del Cliente consultado.
      */
-    public ClienteEntity getCliente(Long clientesId) {
+    public ClienteEntity getCliente(Long clientesId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el cliente con id = {0}", clientesId);
         ClienteEntity clienteEntity = persistence.find(clientesId);
         if (clienteEntity == null) {
             LOGGER.log(Level.SEVERE, "El cliente con el id = {0} no existe", clientesId);
+            throw new BusinessLogicException("El cliente con el ID " + clientesId + " no existe.");
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar el cliente con id = {0}", clientesId);
         return clienteEntity;
@@ -108,21 +114,63 @@ public class ClienteLogic {
      * @throws BusinessLogicException si el autor tiene libros asociados.
      */
     public void deleteCliente(Long clientesId) throws BusinessLogicException {
-        
-        /**
-         * En este punto cuando elimine cliente tengo que eliminar todas sus relaciones. 
-         * Tengo que eliminar todas las listas de reserva, domicilio, relación con tarjeta, etc. 
-         */
-//        LOGGER.log(Level.INFO, "Inicia proceso de borrar el autor con id = {0}", clientesId);
-//        List<ClienteEntity> books = getCliente(clientesId).getBooks();
-//        if (books != null && !books.isEmpty()) {
-//            throw new BusinessLogicException("No se puede borrar el autor con id = " + clientesId + " porque tiene books asociados");
-//        }
-//        List<PrizeEntity> prizes = getAuthor(clientesId).getPrizes();
-//        if (prizes != null && !prizes.isEmpty()) {
-//            throw new BusinessLogicException("No se puede borrar el autor con id = " + clientesId + " porque tiene premios asociados");
-//        }
-//        persistence.delete(authorsId);
-//        LOGGER.log(Level.INFO, "Termina proceso de borrar el autor con id = {0}", authorsId);
+
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar el cliente con id = {0}", clientesId);
+
+        ClienteEntity cliente = persistence.find(clientesId);
+        if (cliente == null) {
+            throw new BusinessLogicException("No se encontró el cliente con el ID: " + clientesId + ".");
+        }
+        persistence.delete(clientesId);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar el cliente con id = {0}", clientesId);
     }
+
+//     /**
+//     *
+//     * @param id, id del cliente cuyas sucursales quieren saberse
+//     * @return lista de sucursales asociadas al cliente
+//     */
+//    public List<SucusalEntity> listSucursales(Long id) {
+//        return getCliente(id).getSucursales();
+//    }
+//    
+//    /**
+//     *
+//     * @param clienteId, id del cliente donde se buscará la sucursal
+//     * @param sucursalId, id de la sucursal a buscar
+//     * @return sucursal asociada con cierto cliente
+//     */
+//    public SucursalEntity getSucursal(Long clienteId, Long sucursalId) {
+//        List<SucursalEntity> list = getCliente(grupoId).getSucursales();
+//        SucursalEntity categoriaSucursal = new SucursalEntity();
+//        sucursalEntity.setId(sucursalId);
+//        int index = list.indexOf(sucursalEntity);
+//        if (index >= 0) {
+//            return list.get(index);
+//        }
+//        return null;
+//    }
+//    
+//    /**
+//     *
+//     * @param clienteId, id del cliente al que se le agrega una sucursal
+//     * @param sucursalId, sucursal a ser vinculada con el cliente
+//     * @return la sucursal recién asociada al cliente
+//     */
+//    public SucursalEntity addSucursal(Long clienteId, Long sucursalId) {
+//        ClienteEntity clienteEntity = getCliente(clienteId);
+//        List<SucursalEntity> sucursalList = clienteEntity.getSucursales();
+//        for(SucursalEntity existente : sucursalList){
+//            if(existente == sucursalLogic.getSucursal(sucursalId){
+//               return null;
+//            }
+//        }
+//        SucursalEntity sucursalEntity = sucursalLogic.getSucursal(sucursalId);
+//        sucursalEntity.getSucursales().add(sucursalEntity);
+//        updateGrupo(clienteEntity);
+//        return getSucursal(clienteId, sucursalId);
+//    }
+    
+    
+
 }
