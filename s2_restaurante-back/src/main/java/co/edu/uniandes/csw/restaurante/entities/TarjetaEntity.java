@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.restaurante.entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -15,7 +14,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author jp.hidalgo
  */
-@Entity
+@javax.persistence.Entity
 public class TarjetaEntity extends BaseEntity implements Serializable {
     
     @PodamExclude

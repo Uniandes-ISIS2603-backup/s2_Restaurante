@@ -54,25 +54,25 @@ public class TarjetaPersistence {
      * ReservaEntity;" - "SELECT * FROM table_name" en SQL.
      */
     public List<TarjetaEntity> findAll() {
-        LOGGER.log(Level.INFO, "Consultando todas las reservas");
+        LOGGER.log(Level.INFO, "Consultando todas las tarjetas");
         // Se crea un query para buscar todas las reservas en la base de datos.
-        TypedQuery query = em.createQuery("select u from TajetaEntity u", TarjetaEntity.class);
-        // Note que en el query se hace uso del método getResultList() que obtiene una lista de reservas.
+        TypedQuery query = em.createQuery("select u from TarjetaEntity u", TarjetaEntity.class);
+        // Note que en el query se hace uso del método getResultList() que obtiene una lista de tarjetas.
         return query.getResultList();
     }
     /**
      * Busca si hay alguna editorial con el id que se envía de argumento
      *
-     * @param puntoId: id correspondiente a la editorial buscada.
+     * @param tarjetaId correspondiente a la editorial buscada.
      * @return una editorial.
      */
-    public TarjetaEntity find(Long puntoId) {
-        LOGGER.log(Level.INFO, "Consultando editorial con id={0}", puntoId);
+    public TarjetaEntity find(Long tarjetaId) {
+        LOGGER.log(Level.INFO, "Consultando tarjeta con id={0}", tarjetaId);
         /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
         el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
         Suponga que es algo similar a "select * from EditorialEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
          */
-        return em.find(TarjetaEntity.class, puntoId);
+        return em.find(TarjetaEntity.class, tarjetaId);
     }
     /**
      * Actualiza una editorial.
