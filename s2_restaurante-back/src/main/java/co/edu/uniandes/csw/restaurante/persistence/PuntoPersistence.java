@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.restaurante.persistence;
 
 
-import co.edu.uniandes.csw.restaurante.entities.DomicilioEntity;
 import co.edu.uniandes.csw.restaurante.entities.PuntoEntity;
 import java.util.List;
 import java.util.logging.Level;

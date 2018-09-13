@@ -5,14 +5,17 @@
  */
 package co.edu.uniandes.csw.restaurante.dtos;
 
+import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
+import co.edu.uniandes.csw.restaurante.entities.DomicilioEntity;
+import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author j.prieto
  */
-
-public class ClienteDetailDTO /*extends ClienteDTO */{
+public class ClienteDetailDTO extends ClienteDTO implements Serializable {
 
     /**
      * Tarjeta del cliente
@@ -22,7 +25,7 @@ public class ClienteDetailDTO /*extends ClienteDTO */{
     /**
      * Calificaci{on hecha por el cliente
      */
-    private CalificacionDTO calificacion;
+    private ArrayList<CalificacionDTO> calificaciones;
 
     /**
      * Lista con las reservas hechas por el cliente
@@ -34,31 +37,37 @@ public class ClienteDetailDTO /*extends ClienteDTO */{
      */
     private ArrayList<DomicilioDTO> domicilios;
 
+    public ClienteDetailDTO() {
+        super();
+    }
+
     /**
      * Constructor para transformar un Entity a un DTO
      *
      * @param entity, ClienteEntity a converit a DTO
      */
-
-    public ClienteDetailDTO(/*ClienteEntity entity*/) {
-        //super(entity);
-        //Crea un RestauranteDTO con el entity que llega
-    
-        /*if (entity != null) {
-            tarjeta = entity.getTarjeta();
-            calificacion = entity.getCalificacion();
-            //Crea la lista de reservas y le adiciona las que tiene el entity
-            reservas = new ArrayList<>();
-            for (ReservaEntity entityReserva : entity.getReservas()) {
-                reservas.add(new ReservaDTO(entityReserva));
-            }
-            //Crea la lista de domicilios y le adiciona las que tiene el entity
-            domicilios = new ArrayList<>();
-            for (DomicilioEntity entityDomicilio : entity.getDomicilios()) {
-                domiclios.add(new DomicilioDTO(entityDomicilio));
-            }
-        }
-        */
+    public ClienteDetailDTO(ClienteEntity entity) {
+//        super(entity);
+//        //Crea un ClienteDTO con el entity que llega
+//
+//        if (entity != null) {
+//            tarjeta = new TarjetaDTO(entity.getTarjeta());
+//            //Crea la lista de calificaciones y le adiciona las que tiene el entity
+//            calificaciones = new ArrayList<>();
+//            for (ReservaEntity entityCalificacion : entity.getCalificaciones()) {
+//                reservas.add(new ReservaDTO(entityCalificacion));
+//            }
+//            //Crea la lista de reservas y le adiciona las que tiene el entity
+//            reservas = new ArrayList<>();
+//            for (ReservaEntity entityReserva : entity.getReservas()) {
+//                reservas.add(new ReservaDTO(entityReserva));
+//            }
+//            //Crea la lista de domicilios y le adiciona las que tiene el entity
+//            domicilios = new ArrayList<>();
+//            for (DomicilioEntity entityDomicilio : entity.getDomicilios()) {
+//                domicilios.add(new DomicilioDTO(entityDomicilio));
+//            }
+//        }
     }
 
     /**
@@ -96,7 +105,8 @@ public class ClienteDetailDTO /*extends ClienteDTO */{
         }
         return entity;
     }
-    */
+     */
+    
     /**
      * Retorna la tarjeta del cliente
      *
@@ -120,17 +130,17 @@ public class ClienteDetailDTO /*extends ClienteDTO */{
      *
      * @return - Calificación del cliente
      */
-    public CalificacionDTO getCalificacion() {
-        return this.calificacion;
+    public ArrayList<CalificacionDTO> getCalificaciones() {
+        return this.calificaciones;
     }
 
     /**
      * Modifica la calificación del cliente
      *
-     * @param pCalificacion - Nueva calificación
+     * @param pCalificaciones - Nueva calificación
      */
-    public void setCalificacion(CalificacionDTO pCalificacion) {
-        this.calificacion = pCalificacion;
+    public void setCalificacion(ArrayList<CalificacionDTO> pCalificaciones) {
+        this.calificaciones = pCalificaciones;
     }
 
     /**

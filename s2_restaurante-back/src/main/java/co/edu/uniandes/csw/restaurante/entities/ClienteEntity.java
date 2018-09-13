@@ -12,6 +12,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -21,22 +22,25 @@ import uk.co.jemos.podam.common.PodamExclude;
 @javax.persistence.Entity
 public class ClienteEntity extends BaseEntity implements Serializable {
 
-//    @PodamExclude
-//    @OneToOne
-//    private CalificacionEntity calificacion;
-    
-//    @PodamExclude
-//    @OneToOne
-//    private TarjetaEntity tarjeta;
-    
+    @PodamExclude
+    @OneToOne
+    private TarjetaEntity tarjeta;
+
     @PodamExclude
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();
-    
-    
+
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<DomicilioEntity> domicilios = new ArrayList<DomicilioEntity>();
+
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<CalificacionEntity> calificaciones = new ArrayList<CalificacionEntity>();
+
 //    @PodamExclude
-//    @OneToMany(mappedBy = "domicilio", cascade = CascadeType.PERSIST, orphanRemoval = true)
-//    private List<DomicilioEntity> domicilios = new ArrayList<DomicilioEntity>();
+//    @ManyToMany(mappedBy = "clientes")
+//    private List<SucursalEntity> sucursales = new ArrayList<>();
     
     /**
      * Nombre del cliente
@@ -48,17 +52,6 @@ public class ClienteEntity extends BaseEntity implements Serializable {
      */
     private String metodoPago;
 
-    /**
-     * Construye un ClienteDTO a partir de un ClienteEntity
-     *
-     * @param entity ClienteEntity
-     */
-//    public ClienteDTO(ClienteEntity entity) {
-//        this.id = entity.getId();
-//        this.nombre = entity.getNombre();
-//        this.metodoPago = entity.getMetodoPago();
-//    }
-    
     /**
      * Retorna el nombre del cliente
      *
@@ -92,15 +85,72 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Convierte un DTO a Entity
+     * Retorna la tarjeta del cliente
      *
-     * @return Entity con los valores del DTO
+     * @return - tarjeta del cliente
      */
-//    public ClienteEntity toEntity() {
-//        ClienteEntity entity = new ClienteEntity();
-//        cliente.setId(this.id);
-//        cliente.setNombre(this.nombre);
-//        cliente.setMetodoPago(this.metodoPago);
-//        return entity;
-//    }
+    public TarjetaEntity getTarjeta() {
+        return tarjeta;
+    }
+
+    /**
+     * Modifica la tarjeta del cliente
+     *
+     * @param tarjeta - nueva tarjeta del cliente
+     */
+    public void setTarjeta(TarjetaEntity tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+
+    /**
+     * Retorna una lista con las reservas hechas por el cliente
+     *
+     * @return - lista con las reservas hechas por el cliente
+     */
+    public List<ReservaEntity> getReservas() {
+        return reservas;
+    }
+
+    /**
+     * Modifica las reservas hechas por el cliente
+     *
+     * @param reservas - nueva lista con las reservas hechas por el cliente
+     */
+    public void setReservas(List<ReservaEntity> reservas) {
+        this.reservas = reservas;
+    }
+
+    /**
+     * Retorna una lista con los domicilios hechos por el cliente
+     *
+     * @return - lista con los domicilios hechos por el cliente
+     */
+    public List<DomicilioEntity> getDomicilios() {
+        return domicilios;
+    }
+
+    /**
+     * Modifica la lista de domicilios hechos por el cliente
+     * 
+     * @param domicilios - nueva lista de domicilios hechos por el cliente
+     */
+    public void setDomicilios(List<DomicilioEntity> domicilios) {
+        this.domicilios = domicilios;
+    }
+
+    /**
+     * Retorna la lista con las calificaciones hechas por el cliente
+     * @return - lista de calificaciones hechas por el cliente
+     */
+    public List<CalificacionEntity> getCalificaciones() {
+        return calificaciones;
+    }
+
+    /**
+     * Modifica las calificaciones hechas por el cliente
+     * @param calificaciones - nueva lista de calificaciones 
+     */
+    public void setCalificaciones(List<CalificacionEntity> calificaciones) {
+        this.calificaciones = calificaciones;
+    }
 }

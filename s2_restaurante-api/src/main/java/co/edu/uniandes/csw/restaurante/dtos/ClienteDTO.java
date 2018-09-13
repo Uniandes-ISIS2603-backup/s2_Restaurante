@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.restaurante.dtos;
 
+import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
+
 /**
  *
  * @author Juliana Prieto Arcila
@@ -27,15 +29,21 @@ public class ClienteDTO {
     private String metodoPago;
 
     /**
+     * Constructor vacio
+     */
+    public ClienteDTO() {
+    }
+
+    /**
      * Construye un ClienteDTO a partir de un ClienteEntity
      *
      * @param entity ClienteEntity
      */
-//    public ClienteDTO(ClienteEntity entity) {
-//        this.id = entity.getId();
-//        this.nombre = entity.getNombre();
-//        this.metodoPago = entity.getMetodoPago();
-//    }
+    public ClienteDTO(ClienteEntity entity) {
+        this.id = entity.getId();
+        this.nombre = entity.getNombre();
+        this.metodoPago = entity.getMetodoPago();
+    }
 
     /**
      * Retorna el ID del cliente
