@@ -21,10 +21,18 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
     @OneToOne
     private ClienteEntity cliente;
     
-    /*@PodamExclude
+    @PodamExclude
     @OneToOne
-    private SucursalEntity sucural;
-    */
+    private SucursalEntity sucursal;
+
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
+    }
+    
     /**
      * Precio domicilio
      */

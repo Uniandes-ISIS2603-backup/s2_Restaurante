@@ -8,9 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
@@ -23,7 +21,14 @@ public class SucursalEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @OneToMany(mappedBy = "sucursal", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = javax.persistence.FetchType.LAZY)
     private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();
-
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "sucursal", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = javax.persistence.FetchType.LAZY)
+    private List<DomicilioEntity> domiclios;
+    
+    private String direccion;
+    private String ciudad;
+    
     public List<ReservaEntity> getReservas() {
         return reservas;
     }
@@ -31,9 +36,15 @@ public class SucursalEntity extends BaseEntity implements Serializable{
     public void setReservas(List<ReservaEntity> reservas) {
         this.reservas = reservas;
     }
+
+    public List<DomicilioEntity> getDomiclios() {
+        return domiclios;
+    }
+
+    public void setDomiclios(List<DomicilioEntity> domiclios) {
+        this.domiclios = domiclios;
+    }
     
-    private String direccion;
-    private String ciudad;
     
     public String getDireccion() {
         return this.direccion;

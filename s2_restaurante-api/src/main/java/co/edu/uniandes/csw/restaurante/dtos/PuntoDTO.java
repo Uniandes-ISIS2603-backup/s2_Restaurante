@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.restaurante.dtos;
 
 import co.edu.uniandes.csw.restaurante.entities.PuntoEntity;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -17,7 +17,7 @@ public class PuntoDTO implements Serializable{
     /**
      * fecha de creacion del punto
      */
-    private Date fechaCreacion;
+    private Calendar fechaCreacion;
     /**
      * id del punto
      */
@@ -54,7 +54,7 @@ public class PuntoDTO implements Serializable{
      * retorna la fecha de creacion del punto
      * @return
      */
-    public Date getFechaCreacion() {
+    public Calendar getFechaCreacion() {
         return fechaCreacion;
     }
 
@@ -62,7 +62,7 @@ public class PuntoDTO implements Serializable{
      * cambia el id del punto
      * @param id
      */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -70,7 +70,7 @@ public class PuntoDTO implements Serializable{
      * cambia la fecha de creacion del punto
      * @param fechaCreacion
      */
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(Calendar fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
     
