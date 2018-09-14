@@ -1,12 +1,12 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package co.uniandes.csw.restaurante.test.persistence;
 
-import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
-import co.edu.uniandes.csw.restaurante.persistence.CalificacionPersistence;
+import co.edu.uniandes.csw.restaurante.entities.PlatoEntity;
+import co.edu.uniandes.csw.restaurante.persistence.PlatoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,9 +29,9 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author iy.barbosa
  */
 @RunWith(Arquillian.class)
-public class CalificacionPersistenceTest {
+public class PlatoPersistenceTest {
     @Inject
-    private CalificacionPersistence calificacionPersistencia;
+    private PlatoPersistence platoPersistencia;
 
     @PersistenceContext
     private EntityManager em;
@@ -39,7 +39,7 @@ public class CalificacionPersistenceTest {
     @Inject
     UserTransaction utx;
 
-    private List<CalificacionEntity> data = new ArrayList<CalificacionEntity>();
+    private List<PlatoEntity> data = new ArrayList<PlatoEntity>();
     
     /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
@@ -49,8 +49,8 @@ public class CalificacionPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(CalificacionEntity.class.getPackage())
-                .addPackage(CalificacionPersistence.class.getPackage())
+                .addPackage(PlatoEntity.class.getPackage())
+                .addPackage(PlatoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -80,7 +80,7 @@ public class CalificacionPersistenceTest {
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from CalificacionEntity").executeUpdate();
+        em.createQuery("delete from PlatoEntity").executeUpdate();
     }
 
     /**
@@ -91,7 +91,7 @@ public class CalificacionPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
 
-            CalificacionEntity entity = factory.manufacturePojo(CalificacionEntity.class);
+            PlatoEntity entity = factory.manufacturePojo(PlatoEntity.class);
 
             em.persist(entity);
 
@@ -100,30 +100,30 @@ public class CalificacionPersistenceTest {
     }
 
     /**
-     * Prueba para crear una Reserva.
+     * Prueba para crear un Plato.
      */
     @Test
-    public void createReservaTest() {
+    public void createPlatoTest() {
         PodamFactory factory = new PodamFactoryImpl();
-        CalificacionEntity newEntity = factory.manufacturePojo(CalificacionEntity.class);
-        CalificacionEntity result = calificacionPersistencia.create(newEntity);
+        PlatoEntity newEntity = factory.manufacturePojo(PlatoEntity.class);
+        PlatoEntity result = platoPersistencia.create(newEntity);
 
         Assert.assertNotNull(result);
 
-        CalificacionEntity entity = em.find(CalificacionEntity.class, result.getId());
+        PlatoEntity entity = em.find(PlatoEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getId(), entity.getId());
     }
     /**
-     * Prueba para consultar la lista de Calificaciones.
+     * Prueba para consultar la lista de Platos.
      */
     @Test
-    public void getCalificacionesTest() {
-        List<CalificacionEntity> list = calificacionPersistencia.findAll();
+    public void getPlatosTest() {
+        List<PlatoEntity> list = platoPersistencia.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (CalificacionEntity ent : list) {
+        for (PlatoEntity ent : list) {
             boolean found = false;
-            for (CalificacionEntity entity : data) {
+            for (PlatoEntity entity : data) {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
@@ -133,41 +133,41 @@ public class CalificacionPersistenceTest {
     }
 
     /**
-     * Prueba para consultar una Calificacion.
+     * Prueba para consultar un Plato.
      */
     @Test
-    public void getCalificacionTest() {
-        CalificacionEntity entity = data.get(0);
-        CalificacionEntity newEntity = calificacionPersistencia.find(entity.getId());
+    public void getPlatoTest() {
+        PlatoEntity entity = data.get(0);
+        PlatoEntity newEntity = platoPersistencia.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
     }
 
     /**
-     * Prueba para eliminar una Calificacion.
+     * Prueba para eliminar un Plato.
      */
     @Test
-    public void deleteCalificacionTest() {
-        CalificacionEntity entity = data.get(0);
-        calificacionPersistencia.delete(entity.getId());
-        CalificacionEntity deleted = em.find(CalificacionEntity.class, entity.getId());
+    public void deletePlatoTest() {
+        PlatoEntity entity = data.get(0);
+        platoPersistencia.delete(entity.getId());
+        PlatoEntity deleted = em.find(PlatoEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
     /**
-     * Prueba para actualizar una Calificacion.
+     * Prueba para actualizar un Plato.
      */
     @Test
-    public void updateCalificacionTest() {
-        CalificacionEntity entity = data.get(0);
+    public void updatePlatoTest() {
+        PlatoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        CalificacionEntity newEntity = factory.manufacturePojo(CalificacionEntity.class);
+        PlatoEntity newEntity = factory.manufacturePojo(PlatoEntity.class);
 
         newEntity.setId(entity.getId());
 
-        calificacionPersistencia.update(newEntity);
+        platoPersistencia.update(newEntity);
 
-        CalificacionEntity resp = em.find(CalificacionEntity.class, entity.getId());
+        PlatoEntity resp = em.find(PlatoEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getId(), resp.getId());
     }
@@ -175,3 +175,4 @@ public class CalificacionPersistenceTest {
     
     
 }
+
