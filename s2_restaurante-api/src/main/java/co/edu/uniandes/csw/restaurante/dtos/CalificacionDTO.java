@@ -100,9 +100,10 @@ public class CalificacionDTO {
      *
      * @param entity PlatoEntity
      */
-    public CalificacionDTO(CalificacionDTO entity) {
-       // this.id = entity.getId();
-     
+    public CalificacionDTO(CalificacionEntity entity) {
+        this.id = entity.getId();
+        this.puntaje = entity.getPuntaje();
+       
     }
     
      /**
