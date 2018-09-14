@@ -45,19 +45,26 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class CalificacionEntity extends BaseEntity implements Serializable {
 
-//    @Temporal(TemporalType.DATE)
-//    @PodamStrategyValue(DateStrategy.class)
-//    private Date birthDate;
-//
-//    @PodamExclude
-//    @ManyToMany(mappedBy = "authors")
-//    private List<BookEntity> books = new ArrayList<>();
-//
+
+    @PodamExclude
+    @OneToOne(mappedBy = "calificacion")
+   private SucursalEntity sucursal ;
+    
+
     @PodamExclude
     @OneToOne
     private ClienteEntity cliente;
 
     private Double puntaje;
+    
+
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
+    }
 
     public Double getPuntaje() {
         return puntaje;

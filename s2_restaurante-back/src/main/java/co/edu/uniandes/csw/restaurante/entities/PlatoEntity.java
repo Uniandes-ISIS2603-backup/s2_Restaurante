@@ -43,9 +43,9 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 public class PlatoEntity extends BaseEntity implements Serializable {
 
 
-//    @PodamExclude
-//    @ManyToOne
-//    private SucursalEntity sucursal;
+    @PodamExclude
+   @ManyToOne
+   private SucursalEntity sucursal;
 
     /**
      * Nombre del plato
