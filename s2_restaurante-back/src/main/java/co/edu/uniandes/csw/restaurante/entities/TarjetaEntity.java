@@ -25,10 +25,18 @@ public class TarjetaEntity extends BaseEntity implements Serializable {
     @OneToOne
     private ClienteEntity clienteID;
     
-    /*@PodamExclude
+    @PodamExclude
     @OneToOne
     private SucursalEntity sucursal;
-    */
+
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
+    }
+    
 
     public List<PuntoEntity> getPuntos() {
         return puntos;

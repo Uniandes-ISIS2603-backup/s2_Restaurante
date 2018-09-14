@@ -21,6 +21,14 @@ public class PuntoEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private TarjetaEntity tarjeta;
 
+    public TarjetaEntity getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(TarjetaEntity tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+
     /**
      * fecha creacion del punto
      */

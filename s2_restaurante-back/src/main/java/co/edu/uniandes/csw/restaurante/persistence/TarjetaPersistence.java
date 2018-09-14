@@ -6,7 +6,8 @@
 package co.edu.uniandes.csw.restaurante.persistence;
 
 
-import co.edu.uniandes.csw.restaurante.entities.DomicilioEntity;
+import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
+import co.edu.uniandes.csw.restaurante.entities.SucursalEntity;
 import co.edu.uniandes.csw.restaurante.entities.TarjetaEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -61,31 +62,31 @@ public class TarjetaPersistence {
         return query.getResultList();
     }
     /**
-     * Busca si hay alguna editorial con el id que se envía de argumento
+     * Busca si hay alguna Tarjeta con el id que se envía de argumento
      *
-     * @param tarjetaId correspondiente a la editorial buscada.
-     * @return una editorial.
+     * @param tarjetaId correspondiente a la Tarjeta buscada.
+     * @return una Tarjeta.
      */
     public TarjetaEntity find(Long tarjetaId) {
         LOGGER.log(Level.INFO, "Consultando tarjeta con id={0}", tarjetaId);
         /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
         el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
-        Suponga que es algo similar a "select * from EditorialEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
+        Suponga que es algo similar a "select * from TarjetaEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
          */
         return em.find(TarjetaEntity.class, tarjetaId);
     }
     /**
-     * Actualiza una editorial.
+     * Actualiza una Tarjeta.
      *
-     * @param tarjetaEntity: la editorial que viene con los nuevos cambios.
+     * @param tarjetaEntity: la Tarjeta que viene con los nuevos cambios.
      * Por ejemplo el nombre pudo cambiar. En ese caso, se haria uso del método
      * update.
-     * @return una editorial con los cambios aplicados.
+     * @return una Tarjeta con los cambios aplicados.
      */
     public TarjetaEntity update(TarjetaEntity tarjetaEntity) {
         LOGGER.log(Level.INFO, "Actualizando tarjeta con id = {0}", tarjetaEntity.getId());
         /* Note que hacemos uso de un método propio del EntityManager llamado merge() que recibe como argumento
-        la editorial con los cambios, esto es similar a 
+        la Tarjeta con los cambios, esto es similar a 
         "UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;" en SQL.
          */
         LOGGER.log(Level.INFO, "Saliendo de actualizar la tarjeta con id = {0}", tarjetaEntity.getId());
@@ -93,22 +94,49 @@ public class TarjetaPersistence {
     }
     /**
      *
-     * Borra una editorial de la base de datos recibiendo como argumento el id
-     * de la editorial
+     * Borra una Tarjeta de la base de datos recibiendo como argumento el id
+     * de la Tarjeta
      *
-     * @param tarjetaId: id correspondiente a la editorial a borrar.
+     * @param tarjetaId: id correspondiente a la Tarjeta a borrar.
      */
     public void delete(Long tarjetaId) {
-        LOGGER.log(Level.INFO, "Borrando editorial con id = {0}", tarjetaId);
-        // Se hace uso de mismo método que esta explicado en public EditorialEntity find(Long id) para obtener la editorial a borrar.
+        LOGGER.log(Level.INFO, "Borrando Tarjeta con id = {0}", tarjetaId);
+        // Se hace uso de mismo método que esta explicado en public TarjetaEntity find(Long id) para obtener la Tarjeta a borrar.
         TarjetaEntity entity = em.find(TarjetaEntity.class, tarjetaId);
         /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
          EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
-         Es similar a "delete from EditorialEntity where id=id;" - "DELETE FROM table_name WHERE condition;" en SQL.*/
+         Es similar a "delete from TarjetaEntity where id=id;" - "DELETE FROM table_name WHERE condition;" en SQL.*/
         em.remove(entity);
-        LOGGER.log(Level.INFO, "Saliendo de borrar la editorial con id = {0}", tarjetaId);
+        LOGGER.log(Level.INFO, "Saliendo de borrar la Tarjeta con id = {0}", tarjetaId);
     }
-    
+    /**
+     * Busca si hay alguna Tarjeta con el nombre que se envía de argumento
+     *
+     * @param name: Nombre del cliente que se está buscando
+     * @param sucursal
+     * @return null si no existe ninguna Tarjeta con el nombre del argumento.
+     * Si existe alguna devuelve la primera.
+     */
+    public TarjetaEntity findBySucursal(ClienteEntity name,SucursalEntity sucursal) {
+        LOGGER.log(Level.INFO, "Consultando Tarjeta por nombre ", name);
+        // Se crea un query para buscar Tarjetaes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+        TypedQuery query = em.createQuery("Select e From TarjetaEntity e where e.cliente = :name and e.sucursal = :sucursal", TarjetaEntity.class);
+        // Se remplaza el placeholder ":name" con el valor del argumento 
+        query = query.setParameter ("name", name);
+        query = query.setParameter("sucursal", sucursal);
+        // Se invoca el query se obtiene la lista resultado
+        List<TarjetaEntity> sameName = query.getResultList();
+        TarjetaEntity result;
+        if (sameName == null) {
+            result = null;
+        } else if (sameName.isEmpty()) {
+            result = null;
+        } else {
+            result = sameName.get(0);
+        }
+        LOGGER.log(Level.INFO, "Saliendo de consultar Tarjeta con el cliente ", name.getNombre());
+        return result;
+    }
 }
 
 
