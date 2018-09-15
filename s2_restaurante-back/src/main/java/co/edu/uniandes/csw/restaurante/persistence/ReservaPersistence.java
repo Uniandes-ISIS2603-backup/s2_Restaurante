@@ -47,11 +47,11 @@ public class ReservaPersistence {
         Es similar a "INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);" en SQL.
          */ 
         
-//        if(sePuedeReservar(reservaEntity.getHora(), reservaEntity.getSucursal().getId(), reservaEntity.getMesa().getId()))
-//        {
+        if(sePuedeReservar(reservaEntity.getHora(), reservaEntity.getSucursal().getId(), reservaEntity.getMesa().getId()))
+        {
            em.persist(reservaEntity);
            LOGGER.log(Level.INFO, "Saliendo de crear una reserva nueva");
-//        }
+        }
        
         return reservaEntity;
     }
