@@ -46,9 +46,9 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 public class CalificacionEntity extends BaseEntity implements Serializable {
 
 
-    @PodamExclude
-    @OneToOne(mappedBy = "calificacion")
-   private SucursalEntity sucursal ;
+ //   @PodamExclude
+   // @OneToOne(mappedBy = "calificacion")
+   //private SucursalEntity sucursal ;
     
 
     @PodamExclude
@@ -58,13 +58,13 @@ public class CalificacionEntity extends BaseEntity implements Serializable {
     private Double puntaje;
     
 
-    public SucursalEntity getSucursal() {
-        return sucursal;
-    }
+   // public SucursalEntity getSucursal() {
+     //   return sucursal;
+    //}
 
-    public void setSucursal(SucursalEntity sucursal) {
-        this.sucursal = sucursal;
-    }
+    //public void setSucursal(SucursalEntity sucursal) {
+      //  this.sucursal = sucursal;
+    //}
 
     public Double getPuntaje() {
         return puntaje;
