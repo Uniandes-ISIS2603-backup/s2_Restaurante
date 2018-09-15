@@ -113,7 +113,7 @@ public class ReservaLogicTest {
         ReservaEntity entity = em.find(ReservaEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getCantidadPersonas(), entity.getCantidadPersonas());
-        Assert.assertEquals(newEntity.getHora(), entity.getHora());
+       
       
     }
 

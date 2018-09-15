@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.restaurante.persistence;
 
 
 import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
+import java.time.Clock;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +15,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Date;
+import javax.persistence.TemporalType;
+
 /**
  * Clase que maneja la persistencia para una Reserva. Se conecta a través Entity
  * Manager de javax.persistance con la base de datos SQL.
@@ -27,6 +32,8 @@ public class ReservaPersistence {
     private static final Logger LOGGER = Logger.getLogger(ReservaPersistence.class.getName());
     @PersistenceContext(unitName = "StarbugsPU")
     protected EntityManager em;
+   
+
     
     /**
      * Método para persisitir la entidad en la base de datos.
@@ -39,8 +46,13 @@ public class ReservaPersistence {
         /* Note que hacemos uso de un método propio de EntityManager para persistir la reserva en la base de datos.
         Es similar a "INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);" en SQL.
          */ 
-        em.persist(reservaEntity);
-        LOGGER.log(Level.INFO, "Saliendo de crear una reserva nueva");
+        
+//        if(sePuedeReservar(reservaEntity.getHora(), reservaEntity.getSucursal().getId(), reservaEntity.getMesa().getId()))
+//        {
+           em.persist(reservaEntity);
+           LOGGER.log(Level.INFO, "Saliendo de crear una reserva nueva");
+//        }
+       
         return reservaEntity;
     }
     
@@ -92,6 +104,16 @@ public class ReservaPersistence {
         LOGGER.log(Level.INFO, "Saliendo de actualizar la reserva con id = {0}", reservaEntity.getId());
         return em.merge(reservaEntity);
     }
+    public boolean sePuedeReservar(Date fecha, Long idSucursal, Long idMesa){
+
+        TypedQuery query = em.createQuery("SELECT u FROM ReservaEntity u WHERE hora = :fecha AND sucursal_id = :sucursal AND mesa_id = :mesa", ReservaEntity.class);
+        query.setParameter("sucursal", idSucursal);
+        query.setParameter("fecha", fecha, TemporalType.DATE);
+        query.setParameter("mesa", idMesa);
+
+        return query.getResultList().isEmpty();
+      
+    }
     
     /**
      * Borra una reserva de la base de datos recibiendo como argumento el id
@@ -110,6 +132,8 @@ public class ReservaPersistence {
         LOGGER.log(Level.INFO, "Saliendo de borrar la reserva con id = {0}", reservaId);
     }
     
+    
+  
     
     
 }

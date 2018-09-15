@@ -142,6 +142,7 @@ public class ReservaPersistenceTest {
         ReservaEntity newEntity = reservaPersistencia.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity.getHora(), newEntity.getHora());
     }
 
     /**
