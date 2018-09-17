@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.restaurante.dtos;
 
+import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
 import java.util.Date;
 
 
@@ -32,6 +33,16 @@ public class ReservaDTO{
     
     //METODOS
     
+        /**
+     * Construye una ReservaDTO a partir de una ReservaEntity
+     *
+     * @param entity ClienteEntity
+     */
+    public ReservaDTO(ReservaEntity entity) {
+        this.id = entity.getId();
+        this.hora = entity.getHora();
+        this.cantidadPersonas = entity.getCantidadPersonas();
+    }
     /**
      * Metodo que retorna el id unico de una reserva
      *
@@ -84,6 +95,20 @@ public class ReservaDTO{
      */
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    
+        /**
+     * Convierte un DTO a Entity
+     *
+     * @return Entity con los valores del DTO
+     */
+    public ReservaEntity toEntity() {
+        ReservaEntity entity = new ReservaEntity();
+        entity.setId(this.id);
+        entity.setHora(this.hora);
+        entity.setCantidadPersonas(this.cantidadPersonas);
+        return entity;
     }
    
 }
