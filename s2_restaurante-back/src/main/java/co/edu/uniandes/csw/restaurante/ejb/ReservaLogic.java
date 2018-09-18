@@ -29,25 +29,27 @@ public class ReservaLogic {
     @Inject
     private ReservaPersistence persistence;
     
-    @Inject
-    private MesaPersistence mesaPersistence;
-    
     /**
      * Se encarga de crear una Reservan en la base de datos.
      *
      * @param reservaEntity Objeto de ReservaEntity con los datos nuevos
      * @return Objeto de ReservaEntity con los datos nuevos y su ID.
      */
-    public ReservaEntity createReserva(ReservaEntity reservaEntity) {
+    public ReservaEntity createReserva(ReservaEntity reservaEntity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la reserva");
         //Revisar que la mesa recibida exista.
-        MesaEntity mesa = mesaPersistence.find(reservaEntity.getMesa().getId());
-       
         
-          ReservaEntity newReservaEntity = persistence.create(reservaEntity);
-      
-        LOGGER.log(Level.INFO, "Termina proceso de creación de la reserva");
-        return newReservaEntity;
+        
+        if(reservaEntity != null && reservaEntity.getHora()!= null && reservaEntity.getSucursal().getId() != null && reservaEntity.getMesa().getId() != null && persistence.sePuedeReservar(reservaEntity.getHora(), reservaEntity.getSucursal().getId(), reservaEntity.getMesa().getId()))
+        {
+            ReservaEntity newReservaEntity = persistence.create(reservaEntity);
+            LOGGER.log(Level.INFO, "Termina proceso de creación de la reserva");
+            return newReservaEntity;
+        }
+        
+        else throw new BusinessLogicException("Ya existe una reserva con la misma información proporcionada");
+          
+        
     }
     
     /**

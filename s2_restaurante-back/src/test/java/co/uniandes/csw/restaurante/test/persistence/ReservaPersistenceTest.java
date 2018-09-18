@@ -108,7 +108,7 @@ public class ReservaPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
         ReservaEntity result = reservaPersistencia.create(newEntity);
-
+        
         Assert.assertNotNull(result);
 
         ReservaEntity entity = em.find(ReservaEntity.class, result.getId());
