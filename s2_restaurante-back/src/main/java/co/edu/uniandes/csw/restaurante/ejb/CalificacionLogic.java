@@ -38,7 +38,7 @@ public class CalificacionLogic
     public CalificacionEntity createCalificacion(CalificacionEntity calificacionEntity) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la calificacion");
         /*Valida la regla de negocio de que el cliente no puede ser nulo */
-        if (calificacionEntity.getCliente().equals(null)) {
+        if (calificacionEntity.getCliente()==null) {
             throw new BusinessLogicException("el cliente no puede ser nulo");
         }
         /*Valida la regla de negocio del rango de puntaje */

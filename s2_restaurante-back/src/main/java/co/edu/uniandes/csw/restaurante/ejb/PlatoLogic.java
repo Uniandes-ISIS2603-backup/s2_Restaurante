@@ -35,13 +35,13 @@ public class PlatoLogic {
         LOGGER.log(Level.INFO, "Inicia proceso de creación del palto");
         /*Valida la regla de negocio de que los nombres de los platos no 
         pueden contener ser nulos*/
-        if (platoEntity.getNombre().equals(null)) {
+        if (platoEntity.getNombre()==null) {
             throw new BusinessLogicException("El nombre del plato no puede ser nulo");
         }
-        if (platoEntity.getPrecio().equals(null)|| platoEntity.getPrecio()<0.0) {
+        if (platoEntity.getPrecio()==null|| platoEntity.getPrecio()<0.0) {
             throw new BusinessLogicException("El nombre del precio no puede ser nulo o negativo");
         }
-        if (platoEntity.getSucursal().equals(null)) {
+        if (platoEntity.getSucursal()==null) {
             throw new BusinessLogicException("el plato tiene que pertenecer a una sucuarsal");
         }
         PlatoEntity newPlatoEntity = persistence.create(platoEntity);
