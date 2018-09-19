@@ -14,7 +14,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 /**
  *
- * @author estudiante
+ * @author jp.romero12
  */
 @Stateless
 public class SucursalLogic {
@@ -23,6 +23,7 @@ public class SucursalLogic {
     
     @Inject
     private SucursalPersistence persistence;
+    
     public SucursalEntity createSucursal(SucursalEntity sucursalEntity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la sucursal");
         
@@ -30,6 +31,37 @@ public class SucursalLogic {
         SucursalEntity newSucursalEntity = persistence.create(sucursalEntity);
         LOGGER.log(Level.INFO, "Termina proceso de creación de la sucursal");
         return newSucursalEntity;
+    }
+    
+    public SucursalEntity getSucursal(Long sucursalId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar la sucursal con id = {0}", sucursalId);
+        SucursalEntity sucursalEntity = persistence.find(sucursalId);
+        if (sucursalEntity == null) {
+            LOGGER.log(Level.SEVERE, "La sucursal con el id = {0} no existe", sucursalId);
+        }
+        LOGGER.log(Level.INFO, "Termina proceso de consultar la sucursal con id = {0}", sucursalId);
+        return sucursalEntity;
+    }
+    
+    public List<SucursalEntity> getSucursales() {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todas las sucursales");
+        List<SucursalEntity> lista = persistence.findAll();
+        LOGGER.log(Level.INFO, "Termina proceso de consultar todas las sucursales");
+        return lista;
+    }
+    
+    public SucursalEntity updateSucursal(Long sucursalId, SucursalEntity sucursalEntity) {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar la sucursal id = {0}", sucursalId);
+        SucursalEntity newSucursalEntity = persistence.update(sucursalEntity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar la sucursal con id = {0}", sucursalId);
+        return newSucursalEntity;
+    }
+    
+    public void deleteSucursal(Long sucursalesId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar la sucursal con id = {0}", sucursalesId);
+      
+        persistence.delete(sucursalesId);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar la sucursales con id = {0}", sucursalesId);
     }
     
 }

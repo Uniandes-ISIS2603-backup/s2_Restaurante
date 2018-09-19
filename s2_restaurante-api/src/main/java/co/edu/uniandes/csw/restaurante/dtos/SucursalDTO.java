@@ -52,4 +52,11 @@ public class SucursalDTO implements Serializable {
     return entity;
   }
 
+    public SucursalEntity toEntity() {
+        SucursalEntity entity = new SucursalEntity();
+        entity.setId(this.id);
+        entity.setDireccion(this.direccion);
+        return entity;
+    }
+    
 }
