@@ -4,29 +4,39 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.restaurante.dtos;
+
+import co.edu.uniandes.csw.restaurante.entities.SucursalEntity;
 import java.io.Serializable;
+
 /**
  *
  * @author jp.romero12
  */
-public class SucursalDTO implements Serializable{
-    
+public class SucursalDTO implements Serializable {
+
     private Long id;
     private String direccion;
     private String ciudad;
-    
+
     public SucursalDTO() {
+    }
+
+    public SucursalDTO(SucursalEntity sucursalEntity) {
+        if (sucursalEntity != null) {
+            this.id = sucursalEntity.getId();
+            this.direccion = sucursalEntity.getDireccion();
+            this.ciudad = sucursalEntity.getCiudad();
+        }
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getDireccion()
-    {
+    public String getDireccion() {
         return direccion;
     }
-    
+
     public void setDireccion(String pDireccion) {
         this.direccion = pDireccion;
     }
@@ -35,14 +45,12 @@ public class SucursalDTO implements Serializable{
         this.id = pId;
     }
 
-    public String getCiudad()
-    {
+    public String getCiudad() {
         return ciudad;
     }
-    
+
     public void setCiudad(String pCiudad) {
         this.ciudad = pCiudad;
     }
-    
-    
+
 }

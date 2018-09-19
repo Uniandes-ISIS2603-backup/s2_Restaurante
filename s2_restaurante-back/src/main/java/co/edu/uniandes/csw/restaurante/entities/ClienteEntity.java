@@ -17,7 +17,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
- * @author Juliana Prieto Arcila
+ * @author j.prieto
  */
 @javax.persistence.Entity
 public class ClienteEntity extends BaseEntity implements Serializable {
@@ -38,9 +38,9 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<CalificacionEntity> calificaciones = new ArrayList<CalificacionEntity>();
 
-//    @PodamExclude
-//    @ManyToMany(mappedBy = "clientes")
-//    private List<SucursalEntity> sucursales = new ArrayList<>();
+    @PodamExclude
+    @ManyToMany
+    private List<SucursalEntity> sucursales = new ArrayList<>();
     
     /**
      * Nombre del cliente
@@ -131,7 +131,7 @@ public class ClienteEntity extends BaseEntity implements Serializable {
 
     /**
      * Modifica la lista de domicilios hechos por el cliente
-     * 
+     *
      * @param domicilios - nueva lista de domicilios hechos por el cliente
      */
     public void setDomicilios(List<DomicilioEntity> domicilios) {
@@ -140,6 +140,7 @@ public class ClienteEntity extends BaseEntity implements Serializable {
 
     /**
      * Retorna la lista con las calificaciones hechas por el cliente
+     *
      * @return - lista de calificaciones hechas por el cliente
      */
     public List<CalificacionEntity> getCalificaciones() {
@@ -148,9 +149,18 @@ public class ClienteEntity extends BaseEntity implements Serializable {
 
     /**
      * Modifica las calificaciones hechas por el cliente
-     * @param calificaciones - nueva lista de calificaciones 
+     *
+     * @param calificaciones - nueva lista de calificaciones
      */
     public void setCalificaciones(List<CalificacionEntity> calificaciones) {
         this.calificaciones = calificaciones;
+    }
+
+    public List<SucursalEntity> getSucursales() {
+        return sucursales;
+    }
+
+    public void setSucursales(List<SucursalEntity> sucursales) {
+        this.sucursales = sucursales;
     }
 }

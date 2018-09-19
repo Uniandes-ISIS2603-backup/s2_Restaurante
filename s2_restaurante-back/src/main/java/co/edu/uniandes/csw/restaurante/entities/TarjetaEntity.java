@@ -36,7 +36,6 @@ public class TarjetaEntity extends BaseEntity implements Serializable {
     public void setSucursal(SucursalEntity sucursal) {
         this.sucursal = sucursal;
     }
-    
 
     public List<PuntoEntity> getPuntos() {
         return puntos;

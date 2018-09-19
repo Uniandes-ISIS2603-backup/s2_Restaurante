@@ -4,36 +4,36 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.restaurante.dtos;
+
+
+import co.edu.uniandes.csw.restaurante.entities.MesaEntity;
 import java.io.Serializable;
+
 /**
  *
  * @author jp.romero12
  */
-public class MesaDTO implements Serializable{
-    
+public class MesaDTO implements Serializable {
+
+    private Long id;
     private int numero;
-    private boolean ocupada;
-    
+
     public MesaDTO() {
+    }
+
+    public MesaDTO(MesaEntity mesaEntity) {
+        if (mesaEntity != null) {
+            this.id = mesaEntity.getId();
+            this.numero = mesaEntity.getNumero();
+        }
     }
 
     public int getNumero() {
         return numero;
     }
-    
-    public void setNumero(int pNumero)
-    {
+
+    public void setNumero(int pNumero) {
         this.numero = pNumero;
     }
-    
-    public boolean getOcupada ()
-    {
-        return ocupada;
-    }
-    
-    public void setOcupada (boolean pOcupada)
-    {
-        this.ocupada = pOcupada;
-    }
-    
+
 }

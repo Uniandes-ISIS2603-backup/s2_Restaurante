@@ -36,7 +36,7 @@ import javax.persistence.TypedQuery;
  * Clase que maneja la persistencia para Cliente. Se conecta a través del Entity
  * Manager de javax.persistance con la base de datos SQL.
  *
- * @author Juliana Prieto Arcila
+ * @author j.prieto
  */
 @Stateless
 public class ClientePersistence {
