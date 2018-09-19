@@ -17,9 +17,9 @@ import javax.ws.rs.Produces;
  *
  * @author estudiante
  */
-@Path("tarjeta")
-@Produces("tarjeta/json")
-@Consumes("tarjeta/json")
+@Path("tarjetas")
+@Produces("application/json")
+@Consumes("application/json")
 @RequestScoped
 public class TarjetaResource{
 

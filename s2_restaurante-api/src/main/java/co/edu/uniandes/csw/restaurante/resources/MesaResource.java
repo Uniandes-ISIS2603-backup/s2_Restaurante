@@ -24,9 +24,9 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author jp.romero12
  */
-@Path("Mesa")
-@Produces("Mesa/json")
-@Consumes("Mesa/json")
+@Path("mezas")
+@Produces("application/json")
+@Consumes("application/json")
 @RequestScoped
 public class MesaResource {
     

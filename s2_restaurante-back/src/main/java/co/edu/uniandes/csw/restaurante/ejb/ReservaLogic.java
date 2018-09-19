@@ -37,17 +37,17 @@ public class ReservaLogic {
      */
     public ReservaEntity createReserva(ReservaEntity reservaEntity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la reserva");
-        //Revisar que la mesa recibida exista.
+      
         
         
-        if(reservaEntity != null && reservaEntity.getHora()!= null && reservaEntity.getSucursal().getId() != null && reservaEntity.getMesa().getId() != null && persistence.sePuedeReservar(reservaEntity.getHora(), reservaEntity.getSucursal().getId(), reservaEntity.getMesa().getId()))
-        {
+//        if(reservaEntity != null && reservaEntity.getHora()!= null && reservaEntity.getSucursal() != null && reservaEntity.getMesa() != null && persistence.sePuedeReservar(reservaEntity.getHora(), reservaEntity.getSucursal().getId(), reservaEntity.getMesa().getId()))
+//        {
             ReservaEntity newReservaEntity = persistence.create(reservaEntity);
             LOGGER.log(Level.INFO, "Termina proceso de creación de la reserva");
             return newReservaEntity;
-        }
+//        }
         
-        else throw new BusinessLogicException("Ya existe una reserva con la misma información proporcionada");
+//        else throw new BusinessLogicException("Ya existe una reserva con la misma información proporcionada");
           
         
     }
@@ -92,5 +92,18 @@ public class ReservaLogic {
         ReservaEntity newReservaEntity = persistence.update(reservaEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar la reserva con id = {0}", reservaId);
         return newReservaEntity;
+    }
+    
+     /**
+     * Eliminar una reserva por ID
+     *
+     * @param reservasId El ID d la reserva a eliminar
+     * 
+     */
+    public void deleteReserva(Long reservasId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar la reserva con id = {0}", reservasId);
+      
+        persistence.delete(reservasId);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar la reserva con id = {0}", reservasId);
     }
 }

@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.restaurante.resources;
 
 import co.edu.uniandes.csw.restaurante.dtos.ClienteDTO;
 import co.edu.uniandes.csw.restaurante.dtos.ClienteDetailDTO;
+import co.edu.uniandes.csw.restaurante.ejb.ClienteLogic;
+import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
 import java.util.List;
 import java.util.logging.Level;
 import javax.ejb.Stateless;
@@ -19,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -33,9 +36,9 @@ public class ClienteResource {
 //    @Inject
 //    private RestauranteLogic restauranteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 //    
-//    @Inject
-//    private ClienteLogic clienteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
-//
+    @Inject
+    private ClienteLogic clienteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+
 //    @Inject
 //    private RestauranteClienteLogic restauranteClienteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     
@@ -152,4 +155,26 @@ public class ClienteResource {
 //        }
 //        return list;
 //    }
+    
+       /**
+     * Conexión con el servicio de reservas para un cliente.
+     * {@link ClienteReservaResource}
+     *
+     * Este método conecta la ruta de /clientes con las rutas de /reservas que
+     * dependen del cliente, es una redirección al servicio que maneja el
+     * segmento de la URL que se encarga de las reservas de una editorial.
+     *
+     * @param clientesId El ID del cliente con respecto a la cual se
+     * accede al servicio.
+     * @return El servicio de reservas para este cliente en paricular.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el cliente.
+     */
+    @Path("{clientesId: \\d+}/reservas")
+    public Class<ClienteReservaResource> getClienteReservaResource(@PathParam("clientesId") Long clientesId) throws BusinessLogicException {
+        if (clienteLogic.getCliente(clientesId) == null) {
+            throw new WebApplicationException("El recurso /clientes/" + clientesId + " no existe.", 404);
+        }
+        return ClienteReservaResource.class;
+    }
 }

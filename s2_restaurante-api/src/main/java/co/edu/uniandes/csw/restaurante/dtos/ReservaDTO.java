@@ -33,7 +33,12 @@ public class ReservaDTO{
     
     //METODOS
     
-        /**
+    /**
+     * Constructor vacio
+     */
+    public ReservaDTO() {
+    }
+    /**
      * Construye una ReservaDTO a partir de una ReservaEntity
      *
      * @param entity ClienteEntity
