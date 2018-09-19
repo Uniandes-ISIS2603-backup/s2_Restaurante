@@ -75,5 +75,15 @@ public class CalificacionLogic
         LOGGER.log(Level.INFO, "Termina proceso de consultar todas las calificaciones ");
         return lista;
     }
+    public CalificacionEntity getCalificacion(Long calificacionId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar la calificacion con id = {0}", calificacionId);
+        CalificacionEntity calificacionEntity = persistence.find(calificacionId);
+        if (calificacionEntity == null) {
+            LOGGER.log(Level.SEVERE, "La calificacion con el id = {0} no existe", calificacionId);
+        }
+        LOGGER.log(Level.INFO, "Termina proceso de consultar la calificacion con id = {0}", calificacionId);
+        return calificacionEntity;
+    }
+    
     
 }
