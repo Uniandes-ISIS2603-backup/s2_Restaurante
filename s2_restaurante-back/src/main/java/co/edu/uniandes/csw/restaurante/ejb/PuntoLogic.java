@@ -28,6 +28,7 @@ import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.restaurante.persistence.PuntoPersistence;
 import co.edu.uniandes.csw.restaurante.persistence.TarjetaPersistence;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -135,7 +136,7 @@ public class PuntoLogic {
      * @param isbn a verificar
      * @return true si el ISBN es valido.
      */
-    private boolean validateFecha(Calendar isbn) {
+    private boolean validateFecha(Date isbn) {
         return !(isbn == null);
     }
 }

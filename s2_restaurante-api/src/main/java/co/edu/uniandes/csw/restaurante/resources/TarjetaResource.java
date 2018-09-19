@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.restaurante.resources;
 
-import co.edu.uniandes.csw.restaurante.dtos.PuntoDTO;
 import co.edu.uniandes.csw.restaurante.dtos.TarjetaDTO;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
