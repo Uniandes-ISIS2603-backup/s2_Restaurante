@@ -57,7 +57,7 @@ public class ReservaLogic {
         
         if(reservaEntity == null || reservaEntity.getCantidadPersonas() == null || reservaEntity.getHora() == null)
         {
-            throw new BusinessLogicException("La información que se recibió no es suficiente para crear la reserva " + reservaEntity.getCliente());
+            throw new BusinessLogicException("La información que se recibió no es suficiente para crear la reserva ");
         }
         else{
             ReservaEntity newReservaEntity = persistence.create(reservaEntity);
