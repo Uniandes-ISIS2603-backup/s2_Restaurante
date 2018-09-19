@@ -158,7 +158,7 @@ public class ClienteResource {
     
        /**
      * Conexión con el servicio de reservas para un cliente.
-     * {@link ClienteReservaResource}
+     * {@link ClienteReservasResource}
      *
      * Este método conecta la ruta de /clientes con las rutas de /reservas que
      * dependen del cliente, es una redirección al servicio que maneja el
@@ -171,10 +171,10 @@ public class ClienteResource {
      * Error de lógica que se genera cuando no se encuentra el cliente.
      */
     @Path("{clientesId: \\d+}/reservas")
-    public Class<ClienteReservaResource> getClienteReservaResource(@PathParam("clientesId") Long clientesId) throws BusinessLogicException {
+    public Class<ClienteReservasResource> getClienteReservaResource(@PathParam("clientesId") Long clientesId) throws BusinessLogicException {
         if (clienteLogic.getCliente(clientesId) == null) {
             throw new WebApplicationException("El recurso /clientes/" + clientesId + " no existe.", 404);
         }
-        return ClienteReservaResource.class;
+        return ClienteReservasResource.class;
     }
 }

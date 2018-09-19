@@ -30,9 +30,9 @@ import javax.ws.rs.WebApplicationException;
  */
 
 @Stateless
-public class ClienteReservaResource {
+public class ClienteReservasResource {
     
-    private static final Logger LOGGER = Logger.getLogger(ClienteReservaResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ClienteReservasResource.class.getName());
 
     @Inject
     private ClienteReservasLogic clienteReservaLogic;

@@ -9,6 +9,6 @@ package co.edu.uniandes.csw.restaurante.resources;
  *
  * @author ja.ortega
  */
-public class SucursalReservaResource {
+public class SucursalReservasResource {
     
 }
