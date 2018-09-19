@@ -47,7 +47,7 @@
 ///**
 // * Pruebas de logica de Authors
 // *
-// * @author Juliana Prieto Arcila
+// * @author j.prieto
 // */
 //@RunWith(Arquillian.class)
 //public class ClienteLogicTest {
@@ -197,7 +197,7 @@
 //    }
 //
 //    /**
-//     * Prueba para eliminar un Author
+//     * Prueba para eliminar un Cliente
 //     *
 //     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
 //     */
@@ -210,7 +210,7 @@
 //    }
 //
 //    /**
-//     * Prueba para eliminar un Author asociado a un libro
+//     * Prueba para eliminar un Cliente asociado a un libro
 //     *
 //     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
 //     */
@@ -220,7 +220,7 @@
 //    }
 //
 //    /**
-//     * Prueba para eliminar un Author asociado a un premio
+//     * Prueba para eliminar un Cliente asociado a un premio
 //     *
 //     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
 //     */

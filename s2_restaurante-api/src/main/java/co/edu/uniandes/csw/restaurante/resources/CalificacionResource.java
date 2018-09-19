@@ -26,7 +26,7 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class CalificacionResources {
+public class CalificacionResource {
    
     /**
      * Crea una nueva calificacion con la informacion dada

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -19,13 +20,16 @@ import uk.co.jemos.podam.common.PodamExclude;
 @javax.persistence.Entity
 public class MesaEntity extends BaseEntity implements Serializable{
     
-    private String numero;
-    private Boolean ocupada;
+    private int numero;
     
     
     @PodamExclude
     @OneToMany(mappedBy = "mesa",cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = javax.persistence.FetchType.LAZY)
     private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();
+    
+    @PodamExclude
+    @ManyToOne
+    private SucursalEntity sucursal;
     
     
 
@@ -37,22 +41,22 @@ public class MesaEntity extends BaseEntity implements Serializable{
         this.reservas = reservas;
     }
     
-    
-    
-    public String getNumero() {
+    public int getNumero() {
         return this.numero;
     }
     
-    public void setNumero(String pNumero) {
+    public void setNumero(int pNumero) {
         this.numero = pNumero;
     }
-    
-    public Boolean getOcupada() {
-        return this.ocupada;
+
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
     }
     
-    public void setOcupada(Boolean pOcupada) {
-        this.ocupada = pOcupada;
-    }
+    
     
 }

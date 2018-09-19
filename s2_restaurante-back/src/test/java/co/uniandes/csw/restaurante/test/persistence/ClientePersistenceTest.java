@@ -45,7 +45,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 /**
  * Pruebas de persistencia de Cliente
  *
- * @author Juliana Prieto Arcila
+ * @author j.prieto
  */
 @RunWith(Arquillian.class)
 public class ClientePersistenceTest {

@@ -25,13 +25,12 @@ import javax.ws.rs.WebApplicationException;
 /**
  * Clase que implementa la conexion con la persistencia para la relación entre
  * la entidad de Cliente y Tarjeta.
- * 
+ *
  * @author ja.ortega
  */
-
 @Stateless
 public class ClienteTarjetaResource {
-    
+
     private static final Logger LOGGER = Logger.getLogger(ClienteTarjetaResource.class.getName());
 
     @Inject
@@ -39,12 +38,12 @@ public class ClienteTarjetaResource {
 
     @Inject
     private TarjetaLogic TarjetaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
-    
-    
+
     /**
      * Asocia un Tarjeta existente con un cliente existente
      *
-     * @param clientesId El ID del cliente a el cual se le va a asociar la Tarjeta
+     * @param clientesId El ID del cliente a el cual se le va a asociar la
+     * Tarjeta
      * @param TarjetasId El ID de la Tarjeta que se asocia
      * @return JSON {@link TarjetaDTO} - La Tarjeta asociada.
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
@@ -61,12 +60,12 @@ public class ClienteTarjetaResource {
         LOGGER.log(Level.INFO, "ClienteTarjetaResource addTarjeta: output: {0}", dto);
         return dto;
     }
-   
-    
-     /**
+
+    /**
      * Elimina la conexión entre la Tarjeta y el cliente recibidos en la URL.
      *
-     * @param clientesId El ID del cliente al cual se le va a desasociar la Tarjeta
+     * @param clientesId El ID del cliente al cual se le va a desasociar la
+     * Tarjeta
      * @param TarjetasId El ID de la Tarjeta que se desasocia
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
      * Error de lógica que se genera cuando no se encuentra la Tarjeta.
@@ -81,7 +80,5 @@ public class ClienteTarjetaResource {
         clienteTarjetaLogic.removeTarjeta(clientesId, TarjetasId);
         LOGGER.info("ClienteTarjetaResource deleteBook: output: void");
     }
-    
-  
 
 }

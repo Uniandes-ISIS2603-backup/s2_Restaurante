@@ -5,7 +5,11 @@
  */
 package co.edu.uniandes.csw.restaurante.dtos;
 
+import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
 import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
+import co.edu.uniandes.csw.restaurante.entities.DomicilioEntity;
+import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
+import co.edu.uniandes.csw.restaurante.entities.SucursalEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -35,6 +39,11 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable {
      */
     private ArrayList<DomicilioDTO> domicilios;
 
+    /**
+     * Lista con las sucursales hechos por el cliente
+     */
+    private ArrayList<SucursalDTO> sucursales;
+
     public ClienteDetailDTO() {
         super();
     }
@@ -45,27 +54,33 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable {
      * @param entity, ClienteEntity a converit a DTO
      */
     public ClienteDetailDTO(ClienteEntity entity) {
-//        super(entity);
-//        //Crea un ClienteDTO con el entity que llega
-//
-//        if (entity != null) {
-//            tarjeta = new TarjetaDTO(entity.getTarjeta());
-//            //Crea la lista de calificaciones y le adiciona las que tiene el entity
-//            calificaciones = new ArrayList<>();
-//            for (ReservaEntity entityCalificacion : entity.getCalificaciones()) {
-//                reservas.add(new ReservaDTO(entityCalificacion));
-//            }
-//            //Crea la lista de reservas y le adiciona las que tiene el entity
-//            reservas = new ArrayList<>();
-//            for (ReservaEntity entityReserva : entity.getReservas()) {
-//                reservas.add(new ReservaDTO(entityReserva));
-//            }
-//            //Crea la lista de domicilios y le adiciona las que tiene el entity
-//            domicilios = new ArrayList<>();
-//            for (DomicilioEntity entityDomicilio : entity.getDomicilios()) {
-//                domicilios.add(new DomicilioDTO(entityDomicilio));
-//            }
-//        }
+        super(entity);
+        //Crea un ClienteDTO con el entity que llega
+
+        if (entity != null) {
+            tarjeta = new TarjetaDTO(entity.getTarjeta());
+            //Crea la lista de calificaciones y le adiciona las que tiene el entity
+            calificaciones = new ArrayList<>();
+            for (CalificacionEntity entityCalificacion : entity.getCalificaciones()) {
+                calificaciones.add(new CalificacionDTO(entityCalificacion));
+            }
+            //Crea la lista de reservas y le adiciona las que tiene el entity
+            reservas = new ArrayList<>();
+            for (ReservaEntity entityReserva : entity.getReservas()) {
+                reservas.add(new ReservaDTO(entityReserva));
+            }
+            //Crea la lista de domicilios y le adiciona las que tiene el entity
+            domicilios = new ArrayList<>();
+            for (DomicilioEntity entityDomicilio : entity.getDomicilios()) {
+                domicilios.add(new DomicilioDTO(entityDomicilio));
+            }
+            //Crea la lista de sucursales y le adiciona las que tiene el entity
+            sucursales = new ArrayList<>();
+            for (SucursalEntity entitySucursal : entity.getSucursales()) {
+                sucursales.add(new SucursalDTO(entitySucursal));
+            }
+
+        }
     }
 
     /**
@@ -73,7 +88,6 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable {
      *
      * @return un ClienteEntity con base en el DTO actual
      */
-    /*
     @Override
     public ClienteEntity toEntity() {
         ClienteEntity entity = super.toEntity();
@@ -82,29 +96,32 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable {
             entity.setTarjeta(tarjeta.toEntity());
         }
         //Agrega al nuevo Entity la calificación del DTO
-        if (calificacion != null) {
-            entity.setCalificacion(calificacion.toEntity());
-        }
-        //Agrega al nuevo Entity la lista de domicilios del DTO
-        if (domicilios != null) {
-            ArrayList<DomicilioEntity> domiciliosEntity = new ArrayList<>();
-            for (DomicilioDTO domicilioDTO : domicilios) {
-                domiciliosEntity.add(domicilioDTO.toEntity());
+        if (calificaciones != null) {
+            ArrayList<CalificacionEntity> calificacionesEntity = new ArrayList<>();
+            for (CalificacionDTO calificacionDTO : calificaciones) {
+                calificacionesEntity.add(calificacionDTO.toEntity());
             }
-            entity.setDomicilios(domiciliosEntity);
-        }
-        //Agrega al nuevo Entity la lista de reservas del DTO 
-        if (reservas != null) {
-            ArrayList<ReservaEntity> reservasEntity = new ArrayList<>();
-            for (ReservaDTO reservaDTO : reservas) {
-                reservasEntity.add(reservaDTO.toEntity());
+            entity.setCalificaciones(calificacionesEntity);
+            //Agrega al nuevo Entity la lista de domicilios del DTO
+            if (domicilios != null) {
+                ArrayList<DomicilioEntity> domiciliosEntity = new ArrayList<>();
+                for (DomicilioDTO domicilioDTO : domicilios) {
+                    domiciliosEntity.add(domicilioDTO.toEntity());
+                }
+                entity.setDomicilios(domiciliosEntity);
             }
-            entity.setClientes(reservasEntity);
+//            //Agrega al nuevo Entity la lista de reservas del DTO 
+//            if (reservas != null) {
+//                ArrayList<ReservaEntity> reservasEntity = new ArrayList<>();
+//                for (ReservaDTO reservaDTO : reservas) {
+//                    reservasEntity.add(reservaDTO.toEntity());
+//                }
+//                entity.setReservas(reservasEntity);
+//            }
         }
         return entity;
     }
-     */
-    
+
     /**
      * Retorna la tarjeta del cliente
      *

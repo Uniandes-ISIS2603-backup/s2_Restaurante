@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.restaurante.ejb;
 
 import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
+import co.edu.uniandes.csw.restaurante.entities.SucursalEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.restaurante.persistence.ClientePersistence;
 import java.util.List;
@@ -36,7 +37,7 @@ import javax.inject.Inject;
  * Clase que implementa la conexion con la persistencia para la entidad de
  * Cliente.
  *
- * @author Juliana Prieto Arcila
+ * @author j.prieto
  */
 @Stateless
 public class ClienteLogic {
@@ -69,7 +70,7 @@ public class ClienteLogic {
      *
      * @return Colección de objetos de ClienteEntity.
      */
-    public List<ClienteEntity> getClientets() {
+    public List<ClienteEntity> getClientes() {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los clientes");
         List<ClienteEntity> lista = persistence.findAll();
         LOGGER.log(Level.INFO, "Termina proceso de consultar todos los clientes");
@@ -100,7 +101,7 @@ public class ClienteLogic {
      * @param clienteEntity Instancia de AuthorEntity con los nuevos datos.
      * @return Instancia de ClienteEntity con los datos actualizados.
      */
-    public ClienteEntity updateAuthor(Long clientesId, ClienteEntity clienteEntity) {
+    public ClienteEntity updateCliente(Long clientesId, ClienteEntity clienteEntity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar el cliente con id = {0}", clientesId);
         ClienteEntity newClienteEntity = persistence.update(clienteEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el cliente con id = {0}", clientesId);
@@ -123,54 +124,5 @@ public class ClienteLogic {
         }
         persistence.delete(clientesId);
         LOGGER.log(Level.INFO, "Termina proceso de borrar el cliente con id = {0}", clientesId);
-    }
-
-//     /**
-//     *
-//     * @param id, id del cliente cuyas sucursales quieren saberse
-//     * @return lista de sucursales asociadas al cliente
-//     */
-//    public List<SucusalEntity> listSucursales(Long id) {
-//        return getCliente(id).getSucursales();
-//    }
-//    
-//    /**
-//     *
-//     * @param clienteId, id del cliente donde se buscará la sucursal
-//     * @param sucursalId, id de la sucursal a buscar
-//     * @return sucursal asociada con cierto cliente
-//     */
-//    public SucursalEntity getSucursal(Long clienteId, Long sucursalId) {
-//        List<SucursalEntity> list = getCliente(grupoId).getSucursales();
-//        SucursalEntity categoriaSucursal = new SucursalEntity();
-//        sucursalEntity.setId(sucursalId);
-//        int index = list.indexOf(sucursalEntity);
-//        if (index >= 0) {
-//            return list.get(index);
-//        }
-//        return null;
-//    }
-//    
-//    /**
-//     *
-//     * @param clienteId, id del cliente al que se le agrega una sucursal
-//     * @param sucursalId, sucursal a ser vinculada con el cliente
-//     * @return la sucursal recién asociada al cliente
-//     */
-//    public SucursalEntity addSucursal(Long clienteId, Long sucursalId) {
-//        ClienteEntity clienteEntity = getCliente(clienteId);
-//        List<SucursalEntity> sucursalList = clienteEntity.getSucursales();
-//        for(SucursalEntity existente : sucursalList){
-//            if(existente == sucursalLogic.getSucursal(sucursalId){
-//               return null;
-//            }
-//        }
-//        SucursalEntity sucursalEntity = sucursalLogic.getSucursal(sucursalId);
-//        sucursalEntity.getSucursales().add(sucursalEntity);
-//        updateGrupo(clienteEntity);
-//        return getSucursal(clienteId, sucursalId);
-//    }
-    
-    
-
+    }    
 }

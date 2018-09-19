@@ -75,6 +75,6 @@ public class DomicilioSucursalLogic {
      */
     public List<DomicilioEntity> getDomicilios(Long sucursalsId) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar los Domicilios asociados a la Sucursal con id = {0}", sucursalsId);
-        return sucursalPersistence.find(sucursalsId).getDomiclios();
+        return sucursalPersistence.find(sucursalsId).getDomicilios();
     }
 }

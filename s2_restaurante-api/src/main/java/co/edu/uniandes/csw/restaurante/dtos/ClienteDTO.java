@@ -9,7 +9,7 @@ import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
 
 /**
  *
- * @author Juliana Prieto Arcila
+ * @author j.prieto
  */
 public class ClienteDTO {
 
@@ -98,11 +98,11 @@ public class ClienteDTO {
      *
      * @return Entity con los valores del DTO
      */
-//    public ClienteEntity toEntity() {
-//        ClienteEntity entity = new ClienteEntity();
-//        cliente.setId(this.id);
-//        cliente.setNombre(this.nombre);
-//        cliente.setMetodoPago(this.metodoPago);
-//        return entity;
-//    }
+    public ClienteEntity toEntity() {
+        ClienteEntity clienteEntity = new ClienteEntity();
+        clienteEntity.setId(this.getId());
+        clienteEntity.setNombre(this.getNombre());
+        clienteEntity.setMetodoPago(this.getMetodoPago());
+        return clienteEntity;
+    }
 }

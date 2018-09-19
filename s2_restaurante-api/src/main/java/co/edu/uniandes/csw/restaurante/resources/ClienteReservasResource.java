@@ -116,7 +116,7 @@ public class ClienteReservasResource {
      */
     @DELETE
     @Path("{reservasId: \\d+}")
-    public void removeReserva(@PathParam("clientesId") Long clientesId, @PathParam("reservasId") Long reservasId) {
+    public void removeBook(@PathParam("clientesId") Long clientesId, @PathParam("reservasId") Long reservasId) {
         LOGGER.log(Level.INFO, "AuthorBooksResource deleteReserva: input: clientesId {0} , reservasId {1}", new Object[]{clientesId, reservasId});
         if (reservaLogic.getReserva(reservasId) == null) {
             throw new WebApplicationException("El recurso /reservas/" + reservasId + " no existe.", 404);
