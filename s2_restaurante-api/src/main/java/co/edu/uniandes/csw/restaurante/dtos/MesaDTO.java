@@ -36,4 +36,18 @@ public class MesaDTO implements Serializable {
         this.numero = pNumero;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long pId) {
+        this.id= pId;
+    }
+    
+    public MesaEntity toEntity() {
+        MesaEntity entity = new MesaEntity();
+        entity.setId(this.id);
+        entity.setNumero(this.numero);
+        return entity;
+    }
 }

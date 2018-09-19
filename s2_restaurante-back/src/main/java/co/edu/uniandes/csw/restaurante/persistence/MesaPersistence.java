@@ -42,5 +42,17 @@ public class MesaPersistence {
         return em.find(MesaEntity.class, mesasId);
     }
     
+    public void delete(Long mesaId) {
+        LOGGER.log(Level.INFO, "Borrando mesa con id = {0}", mesaId);
+        MesaEntity entity = em.find(MesaEntity.class, mesaId);
+        em.remove(entity);
+        LOGGER.log(Level.INFO, "Saliendo de borrar la mesa con id = {0}", mesaId);
+    }
+    
+    public MesaEntity update(MesaEntity mesaEntity) {
+        LOGGER.log(Level.INFO, "Actualizando mesa con id = {0}", mesaEntity.getId());
+        LOGGER.log(Level.INFO, "Saliendo de actualizar la mesa con id = {0}", mesaEntity.getId());
+        return em.merge(mesaEntity);
+    }
     
 }
