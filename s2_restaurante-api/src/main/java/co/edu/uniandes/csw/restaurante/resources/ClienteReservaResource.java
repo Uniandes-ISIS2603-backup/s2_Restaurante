@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.restaurante.resources;
 
 import co.edu.uniandes.csw.restaurante.dtos.ReservaDTO;
-import co.edu.uniandes.csw.restaurante.ejb.ClienteReservaLogic;
+import co.edu.uniandes.csw.restaurante.ejb.ClienteReservasLogic;
 import co.edu.uniandes.csw.restaurante.ejb.ReservaLogic;
 import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class ClienteReservaResource {
     private static final Logger LOGGER = Logger.getLogger(ClienteReservaResource.class.getName());
 
     @Inject
-    private ClienteReservaLogic clienteReservaLogic;
+    private ClienteReservasLogic clienteReservaLogic;
 
     @Inject
     private ReservaLogic reservaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.

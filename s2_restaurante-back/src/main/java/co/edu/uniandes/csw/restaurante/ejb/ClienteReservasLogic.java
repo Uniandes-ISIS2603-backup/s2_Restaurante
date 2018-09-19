@@ -24,11 +24,11 @@ import javax.inject.Inject;
 /**
  *
  *
- * @author ISIS2603
+ * @author ja.ortega
  */
-public class ClienteReservaLogic {
+public class ClienteReservasLogic {
     
-    private static final Logger LOGGER = Logger.getLogger(ClienteReservaLogic.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ClienteReservasLogic.class.getName());
 
     @Inject
     private ReservaPersistence reservaPersistence;
@@ -37,7 +37,7 @@ public class ClienteReservaLogic {
     private ClientePersistence clientePersistence;
 
     
-       /**
+     /**
      * Asocia una Reserva existente a un Cliente
      *
      * @param clientesId Identificador de la instancia de Clietne
@@ -64,7 +64,7 @@ public class ClienteReservaLogic {
         return clientePersistence.find(clientesId).getReservas();
     }
     
-       /**
+     /**
      * Retorna una reerva asociada a un cliente
      *
      * @param clientesId El id del cliente a buscar.
