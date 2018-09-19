@@ -16,7 +16,6 @@ public class SucursalDTO implements Serializable {
 
     private Long id;
     private String direccion;
-    private String ciudad;
 
     public SucursalDTO() {
     }
@@ -25,7 +24,6 @@ public class SucursalDTO implements Serializable {
         if (sucursalEntity != null) {
             this.id = sucursalEntity.getId();
             this.direccion = sucursalEntity.getDireccion();
-            this.ciudad = sucursalEntity.getCiudad();
         }
     }
 
@@ -43,14 +41,6 @@ public class SucursalDTO implements Serializable {
 
     public void setId(long pId) {
         this.id = pId;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String pCiudad) {
-        this.ciudad = pCiudad;
     }
 
 }

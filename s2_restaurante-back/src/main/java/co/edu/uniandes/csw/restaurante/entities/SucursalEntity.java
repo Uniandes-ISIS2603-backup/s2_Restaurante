@@ -78,7 +78,6 @@ public class SucursalEntity extends BaseEntity implements Serializable {
     }
 
     private String direccion;
-    private String ciudad;
 
     public List<ReservaEntity> getReservas() {
         return reservas;
@@ -102,14 +101,6 @@ public class SucursalEntity extends BaseEntity implements Serializable {
 
     public void setDireccion(String pDireccion) {
         this.direccion = pDireccion;
-    }
-
-    public String getCiudad() {
-        return this.ciudad;
-    }
-
-    public void setCiudad(String pCiudad) {
-        this.ciudad = pCiudad;
     }
 
 }
