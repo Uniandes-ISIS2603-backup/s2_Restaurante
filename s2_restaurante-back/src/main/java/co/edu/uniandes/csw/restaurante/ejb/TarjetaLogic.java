@@ -126,8 +126,8 @@ public class TarjetaLogic {
     public void deleteTarjeta(Long tarjetasId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar la Tarjeta con id = {0}", tarjetasId);
         // Note que, por medio de la inyección de dependencias se llama al método "delete(id)" que se encuentra en la persistencia.
-        List<PuntoEntity> books = getTarjeta(tarjetasId).getPuntos();
-        if (books != null && !books.isEmpty()) {
+        List<PuntoEntity> puntos = getTarjeta(tarjetasId).getPuntos();
+        if (puntos != null && !puntos.isEmpty()) {
             throw new BusinessLogicException("No se puede borrar la Tarjeta con id = " + tarjetasId + " porque tiene puntos asociados");
         }
         persistence.delete(tarjetasId);

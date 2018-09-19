@@ -56,7 +56,7 @@ public class TarjetaLogicTest {
     private PodamFactory factory = new PodamFactoryImpl();
 
     @Inject
-    private TarjetaLogic TarjetaLogic;
+    private TarjetaLogic tarjetaLogic;
 
     @PersistenceContext
     private EntityManager em;
@@ -139,7 +139,7 @@ public class TarjetaLogicTest {
     @Test
     public void createTarjetaTest() throws BusinessLogicException {
         TarjetaEntity newEntity = factory.manufacturePojo(TarjetaEntity.class);
-        TarjetaEntity result = TarjetaLogic.createTarjeta(newEntity);
+        TarjetaEntity result = tarjetaLogic.createTarjeta(newEntity);
         Assert.assertNotNull(result);
         TarjetaEntity entity = em.find(TarjetaEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
@@ -156,7 +156,7 @@ public class TarjetaLogicTest {
     public void createTarjetaConMismoNombreTest() throws BusinessLogicException {
         TarjetaEntity newEntity = factory.manufacturePojo(TarjetaEntity.class);
         newEntity.setClienteID(data.get(0).getClienteID());
-        TarjetaLogic.createTarjeta(newEntity);
+        tarjetaLogic.createTarjeta(newEntity);
     }
 
     /**
@@ -164,7 +164,7 @@ public class TarjetaLogicTest {
      */
     @Test
     public void getTarjetasTest() {
-        List<TarjetaEntity> list = TarjetaLogic.getTarjetas();
+        List<TarjetaEntity> list = tarjetaLogic.getTarjetas();
         Assert.assertEquals(data.size(), list.size());
         for (TarjetaEntity entity : list) {
             boolean found = false;
@@ -183,7 +183,7 @@ public class TarjetaLogicTest {
     @Test
     public void getTarjetaTest() {
         TarjetaEntity entity = data.get(0);
-        TarjetaEntity resultEntity = TarjetaLogic.getTarjeta(entity.getId());
+        TarjetaEntity resultEntity = tarjetaLogic.getTarjeta(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getClienteID(), resultEntity.getClienteID());
@@ -197,7 +197,7 @@ public class TarjetaLogicTest {
         TarjetaEntity entity = data.get(0);
         TarjetaEntity pojoEntity = factory.manufacturePojo(TarjetaEntity.class);
         pojoEntity.setId(entity.getId());
-        TarjetaLogic.updateTarjeta(pojoEntity.getId(), pojoEntity);
+        tarjetaLogic.updateTarjeta(pojoEntity.getId(), pojoEntity);
         TarjetaEntity resp = em.find(TarjetaEntity.class, entity.getId());
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getClienteID(), resp.getClienteID());
@@ -211,7 +211,7 @@ public class TarjetaLogicTest {
     @Test
     public void deleteTarjetaTest() throws BusinessLogicException {
         TarjetaEntity entity = data.get(1);
-        TarjetaLogic.deleteTarjeta(entity.getId());
+        tarjetaLogic.deleteTarjeta(entity.getId());
         TarjetaEntity deleted = em.find(TarjetaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -224,6 +224,6 @@ public class TarjetaLogicTest {
     @Test(expected = BusinessLogicException.class)
     public void deleteTarjetaConPuntosAsociadosTest() throws BusinessLogicException {
         TarjetaEntity entity = data.get(0);
-        TarjetaLogic.deleteTarjeta(entity.getId());
+        tarjetaLogic.deleteTarjeta(entity.getId());
     }
 }

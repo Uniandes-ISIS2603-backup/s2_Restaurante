@@ -52,15 +52,5 @@ public class TarjetaEntity extends BaseEntity implements Serializable {
 
     public void setClienteID(ClienteEntity clienteID) {
         this.clienteID = clienteID;
-    }
-    /*
-    public SucurlasnEntity getSucursalID() {
-        return sucursalID;
-    }
-
-    public void setSucursalID(SucursalEntity sucursalID) {
-        this.sucursalID = sucursalID;
-    }
-    */
-            
+    }        
 }

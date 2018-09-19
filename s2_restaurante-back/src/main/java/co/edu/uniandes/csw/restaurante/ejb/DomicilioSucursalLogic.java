@@ -40,9 +40,9 @@ import javax.inject.Inject;
  * @author Juan Hidalgo
  */
 @Stateless
-public class DomicilioSucursalLogica {
+public class DomicilioSucursalLogic {
 
-    private static final Logger LOGGER = Logger.getLogger(DomicilioSucursalLogica.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(DomicilioSucursalLogic.class.getName());
 
     @Inject
     private DomicilioPersistence domicilioPersistence;

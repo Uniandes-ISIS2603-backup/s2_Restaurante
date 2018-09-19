@@ -6,8 +6,6 @@
 package co.edu.uniandes.csw.restaurante.dtos;
 
 import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
-import co.edu.uniandes.csw.restaurante.entities.DomicilioEntity;
-import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 

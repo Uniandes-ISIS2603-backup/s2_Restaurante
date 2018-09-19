@@ -57,8 +57,6 @@ public class TarjetaPuntoLogicTest {
     private PodamFactory factory = new PodamFactoryImpl();
 
     @Inject
-    private TarjetaLogic tarjetaLogic;
-    @Inject
     private TarjetaPuntoLogic tarjetaPuntosLogic;
 
     @PersistenceContext
@@ -69,7 +67,7 @@ public class TarjetaPuntoLogicTest {
 
     private List<TarjetaEntity> data = new ArrayList<TarjetaEntity>();
 
-    private List<PuntoEntity> PuntosData = new ArrayList();
+    private List<PuntoEntity> puntosData = new ArrayList();
 
     /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
@@ -122,14 +120,16 @@ public class TarjetaPuntoLogicTest {
         for (int i = 0; i < 3; i++) {
             PuntoEntity Puntos = factory.manufacturePojo(PuntoEntity.class);
             em.persist(Puntos);
-            PuntosData.add(Puntos);
+            puntosData.add(Puntos);
         }
         for (int i = 0; i < 3; i++) {
             TarjetaEntity entity = factory.manufacturePojo(TarjetaEntity.class);
             em.persist(entity);
             data.add(entity);
-            if (i == 0) {
-                PuntosData.get(i).setTarjeta(entity);
+            for(PuntoEntity punto:puntosData)
+            {
+                punto.setTarjeta(entity);
+                entity.getPuntos().add(punto);
             }
         }
     }
@@ -140,11 +140,11 @@ public class TarjetaPuntoLogicTest {
     @Test
     public void addPuntosTest() {
         TarjetaEntity entity = data.get(0);
-        PuntoEntity PuntoEntity = PuntosData.get(1);
-        PuntoEntity response = tarjetaPuntosLogic.addPunto(PuntoEntity.getId(), entity.getId());
+        PuntoEntity puntoEntity = puntosData.get(1);
+        PuntoEntity response = tarjetaPuntosLogic.addPunto(puntoEntity.getId(), entity.getId());
 
         Assert.assertNotNull(response);
-        Assert.assertEquals(PuntoEntity.getId(), response.getId());
+        Assert.assertEquals(puntoEntity.getId(), response.getId());
     }
 
     /**
@@ -153,8 +153,9 @@ public class TarjetaPuntoLogicTest {
      */
     @Test
     public void getPuntosTest() {
+        
         List<PuntoEntity> list = tarjetaPuntosLogic.getPuntos(data.get(0).getId());
-
+        
         Assert.assertEquals(1, list.size());
     }
 

@@ -198,7 +198,7 @@ public class PuntoLogicTest {
     /**
      * Prueba para eliminar un Punto.
      *
-     * @throws co.edu.uniandes.csw.Puntostore.exceptions.BusinessLogicException
+     * @throws co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException
      */
     @Test
     public void deletePuntoTest() throws BusinessLogicException {
@@ -208,14 +208,4 @@ public class PuntoLogicTest {
         Assert.assertNull(deleted);
     }
 
-    /**
-     * Prueba para eliminar un Punto.
-     *
-     * @throws co.edu.uniandes.csw.Puntostore.exceptions.BusinessLogicException
-     */
-    @Test(expected = BusinessLogicException.class)
-    public void deletePuntoWithClienteTest() throws BusinessLogicException {
-        PuntoEntity entity = data.get(1);
-        puntoLogic.deletePunto(entity.getId());
-    }
 }
