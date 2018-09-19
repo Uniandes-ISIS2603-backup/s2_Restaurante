@@ -101,7 +101,7 @@ public class PuntoPersistenceTest {
         Assert.assertNotNull(result);
         
         PuntoEntity entity = em.find(PuntoEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getFecha(), entity.getFecha());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
         
     }
      /**
