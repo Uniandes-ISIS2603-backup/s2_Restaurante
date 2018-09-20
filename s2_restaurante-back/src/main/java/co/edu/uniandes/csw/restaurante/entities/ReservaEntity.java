@@ -20,7 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ReservaEntity extends BaseEntity implements Serializable{
     
     private static final long serialVersionUID =1L;
-    @Temporal(TemporalType.DATE)
+ 
     private Date hora;
     private Integer cantidadPersonas;
 

@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.restaurante.persistence;
 
 
+import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
 import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
 import java.time.Clock;
 import java.util.List;
@@ -66,19 +67,19 @@ public class ReservaPersistence {
         return query.getResultList();
     }
     
-    /**
+      /**
      * Busca si hay alguna reserva con el id que se envía de argumento
      *
-     * @param reservaId: id correspondiente a la reserva buscada.
+     * @param reservasId: id correspondiente a la reserva buscada.
      * @return una reserva.
      */
-    public ReservaEntity find(Long reservaId) {
-        LOGGER.log(Level.INFO, "Consultando reserva con id={0}", reservaId);
+    public ReservaEntity find(Long reservasId) {
+        LOGGER.log(Level.INFO, "Consultando la reserva con id={0}", reservasId);
         /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
         el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
-        Suponga que es algo similar a "select * from ReservaEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
+        Suponga que es algo similar a "select * from AuthorEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
          */
-        return em.find(ReservaEntity.class, reservaId);
+        return em.find(ReservaEntity.class, reservasId);
     }
     
     /**
