@@ -47,6 +47,7 @@ public class ClienteDTO {
 
     /**
      * Retorna el ID del cliente
+     * @return long
      */
     public Long getId() {
         return this.id;

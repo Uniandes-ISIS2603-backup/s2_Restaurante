@@ -117,13 +117,12 @@ public class TarjetaPersistence {
      * @return null si no existe ninguna Tarjeta con el nombre del argumento.
      * Si existe alguna devuelve la primera.
      */
-    public TarjetaEntity findBySucursal(ClienteEntity name,SucursalEntity sucursal) {
+    public TarjetaEntity findByCliente(ClienteEntity name) {
         LOGGER.log(Level.INFO, "Consultando Tarjeta por nombre ", name);
         // Se crea un query para buscar Tarjetaes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From TarjetaEntity e where e.cliente = :name and e.sucursal = :sucursal", TarjetaEntity.class);
+        TypedQuery query = em.createQuery("Select e From TarjetaEntity e where e.cliente = :name", TarjetaEntity.class);
         // Se remplaza el placeholder ":name" con el valor del argumento 
         query = query.setParameter ("name", name);
-        query = query.setParameter("sucursal", sucursal);
         // Se invoca el query se obtiene la lista resultado
         List<TarjetaEntity> sameName = query.getResultList();
         TarjetaEntity result;

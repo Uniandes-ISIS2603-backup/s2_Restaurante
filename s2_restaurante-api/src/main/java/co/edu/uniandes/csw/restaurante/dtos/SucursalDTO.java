@@ -15,8 +15,8 @@ import java.io.Serializable;
 public class SucursalDTO implements Serializable {
 
     private Long id;
+  
     private String direccion;
-    private String ciudad;
 
     public SucursalDTO() {
     }
@@ -25,7 +25,7 @@ public class SucursalDTO implements Serializable {
         if (sucursalEntity != null) {
             this.id = sucursalEntity.getId();
             this.direccion = sucursalEntity.getDireccion();
-            this.ciudad = sucursalEntity.getCiudad();
+          
         }
     }
 
@@ -41,16 +41,15 @@ public class SucursalDTO implements Serializable {
         this.direccion = pDireccion;
     }
 
-    public void setId(long pId) {
+    public void setId(Long pId) {
         this.id = pId;
     }
-
-    public String getCiudad() {
-        return ciudad;
+   
+    public SucursalEntity toEntity() {
+        SucursalEntity entity = new SucursalEntity();
+        entity.setId(this.id);
+        entity.setDireccion(this.direccion);
+        return entity;
     }
-
-    public void setCiudad(String pCiudad) {
-        this.ciudad = pCiudad;
-    }
-
+    
 }

@@ -22,6 +22,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @javax.persistence.Entity
 public class ClienteEntity extends BaseEntity implements Serializable {
 
+        
+    private static final long serialVersionUID =1L;
+
     @PodamExclude
     @OneToOne
     private TarjetaEntity tarjeta;

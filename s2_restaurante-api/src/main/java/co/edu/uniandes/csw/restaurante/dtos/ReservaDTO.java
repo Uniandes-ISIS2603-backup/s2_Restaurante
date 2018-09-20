@@ -30,6 +30,18 @@ public class ReservaDTO{
      */
     private int cantidadPersonas;
 
+    /*
+    * Relación a un cliente  
+    * dado que esta tiene cardinalidad 1.
+     */
+    private ClienteDTO cliente;   
+    
+    
+     /*
+    * Relación a una sucursal  
+    * dado que esta tiene cardinalidad 1.
+     */
+    private SucursalDTO sucursal;
     
     //METODOS
     
@@ -41,13 +53,45 @@ public class ReservaDTO{
     /**
      * Construye una ReservaDTO a partir de una ReservaEntity
      *
-     * @param entity ClienteEntity
+     * @param entity ReservaEntity
      */
     public ReservaDTO(ReservaEntity entity) {
-        this.id = entity.getId();
-        this.hora = entity.getHora();
-        this.cantidadPersonas = entity.getCantidadPersonas();
+        
+        if(entity!=null)
+        { this.id = entity.getId();
+          this.hora = entity.getHora();
+          this.cantidadPersonas = entity.getCantidadPersonas();
+            
+          if (entity.getCliente()!= null) {
+                this.cliente = new ClienteDTO(entity.getCliente());
+            } else {
+                this.cliente = null;
+            }
+           if (entity.getSucursal() != null) {
+                this.sucursal = new SucursalDTO(entity.getSucursal());
+            } else {
+                this.sucursal = null;
+            }
+        }
     }
+    
+       public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
+    }
+
+    public SucursalDTO getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalDTO sucursal) {
+        this.sucursal = sucursal;
+    }
+    
+    
     /**
      * Metodo que retorna el id unico de una reserva
      *
@@ -113,6 +157,15 @@ public class ReservaDTO{
         entity.setId(this.id);
         entity.setHora(this.hora);
         entity.setCantidadPersonas(this.cantidadPersonas);
+        
+        if (this.cliente != null) {
+            entity.setCliente(this.cliente.toEntity());
+        }
+        
+        if (this.sucursal != null) {
+            entity.setSucursal(this.sucursal.toEntity());
+        }
+        
         return entity;
     }
    

@@ -8,8 +8,10 @@ package co.edu.uniandes.csw.restaurante.ejb;
 import co.edu.uniandes.csw.restaurante.entities.MesaEntity;
 import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.restaurante.persistence.ClientePersistence;
 import co.edu.uniandes.csw.restaurante.persistence.MesaPersistence;
 import co.edu.uniandes.csw.restaurante.persistence.ReservaPersistence;
+import co.edu.uniandes.csw.restaurante.persistence.SucursalPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +31,11 @@ public class ReservaLogic {
     @Inject
     private ReservaPersistence persistence;
     
+    @Inject
+    private ClientePersistence clientePersistence;
+    
+    @Inject
+    private SucursalPersistence sucursalPersistence;
     /**
      * Se encarga de crear una Reservan en la base de datos.
      *
@@ -40,16 +47,24 @@ public class ReservaLogic {
       
         
         
-//        if(reservaEntity != null && reservaEntity.getHora()!= null && reservaEntity.getSucursal() != null && reservaEntity.getMesa() != null && persistence.sePuedeReservar(reservaEntity.getHora(), reservaEntity.getSucursal().getId(), reservaEntity.getMesa().getId()))
-//        {
+        if (reservaEntity.getCliente()== null || clientePersistence.find(reservaEntity.getCliente().getId()) == null) {
+          throw new BusinessLogicException("El cliente es inválido");
+        }
+        
+        if (reservaEntity.getSucursal()== null || sucursalPersistence.find(reservaEntity.getSucursal().getId()) == null) {
+          throw new BusinessLogicException("La sucursal es inválida");
+        }
+        
+        if(reservaEntity == null || reservaEntity.getCantidadPersonas() == null || reservaEntity.getHora() == null)
+        {
+            throw new BusinessLogicException("La información que se recibió no es suficiente para crear la reserva ");
+        }
+        else{
             ReservaEntity newReservaEntity = persistence.create(reservaEntity);
             LOGGER.log(Level.INFO, "Termina proceso de creación de la reserva");
             return newReservaEntity;
-//        }
-        
-//        else throw new BusinessLogicException("Ya existe una reserva con la misma información proporcionada");
-          
-        
+        }   
+              
     }
     
     /**

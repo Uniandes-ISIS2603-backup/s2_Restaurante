@@ -8,6 +8,8 @@ package co.edu.uniandes.csw.restaurante.entities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
 
 @javax.persistence.Entity
@@ -18,6 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ReservaEntity extends BaseEntity implements Serializable{
     
     private static final long serialVersionUID =1L;
+    @Temporal(TemporalType.DATE)
     private Date hora;
     private Integer cantidadPersonas;
 
@@ -32,7 +35,7 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @javax.persistence.ManyToOne()
     MesaEntity mesa;
-
+    
     public ClienteEntity getCliente() {
         return cliente;
     }

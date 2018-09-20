@@ -58,8 +58,8 @@ public class TarjetaLogic {
     public TarjetaEntity createTarjeta(TarjetaEntity tarjetaEntity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la Tarjeta");
         // Verifica la regla de negocio que dice que no puede haber dos Tarjetaes con el mismo nombre
-        if (persistence.findBySucursal(tarjetaEntity.getClienteID(),tarjetaEntity.getSucursal()) != null) {
-            throw new BusinessLogicException("Ya existe una Tarjeta con el cliente \"" + tarjetaEntity.getClienteID()+ "\" en la sucursal "+tarjetaEntity.getSucursal());
+        if (persistence.findByCliente(tarjetaEntity.getClienteID()) != null) {
+            throw new BusinessLogicException("Ya existe una Tarjeta con el cliente \"" + tarjetaEntity.getClienteID()+"\"");
         }
         // Invoca la persistencia para crear la Tarjeta
         persistence.create(tarjetaEntity);

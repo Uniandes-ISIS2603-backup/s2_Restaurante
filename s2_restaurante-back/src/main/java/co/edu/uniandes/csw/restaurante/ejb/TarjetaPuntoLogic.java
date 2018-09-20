@@ -28,6 +28,7 @@ import co.edu.uniandes.csw.restaurante.entities.TarjetaEntity;
 import co.edu.uniandes.csw.restaurante.persistence.PuntoPersistence;
 import co.edu.uniandes.csw.restaurante.persistence.TarjetaPersistence;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -94,7 +95,9 @@ public class TarjetaPuntoLogic {
         for (PuntoEntity punto : puntoList) {
             Calendar c = Calendar.getInstance();
             c.add(Calendar.YEAR, -1);
-            if(punto.getFecha().before(c)){
+            Calendar revisar = new GregorianCalendar();
+            revisar.setTime(punto.getFecha());
+            if(revisar.before(c)){
                 punto.setTarjeta(null);
                 puntoList.remove(punto);
             }

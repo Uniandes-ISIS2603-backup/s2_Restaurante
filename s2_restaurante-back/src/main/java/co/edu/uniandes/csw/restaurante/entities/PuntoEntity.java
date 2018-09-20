@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.restaurante.entities;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -32,13 +32,13 @@ public class PuntoEntity extends BaseEntity implements Serializable {
     /**
      * fecha creacion del punto
      */
-    private Calendar fecha;
+    private Date fecha;
     
     /**
      * retorna fecha creacion 
      * @return fecha creacion
      */
-    public Calendar getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
@@ -46,7 +46,7 @@ public class PuntoEntity extends BaseEntity implements Serializable {
      * cambia la fecha
      * @param fecha 
      */
-    public void setFecha(Calendar fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 }
