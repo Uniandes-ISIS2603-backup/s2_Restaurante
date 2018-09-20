@@ -8,13 +8,11 @@ import co.edu.uniandes.csw.restaurante.dtos.CalificacionDTO;
 import co.edu.uniandes.csw.restaurante.ejb.CalificacionLogic;
 import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -31,7 +29,7 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @RequestScoped
 public class CalificacionResource {
-   
+   private static final Logger LOGGER = Logger.getLogger(CalificacionResource.class.getName());
     /**
      * Crea una nueva calificacion con la informacion dada
      * @param calificacion la calificacion que se desea guardar
