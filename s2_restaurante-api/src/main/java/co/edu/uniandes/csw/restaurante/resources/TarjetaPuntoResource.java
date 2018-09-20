@@ -6,6 +6,12 @@
 package co.edu.uniandes.csw.restaurante.resources;
 
 import co.edu.uniandes.csw.restaurante.dtos.PuntoDTO;
+import co.edu.uniandes.csw.restaurante.dtos.TarjetaDetailDTO;
+import co.edu.uniandes.csw.restaurante.ejb.PuntoLogic;
+import co.edu.uniandes.csw.restaurante.ejb.TarjetaPuntoLogic;
+import co.edu.uniandes.csw.restaurante.entities.PuntoEntity;
+import co.edu.uniandes.csw.restaurante.entities.TarjetaEntity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,9 +33,11 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class TarjetaPuntoResource {
     private static final Logger LOGGER = Logger.getLogger(TarjetaPuntoResource.class.getName());
-    /*@Inject
-    private PuntoLogic puntologic;
-    */
+    @Inject
+    private PuntoLogic puntoLogic;
+    @Inject
+    private TarjetaPuntoLogic tarjetaPuntoLogic;
+    
      /**
      * Asocia un libro existente con un autor existente
      *
@@ -42,13 +50,13 @@ public class TarjetaPuntoResource {
     @POST
     @Path("{PuntosId: \\d+}")
     public PuntoDTO addPunto(@PathParam("tarjetaId") Long tarjetaId, @PathParam("puntoId") Long puntoId) {
-        /*LOGGER.log(Level.INFO, "TarjetaPuntoResource addPunto: input: tarjetaId {0} , puntoId {1}", new Object[]{tarjetaId, puntoId});
+        LOGGER.log(Level.INFO, "TarjetaPuntoResource addPunto: input: tarjetaId {0} , puntoId {1}", new Object[]{tarjetaId, puntoId});
         if (puntoLogic.getPunto(puntoId) == null) {
             throw new WebApplicationException("El recurso /punto/" + puntoId + " no existe.", 404);
         }
         PuntoDTO detailDTO = new PuntoDTO(tarjetaPuntoLogic.addPunto(tarjetaId, puntoId));
-        LOGGER.log(Level.INFO, "AuthorPuntosResource addPunto: output: {0}", detailDTO);*/
-        return null;
+        LOGGER.log(Level.INFO, "AuthorPuntosResource addPunto: output: {0}", detailDTO);
+        return detailDTO;
     }
     /**
      * Busca y devuelve todos los libros que existen en un autor.
@@ -59,13 +67,17 @@ public class TarjetaPuntoResource {
      */
     @GET
     public List<PuntoDTO> getPuntos(@PathParam("tarjetaId") Long tarjetaId) {
-        /*LOGGER.log(Level.INFO, "TarjetaPuntoResource getPuntos: input: {0}", tarjetaId);
-        List<PuntoDTO> lista = PuntosListEntity2DTO(puntoLogic.getPuntos(tarjetaId));
+        LOGGER.log(Level.INFO, "TarjetaPuntoResource getPuntos: input: {0}", tarjetaId);
+        List<PuntoDTO> lista = PuntosListEntity2DetailDTO(tarjetaPuntoLogic.getPuntos(tarjetaId));
         LOGGER.log(Level.INFO, "TarjetaPuntoResource getPuntos: output: {0}", lista.toString());
 
         return lista;
-    */  
-        return null;
     }
-    
+     private List<PuntoDTO> PuntosListEntity2DetailDTO(List<PuntoEntity> entityList) {
+        List<PuntoDTO> list = new ArrayList<>();
+        for (PuntoEntity entity : entityList) {
+            list.add(new PuntoDTO(entity));
+        }
+        return list;
+    }
 }
