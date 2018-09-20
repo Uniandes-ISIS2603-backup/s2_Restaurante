@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Obtener clientes",
+			"name": "Obtener todos los clientes",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -16,12 +16,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/clientes",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -67,13 +67,10 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f17681a8-a74b-4313-ab65-972dbd3d63a5",
+						"id": "97f8389d-6c6e-4b87-9788-66a13a871a56",
 						"type": "text/javascript",
 						"exec": [
-							"var data = JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"new_name_e\",data.name);",
-							"postman.setGlobalVariable(\"new_id_e\",data.id);",
-							"tests[\"No genera error en el Post\"] == responseCode.code === 200;"
+							""
 						]
 					}
 				}
@@ -88,15 +85,15 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Pepito Perez\", \"metodoPago\":\"efectivo\"\n}"
+					"raw": "{\n\t\"nombre\": \"Pepa\", \n\t\"metodoPago\":\"tarjeta\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/s2_restaurante-api/api/clientes",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8000",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -137,7 +134,7 @@
 			]
 		},
 		{
-			"name": "Obtener la información de un cliente",
+			"name": "Obtener un cliente",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -146,17 +143,17 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8000/s2_restaurante-api/api/clientes/id",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/1",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8000",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
 						"clientes",
-						"id"
+						"1"
 					]
 				},
 				"description": "Consulta un cliente de la aplicación. La petición no tiene cuerpo. Se envía el ID del cliente deseado por la URL de la petición."
@@ -194,7 +191,7 @@
 			]
 		},
 		{
-			"name": "Actualiza la información de un cliente",
+			"name": "Edita un cliente",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -203,17 +200,17 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8000/s2_restaurante-api/api/clientes/id",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/1",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8000",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
 						"clientes",
-						"id"
+						"1"
 					]
 				},
 				"description": "Actualiza un cliente de la aplicación. La petición debe contener los nuevos datos del cliente que desea modificarse. Se envía el ID del cliente deseado por la URL de la petición."
@@ -260,17 +257,17 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8000/s2_restaurante-api/api/clientes/id",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/1",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8000",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
 						"clientes",
-						"id"
+						"1"
 					]
 				},
 				"description": "Elimina un cliente de la aplicación. La petición no tiene cuerpo. Se envía el ID del cliente que desea eliminarse por la URL de la petición."
@@ -306,6 +303,115 @@
 					"body": ""
 				}
 			]
+		},
+		{
+			"name": "Crear un nuevo cliente 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Pepito\", \n\t\"metodoPago\":\"efectivo\"\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Crea un nuevo cliente."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un cliente inexistente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/43342",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"43342"
+					]
+				},
+				"description": "Obtiene un cliente que no ha sido creado. "
+			},
+			"response": []
+		},
+		{
+			"name": "Edita un cliente que no existe",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Camilo\", \n\t\"metodoPago\":\"tarjeta\"\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/23435",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"23435"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina un cliente que no existe",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/34234",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"34234"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

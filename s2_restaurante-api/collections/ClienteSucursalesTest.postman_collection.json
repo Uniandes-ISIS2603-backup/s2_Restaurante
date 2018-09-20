@@ -1,0 +1,682 @@
+{
+	"info": {
+		"_postman_id": "a9fdd44b-7e1c-40ac-85ff-fe7f6fbdcee5",
+		"name": "ClienteSucursalesTest",
+		"description": "# Introduction\nPrueba los servicios del recurso ClienteSucursales\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Crea una nueva sucursal"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Crea un cliente"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Crea un cliente 2"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Agrega una sucursal a un cliente"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Agrega un cliente inexistente a una sucursal"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Obtener una sucursal de un cliente"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Obtener una sucursal no asociado con un cliente"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Obtener las sucursales de un cliente"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Asociar sucursales a un cliente"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Asociar sucursales inexistentes a un autor. "
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Borrar un cliente"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				},
+				"description": "Borrar una sucursal"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+							"protocol": "http",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"s2_restaurante-api",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	]
+}
