@@ -12,6 +12,8 @@ import co.edu.uniandes.csw.restaurante.persistence.ClientePersistence;
 import co.edu.uniandes.csw.restaurante.persistence.MesaPersistence;
 import co.edu.uniandes.csw.restaurante.persistence.ReservaPersistence;
 import co.edu.uniandes.csw.restaurante.persistence.SucursalPersistence;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +38,9 @@ public class ReservaLogic {
     
     @Inject
     private SucursalPersistence sucursalPersistence;
+    
+    @Inject
+    private MesaPersistence mesaPersistence;
     /**
      * Se encarga de crear una Reservan en la base de datos.
      *
@@ -43,10 +48,23 @@ public class ReservaLogic {
      * @return Objeto de ReservaEntity con los datos nuevos y su ID.
      */
     public ReservaEntity createReserva(ReservaEntity reservaEntity) throws BusinessLogicException {
+        
+        ReservaEntity newReservaEntity = new ReservaEntity();
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la reserva");
       
+        if(reservaEntity == null || reservaEntity.getCantidadPersonas() == null || reservaEntity.getHora() == null)
+        {
+            throw new BusinessLogicException("La información que se recibió no es suficiente para crear la reserva");
+        }
         
+        Calendar hora = new GregorianCalendar();
+        hora.setTime(reservaEntity.getHora());
         
+        if( !( (hora.get(Calendar.HOUR_OF_DAY)>=12 && hora.get(Calendar.HOUR_OF_DAY)<15) || (hora.get(Calendar.HOUR_OF_DAY)>=18 && hora.get(Calendar.HOUR_OF_DAY)<22) ) )
+        {
+           throw new BusinessLogicException("El restaurante solo atiende de 12M a 3 PM y de 6PM A 10PM");
+        }
+            
         if (reservaEntity.getCliente()== null || clientePersistence.find(reservaEntity.getCliente().getId()) == null) {
           throw new BusinessLogicException("El cliente es inválido");
         }
@@ -55,16 +73,22 @@ public class ReservaLogic {
           throw new BusinessLogicException("La sucursal es inválida");
         }
         
-        if(reservaEntity == null || reservaEntity.getCantidadPersonas() == null || reservaEntity.getHora() == null)
-        {
-            throw new BusinessLogicException("La información que se recibió no es suficiente para crear la reserva ");
+        if (reservaEntity.getMesa()== null || mesaPersistence.find(reservaEntity.getMesa().getId()) == null) {
+          throw new BusinessLogicException("La mesa es inválida");
         }
-        else{
-            ReservaEntity newReservaEntity = persistence.create(reservaEntity);
+        
+        
+        if(persistence.sePuedeReservar(reservaEntity))
+        {
+            newReservaEntity = persistence.create(reservaEntity);
             LOGGER.log(Level.INFO, "Termina proceso de creación de la reserva");
-            return newReservaEntity;
-        }   
-              
+           
+        }
+        
+        else{
+            throw new BusinessLogicException("Ya existe una reserva con la misma sucursal, en la misma mesa y a la misma hora");
+        }
+         return newReservaEntity;      
     }
     
     /**

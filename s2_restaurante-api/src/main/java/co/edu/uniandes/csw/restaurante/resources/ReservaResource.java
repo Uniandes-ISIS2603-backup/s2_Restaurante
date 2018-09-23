@@ -111,7 +111,7 @@ public class ReservaResource {
     @PUT
     @Path("{reservasId: \\d+}")
     public ReservaDTO updateReserva(@PathParam("reservasId") Long reservasId, ReservaDTO reserva)  throws WebApplicationException {
-        LOGGER.log(Level.INFO, "ReservaResouce updateReserva: input: id:{0} , editorial: {1}", new Object[]{reservasId, reserva.toString()});
+        LOGGER.log(Level.INFO, "ReservaResouce updateReserva: input: id:{0} , reserva: {1}", new Object[]{reservasId, reserva.toString()});
         reserva.setId(reservasId);
         if (reservaLogic.getReserva(reservasId)== null) {
             throw new WebApplicationException("El recurso /reservas/" + reservasId + " no existe.", 404);

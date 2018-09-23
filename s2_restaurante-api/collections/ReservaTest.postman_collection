@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "7a489289-0087-4ca7-ac18-1da268d0444d",
-		"name": "Pruebas cascarón",
+		"name": "Reserva Test",
 		"description": "Pruebas sobre los servicios de la clase ReservaResource.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -32,15 +32,15 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"nombre\":\"Juan\", \"metodoPago\":\"Efectivo\", \"id\":\"1\"}"
+					"raw": "{\"nombre\":\"Juan\", \"metodoPago\":\"Efectivo\"}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/clientes",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -79,12 +79,12 @@
 					"raw": "{\"direccion\":\"Calle 12\"}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/sucursales",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/sucursales",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -95,16 +95,17 @@
 			"response": []
 		},
 		{
-			"name": "Crear una reserva sin fecha",
+			"name": "Crear una mesa",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "b4d91c1f-a6af-49f9-9734-8cc260dc12d1",
+						"id": "f0dfa799-df6b-47c2-8074-13a18363ea47",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"No crea con fecha invalida\"] = responseCode.code === 412;",
-							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"La fecha es inválida\");"
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_mesa\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
 						]
 					}
 				}
@@ -119,15 +120,58 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"cantidadPersonas\":\"3\", \"sucursal\": { \"id\" : {{new_id_sucursal}} }, \"cliente\": { \"id\" : {{new_id_cliente}} }}"
+					"raw": "{\"numero\":\"101\", \"sucursal\": { \"id\" : {{new_id_sucursal}} }}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/reservas",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/mesas",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"mesas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una reserva sin fecha",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46a76156-38e6-4169-8088-9060d452dd79",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No crea con fecha invalida\"] = responseCode.code === 412;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"La información que se recibió no es suficiente para crear la reserva\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cantidadPersonas\":\"3\", \"sucursal\": { \"id\" : {{new_id_sucursal}} }, \"cliente\": { \"id\" : {{new_id_cliente}} }}\t"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -164,15 +208,101 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"cantidadPersonas\":\"3\",\"hora\":\"2012-04-21T18:25:43-04:00\", \"sucursal\": { \"id\" : {{new_id_sucursal}} }, \"cliente\": { \"id\" : {{new_id_cliente}} }}"
+					"raw": "{\n\t\"cantidadPersonas\":\"3\",\n\t\"hora\":\"2014-02-01T21:10:56\",\n\t\"sucursal\": { \n\t\t\"id\" : {{new_id_sucursal}}},\n\t\"cliente\": \n\t\t{ \"id\" : {{new_id_cliente}} },\n\t\"mesa\": { \"id\" : {{new_id_mesa}} }\n\t\n\t\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/reservas",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"reservas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una reserva a la misma hora, en la misma sucursal y en la misma mesa.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f8147ed-6b9f-4667-87f1-d4d333601449",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No crea con reserva repetida\"] = responseCode.code === 412;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Ya existe una reserva con la misma sucursal, en la misma mesa y a la misma hora\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cantidadPersonas\":\"3\",\n\t\"hora\":\"2014-02-01T21:10:56\",\n\t\"sucursal\": { \n\t\t\"id\" : {{new_id_sucursal}}},\n\t\"cliente\": \n\t\t{ \"id\" : {{new_id_cliente}} },\n\t\"mesa\": { \"id\" : {{new_id_mesa}} }\n\t\n\t\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"reservas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una reserva por fuera de el horario establecido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5cbb57b8-200b-4ff6-aa56-e50fdbbb7e87",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No crea reservas por fuera del horario establecido\"] = responseCode.code === 412;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El restaurante solo atiende de 12M a 3 PM y de 6PM A 10PM\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cantidadPersonas\":\"3\",\n\t\"hora\":\"2014-02-01T16:00:56.321\",\n\t\"sucursal\": { \n\t\t\"id\" : {{new_id_sucursal}}},\n\t\"cliente\": \n\t\t{ \"id\" : {{new_id_cliente}} },\n\t\"mesa\": { \"id\" : {{new_id_mesa}} }\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -184,17 +314,31 @@
 		},
 		{
 			"name": "Dar la colección de todas las reservas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2984ff7f-3bd4-41d9-ba23-1ca8ba7e614e",
+						"type": "text/javascript",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get all\"] = responseCode.code === 200;",
+							"tests[\"reservas count\"] = data.length >= 0;"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/reservas",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -207,12 +351,36 @@
 		},
 		{
 			"name": "Dar una reserva que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0ece4c7-ebe6-4f3e-86ec-c59bb30b03ba",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No consulta con id que no existe\"] = responseCode.code === 404; ",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /reservas/0 no existe.\");"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": ""
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"reservas",
+						"0"
+					]
 				}
 			},
 			"response": []
@@ -246,12 +414,12 @@
 					"raw": "{\"cantidadPersonas\":\"3\",\"hora\":\"2015-04-21T18:25:43-04:00\", \"sucursal\": { \"id\" : {{new_id_sucursal}} }, \"cliente\": { \"id\" : {{new_id_cliente}} }}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/reservas/{{new_id_reserva}}",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas/{{new_id_reserva}}",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -264,23 +432,81 @@
 			"response": []
 		},
 		{
+			"name": "Actualizar una reserva que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "141ed890-e080-4f60-9569-66a2c4a50ca3",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No elimina con id que no existe\"] = responseCode.code === 404; ",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /reservas/0 no existe.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cantidadPersonas\":\"3\",\n\t\"hora\":\"2014-02-01T21:10:56\",\n\t\"sucursal\": { \n\t\t\"id\" : {{new_id_sucursal}}},\n\t\"cliente\": \n\t\t{ \"id\" : {{new_id_cliente}} },\n\t\"mesa\": { \"id\" : {{new_id_mesa}} }\n\t\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"reservas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Dar una reserva por su id.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "03447099-834f-431e-832d-f0fd8669c2da",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/reservas/43",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas/{{new_id_reserva}}",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
 						"reservas",
-						"43"
+						"{{new_id_reserva}}"
 					]
 				},
 				"description": "Se espera una reserva nula."
@@ -306,12 +532,12 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/reservas/{{new_id_reserva}}",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas/{{new_id_reserva}}",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -320,6 +546,42 @@
 					]
 				},
 				"description": "Se espera un null como respuesta."
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una reserva que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5275b50f-891f-4962-a1a0-38befc57ea43",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No elimina con id que no existe\"] = responseCode.code === 404; ",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /reservas/0 no existe.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"reservas",
+						"0"
+					]
+				}
 			},
 			"response": []
 		}

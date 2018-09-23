@@ -99,12 +99,12 @@ public class ReservaPersistence {
         LOGGER.log(Level.INFO, "Saliendo de actualizar la reserva con id = {0}", reservaEntity.getId());
         return em.merge(reservaEntity);
     }
-    public boolean sePuedeReservar(Date fecha, Long idSucursal, Long idMesa){
+    public boolean sePuedeReservar(ReservaEntity reserva){
 
-        TypedQuery query = em.createQuery("SELECT u FROM ReservaEntity u WHERE hora = :fecha AND sucursal_id = :sucursal AND mesa_id = :mesa", ReservaEntity.class);
-        query.setParameter("sucursal", idSucursal);
-        query.setParameter("fecha", fecha, TemporalType.DATE);
-        query.setParameter("mesa", idMesa);
+        TypedQuery query = em.createQuery("SELECT u FROM ReservaEntity u WHERE (u.hora = :fecha AND u.sucursal.id = :sucursal AND u.mesa.id = :mesa)", ReservaEntity.class);
+        query.setParameter("sucursal", reserva.getSucursal().getId());
+        query.setParameter("fecha", reserva.getHora());
+        query.setParameter("mesa", reserva.getMesa().getId());
 
         return query.getResultList().isEmpty();
       }

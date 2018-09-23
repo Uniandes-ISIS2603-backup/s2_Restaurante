@@ -43,6 +43,13 @@ public class ReservaDTO{
      */
     private SucursalDTO sucursal;
     
+      /*
+    * Relación a una mesa  
+    * dado que esta tiene cardinalidad 1.
+     */
+    private MesaDTO mesa;
+
+    
     //METODOS
     
     /**
@@ -67,10 +74,15 @@ public class ReservaDTO{
             } else {
                 this.cliente = null;
             }
-           if (entity.getSucursal() != null) {
+          if (entity.getSucursal() != null) {
                 this.sucursal = new SucursalDTO(entity.getSucursal());
             } else {
                 this.sucursal = null;
+            }
+          if (entity.getMesa() != null) {
+                this.mesa = new MesaDTO(entity.getMesa());
+            } else {
+                this.mesa = null;
             }
         }
     }
@@ -146,6 +158,14 @@ public class ReservaDTO{
         this.id = id;
     }
     
+    public MesaDTO getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(MesaDTO mesa) {
+        this.mesa = mesa;
+    }
+    
     
         /**
      * Convierte un DTO a Entity
@@ -164,6 +184,10 @@ public class ReservaDTO{
         
         if (this.sucursal != null) {
             entity.setSucursal(this.sucursal.toEntity());
+        }
+        
+        if (this.mesa != null) {
+            entity.setMesa(this.mesa.toEntity());
         }
         
         return entity;

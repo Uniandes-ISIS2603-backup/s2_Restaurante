@@ -17,7 +17,13 @@ public class MesaDTO implements Serializable {
 
     private Long id;
     private int numero;
-
+    
+    /*
+    * Relación a un cliente  
+    * dado que esta tiene cardinalidad 1.
+     */
+    private SucursalDTO sucursal; 
+    
     public MesaDTO() {
     }
 
@@ -25,6 +31,12 @@ public class MesaDTO implements Serializable {
         if (mesaEntity != null) {
             this.id = mesaEntity.getId();
             this.numero = mesaEntity.getNumero();
+            
+            if (mesaEntity.getSucursal() != null) {
+                this.sucursal = new SucursalDTO(mesaEntity.getSucursal());
+            } else {
+                this.sucursal = null;
+            }
         }
     }
 
@@ -43,11 +55,24 @@ public class MesaDTO implements Serializable {
     public void setId(Long pId) {
         this.id= pId;
     }
+
+    public SucursalDTO getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalDTO sucursal) {
+        this.sucursal = sucursal;
+    }
     
     public MesaEntity toEntity() {
         MesaEntity entity = new MesaEntity();
         entity.setId(this.id);
         entity.setNumero(this.numero);
+        
+        if (this.sucursal != null) {
+            entity.setSucursal(this.sucursal.toEntity());
+        }
         return entity;
+        
     }
 }

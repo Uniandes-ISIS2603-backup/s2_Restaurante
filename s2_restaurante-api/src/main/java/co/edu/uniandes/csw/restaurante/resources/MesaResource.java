@@ -29,7 +29,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author jp.romero12
  */
-@Path("mezas")
+@Path("mesas")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
