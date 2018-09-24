@@ -118,20 +118,21 @@ public class TarjetaPuntoLogicTest {
      */
     private void insertData() {
         for (int i = 0; i < 3; i++) {
-            PuntoEntity Puntos = factory.manufacturePojo(PuntoEntity.class);
-            em.persist(Puntos);
-            puntosData.add(Puntos);
+            PuntoEntity punto = factory.manufacturePojo(PuntoEntity.class);
+            em.persist(punto);
+            puntosData.add(punto); 
         }
+        
         for (int i = 0; i < 3; i++) {
             TarjetaEntity entity = factory.manufacturePojo(TarjetaEntity.class);
             em.persist(entity);
             data.add(entity);
-            for(PuntoEntity punto:puntosData)
-            {
-                punto.setTarjeta(entity);
-                entity.getPuntos().add(punto);
-            }
         }
+        
+        PuntoEntity punto = factory.manufacturePojo(PuntoEntity.class);
+        punto.setTarjeta(data.get(0));
+        em.persist(punto);
+        data.get(0).getPuntos().add(punto);
     }
 
     /**
@@ -139,7 +140,7 @@ public class TarjetaPuntoLogicTest {
      */
     @Test
     public void addPuntosTest() {
-        TarjetaEntity entity = data.get(0);
+        TarjetaEntity entity = data.get(1);
         PuntoEntity puntoEntity = puntosData.get(1);
         PuntoEntity response = tarjetaPuntosLogic.addPunto(puntoEntity.getId(), entity.getId());
 

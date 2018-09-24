@@ -101,7 +101,7 @@ public class TarjetaPersistenceTest {
         Assert.assertNotNull(result);
         
         TarjetaEntity entity = em.find(TarjetaEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getClienteID(), entity.getClienteID());
+        Assert.assertEquals(newEntity.getCliente(), entity.getCliente());
         
     }
      /**

@@ -6,7 +6,9 @@
 package co.edu.uniandes.csw.restaurante.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -17,13 +19,15 @@ import uk.co.jemos.podam.common.PodamExclude;
 @javax.persistence.Entity
 public class TarjetaEntity extends BaseEntity implements Serializable {
     
+    
+    
     @PodamExclude
-    @OneToMany
-    private List<PuntoEntity> puntos;
+    @OneToMany(mappedBy = "tarjeta", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<PuntoEntity> puntos = new ArrayList<PuntoEntity>();
     
     @PodamExclude
     @OneToOne
-    private ClienteEntity clienteID;
+    private ClienteEntity cliente;
     
     @PodamExclude
     @OneToOne
@@ -45,11 +49,11 @@ public class TarjetaEntity extends BaseEntity implements Serializable {
         this.puntos = puntos;
     }
 
-    public ClienteEntity getClienteID() {
-        return clienteID;
+    public ClienteEntity getCliente() {
+        return cliente;
     }
 
-    public void setClienteID(ClienteEntity clienteID) {
-        this.clienteID = clienteID;
+    public void setCliente(ClienteEntity clienteID) {
+        this.cliente = clienteID;
     }        
 }

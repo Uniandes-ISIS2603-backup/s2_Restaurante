@@ -23,10 +23,15 @@ SOFTWARE.
  */
 package co.uniandes.csw.restaurante.test.logic;
 
+import co.edu.uniandes.csw.restaurante.ejb.ClienteLogic;
+import co.edu.uniandes.csw.restaurante.ejb.PuntoLogic;
 import co.edu.uniandes.csw.restaurante.ejb.TarjetaLogic;
+import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
 import co.edu.uniandes.csw.restaurante.entities.PuntoEntity;
 import co.edu.uniandes.csw.restaurante.entities.TarjetaEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.restaurante.persistence.ClientePersistence;
+import co.edu.uniandes.csw.restaurante.persistence.PuntoPersistence;
 import co.edu.uniandes.csw.restaurante.persistence.TarjetaPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,9 +69,8 @@ public class TarjetaLogicTest {
     @Inject
     private UserTransaction utx;
 
-    private List<TarjetaEntity> data = new ArrayList<TarjetaEntity>();
-
-    private List<PuntoEntity> puntosData = new ArrayList();
+    private List<TarjetaEntity> data = new ArrayList<>();  
+    private List<ClienteEntity> clienteData = new ArrayList<>();
 
     /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
@@ -109,6 +113,7 @@ public class TarjetaLogicTest {
     private void clearData() {
         em.createQuery("delete from PuntoEntity").executeUpdate();
         em.createQuery("delete from TarjetaEntity").executeUpdate();
+        em.createQuery("delete from ClienteEntity").executeUpdate();
     }
 
     /**
@@ -116,19 +121,28 @@ public class TarjetaLogicTest {
      * pruebas.
      */
     private void insertData() {
-        for (int i = 0; i < 3; i++) {
-            PuntoEntity Puntos = factory.manufacturePojo(PuntoEntity.class);
-            em.persist(Puntos);
-            puntosData.add(Puntos);
+       
+         for (int i = 0; i < 3; i++) {
+            ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
+            em.persist(cliente);
+            clienteData.add(cliente);
         }
         for (int i = 0; i < 3; i++) {
             TarjetaEntity entity = factory.manufacturePojo(TarjetaEntity.class);
+            entity.setCliente(clienteData.get(0));
+
             em.persist(entity);
             data.add(entity);
-            if (i == 0) {
-                puntosData.get(i).setTarjeta(entity);
-            }
         }
+        PuntoEntity punto = factory.manufacturePojo(PuntoEntity.class);
+        punto.setTarjeta(data.get(1));
+        em.persist(punto);
+        data.get(1).getPuntos().add(punto);
+        
+        ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
+        em.persist(cliente);
+        clienteData.add(cliente);
+
     }
 
     /**
@@ -138,12 +152,21 @@ public class TarjetaLogicTest {
      */
     @Test
     public void createTarjetaTest() throws BusinessLogicException {
+        
+   
+        PodamFactory factory = new PodamFactoryImpl();
         TarjetaEntity newEntity = factory.manufacturePojo(TarjetaEntity.class);
+        ClienteEntity cliente = clienteData.get(3);
+        newEntity.setCliente(cliente);
+        
         TarjetaEntity result = tarjetaLogic.createTarjeta(newEntity);
+        
         Assert.assertNotNull(result);
+        
         TarjetaEntity entity = em.find(TarjetaEntity.class, result.getId());
+        Assert.assertEquals(newEntity.getCliente(), entity.getCliente());
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getClienteID(), entity.getClienteID());
+        Assert.assertEquals(newEntity.getCliente(), entity.getCliente());
     }
 
     /**
@@ -155,7 +178,7 @@ public class TarjetaLogicTest {
     @Test(expected = BusinessLogicException.class)
     public void createTarjetaConMismoNombreTest() throws BusinessLogicException {
         TarjetaEntity newEntity = factory.manufacturePojo(TarjetaEntity.class);
-        newEntity.setClienteID(data.get(0).getClienteID());
+        newEntity.setCliente(clienteData.get(0));
         tarjetaLogic.createTarjeta(newEntity);
     }
 
@@ -186,7 +209,7 @@ public class TarjetaLogicTest {
         TarjetaEntity resultEntity = tarjetaLogic.getTarjeta(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
-        Assert.assertEquals(entity.getClienteID(), resultEntity.getClienteID());
+        Assert.assertEquals(entity.getCliente(), resultEntity.getCliente());
     }
 
     /**
@@ -200,7 +223,7 @@ public class TarjetaLogicTest {
         tarjetaLogic.updateTarjeta(pojoEntity.getId(), pojoEntity);
         TarjetaEntity resp = em.find(TarjetaEntity.class, entity.getId());
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
-        Assert.assertEquals(pojoEntity.getClienteID(), resp.getClienteID());
+        Assert.assertEquals( pojoEntity.getCliente(), resp.getCliente());
     }
 
     /**
@@ -210,7 +233,7 @@ public class TarjetaLogicTest {
      */
     @Test
     public void deleteTarjetaTest() throws BusinessLogicException {
-        TarjetaEntity entity = data.get(1);
+        TarjetaEntity entity = data.get(0);
         tarjetaLogic.deleteTarjeta(entity.getId());
         TarjetaEntity deleted = em.find(TarjetaEntity.class, entity.getId());
         Assert.assertNull(deleted);
@@ -223,7 +246,8 @@ public class TarjetaLogicTest {
      */
     @Test(expected = BusinessLogicException.class)
     public void deleteTarjetaConPuntosAsociadosTest() throws BusinessLogicException {
-        TarjetaEntity entity = data.get(0);
+        TarjetaEntity entity = data.get(1);
+        
         tarjetaLogic.deleteTarjeta(entity.getId());
     }
 }

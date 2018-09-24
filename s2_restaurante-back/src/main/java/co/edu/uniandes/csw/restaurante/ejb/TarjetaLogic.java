@@ -57,9 +57,14 @@ public class TarjetaLogic {
      */
     public TarjetaEntity createTarjeta(TarjetaEntity tarjetaEntity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la Tarjeta");
-        // Verifica la regla de negocio que dice que no puede haber dos Tarjetaes con el mismo nombre
-        if (persistence.findByCliente(tarjetaEntity.getClienteID()) != null) {
-            throw new BusinessLogicException("Ya existe una Tarjeta con el cliente \"" + tarjetaEntity.getClienteID()+"\"");
+        
+        //Verifica la regla de negocio de que una tarjeta siempre tenga cliente
+        if (tarjetaEntity.getCliente() == null) {
+            throw new BusinessLogicException("No se puede crear una tarjeta sin un cliente \"");
+        }
+//         Verifica la regla de negocio que dice que no puede haber dos Tarjetaes con el mismo nombre
+        if (persistence.findByCliente(tarjetaEntity.getCliente()) != null) {
+            throw new BusinessLogicException("Ya existe una Tarjeta con el cliente \"" + tarjetaEntity.getCliente()+"\"");
         }
         // Invoca la persistencia para crear la Tarjeta
         persistence.create(tarjetaEntity);
@@ -126,11 +131,16 @@ public class TarjetaLogic {
     public void deleteTarjeta(Long tarjetasId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar la Tarjeta con id = {0}", tarjetasId);
         // Note que, por medio de la inyección de dependencias se llama al método "delete(id)" que se encuentra en la persistencia.
-        List<PuntoEntity> puntos = getTarjeta(tarjetasId).getPuntos();
-        if (puntos != null && !puntos.isEmpty()) {
-            throw new BusinessLogicException("No se puede borrar la Tarjeta con id = " + tarjetasId + " porque tiene puntos asociados");
+        
+        
+        if(getTarjeta(tarjetasId).getPuntos().isEmpty())
+        {
+            persistence.delete(tarjetasId);
+            LOGGER.log(Level.INFO, "Termina proceso de borrar la Tarjeta con id = {0}", tarjetasId);  
+
         }
-        persistence.delete(tarjetasId);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar la Tarjeta con id = {0}", tarjetasId);
+        else
+            throw new BusinessLogicException("No se puede borrar la Tarjeta con id = " + tarjetasId + " porque tiene puntos asociados" + getTarjeta(tarjetasId).getPuntos().size() );
+
     }
 }

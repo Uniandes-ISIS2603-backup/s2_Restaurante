@@ -48,7 +48,7 @@ public class ClienteTarjetaLogic {
         LOGGER.log(Level.INFO, "Inicia proceso de asociarle una Tarjeta al cliente con id = {0}", clientesId);
         ClienteEntity clienteEntity = clientePersistence.find(clientesId);
         TarjetaEntity TarjetaEntity = TarjetaPersistence.find(TarjetasId);
-        TarjetaEntity.setClienteID(clienteEntity);
+        TarjetaEntity.setCliente(clienteEntity);
         LOGGER.log(Level.INFO, "Termina proceso de asociarle una Tarjeta al cliente con id = {0}", clientesId);
         return TarjetaPersistence.find(TarjetasId);
     }

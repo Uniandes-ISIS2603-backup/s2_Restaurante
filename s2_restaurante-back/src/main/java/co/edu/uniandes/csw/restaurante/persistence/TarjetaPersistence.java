@@ -42,7 +42,7 @@ public class TarjetaPersistence {
         Es similar a "INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);" en SQL.
          */
         em.persist(tarjetaEntity);
-        LOGGER.log(Level.INFO, "Saliendo de crear una tarjeta nuevo");
+        LOGGER.log(Level.INFO, "Saliendo de crear una tarjeta nueva");
         return tarjetaEntity;
     }
     
@@ -120,20 +120,19 @@ public class TarjetaPersistence {
     public TarjetaEntity findByCliente(ClienteEntity name) {
         LOGGER.log(Level.INFO, "Consultando Tarjeta por nombre ", name);
         // Se crea un query para buscar Tarjetaes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From TarjetaEntity e where e.cliente = :name", TarjetaEntity.class);
-        // Se remplaza el placeholder ":name" con el valor del argumento 
+        TypedQuery query = em.createQuery("SELECT u FROM TarjetaEntity u where u.cliente = :name", TarjetaEntity.class);
+        // Se remplaza el placeholder ":name" con el valor del argumento SELECT u FROM ReservaEntity u WHERE (u.hora = :fecha
         query = query.setParameter ("name", name);
         // Se invoca el query se obtiene la lista resultado
         List<TarjetaEntity> sameName = query.getResultList();
-        TarjetaEntity result;
-        if (sameName == null) {
+        TarjetaEntity result = new TarjetaEntity();
+        if (sameName.isEmpty()) {
             result = null;
-        } else if (sameName.isEmpty()) {
-            result = null;
-        } else {
+        } 
+         else {
             result = sameName.get(0);
         }
-        LOGGER.log(Level.INFO, "Saliendo de consultar Tarjeta con el cliente ", name.getNombre());
+        LOGGER.log(Level.INFO, "Saliendo de consultar Tarjeta con el cliente ", name);
         return result;
     }
 }

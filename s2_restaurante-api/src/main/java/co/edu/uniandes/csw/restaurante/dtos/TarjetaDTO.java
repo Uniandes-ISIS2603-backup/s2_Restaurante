@@ -15,6 +15,12 @@ import java.io.Serializable;
 public class TarjetaDTO implements Serializable{
     private Long id;
     
+    /*
+    * Relación a un cliente  
+    * dado que esta tiene cardinalidad 1.
+     */
+    private ClienteDTO cliente;  
+    
     /**
      *
      */
@@ -31,6 +37,11 @@ public class TarjetaDTO implements Serializable{
         if (tarjetaEntity != null) {
             this.id = tarjetaEntity.getId();
                    
+            if (tarjetaEntity.getCliente()!= null) {
+                this.cliente = new ClienteDTO(tarjetaEntity.getCliente());
+            } else {
+                this.cliente = null;
+            }
         }
     }   
 
@@ -41,11 +52,23 @@ public class TarjetaDTO implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
+    }
 
     
     public TarjetaEntity toEntity() {
         TarjetaEntity tarjetaEntity = new TarjetaEntity();
         tarjetaEntity.setId(this.id);
+        if (this.cliente != null) {
+            tarjetaEntity.setCliente(this.cliente.toEntity());
+        }
+        
         return tarjetaEntity;
     }
     
