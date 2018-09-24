@@ -8,6 +8,20 @@
 	"item": [
 		{
 			"name": "Obtener todos los clientes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "386ed4b7-0865-437b-a4c6-6bfa696bb4c0",
+						"type": "text/javascript",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get All\"] = responseCode.code === 200;",
+							"tests[\"clientes count\"] = data.length >= 1;"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -67,10 +81,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "97f8389d-6c6e-4b87-9788-66a13a871a56",
+						"id": "fd580e20-bcc5-470e-b219-e07e03dac75a",
 						"type": "text/javascript",
 						"exec": [
-							""
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_a\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
 						]
 					}
 				}
@@ -85,7 +102,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Pepa\", \n\t\"metodoPago\":\"tarjeta\"\n}"
+					"raw": "{\n\t\"nombre\": \"Peppa\", \n\t\"metodoPago\":\"tarjeta\"\n}"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
@@ -135,6 +152,20 @@
 		},
 		{
 			"name": "Obtener un cliente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7a328c30-0cbd-45cc-b7db-934b1a9adff5",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -143,7 +174,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/1",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/{{new_id_a}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -153,7 +184,7 @@
 						"s2_restaurante-api",
 						"api",
 						"clientes",
-						"1"
+						"{{new_id_a}}"
 					]
 				},
 				"description": "Consulta un cliente de la aplicación. La petición no tiene cuerpo. Se envía el ID del cliente deseado por la URL de la petición."
@@ -192,15 +223,34 @@
 		},
 		{
 			"name": "Edita un cliente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "88e1bafd-b718-4a91-8a3d-47a0a0e544b6",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Put\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"nombre\": \"Jefferson\", \n\t\"metodoPago\":\"tarjeta\"\n}"
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/1",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/{{new_id_a}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -210,7 +260,7 @@
 						"s2_restaurante-api",
 						"api",
 						"clientes",
-						"1"
+						"{{new_id_a}}"
 					]
 				},
 				"description": "Actualiza un cliente de la aplicación. La petición debe contener los nuevos datos del cliente que desea modificarse. Se envía el ID del cliente deseado por la URL de la petición."
@@ -249,6 +299,18 @@
 		},
 		{
 			"name": "Eliminar cliente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74f3b705-caa0-4392-af42-9ab2501a5ec8",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -257,7 +319,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/1",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/{{new_id_a2}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -267,7 +329,7 @@
 						"s2_restaurante-api",
 						"api",
 						"clientes",
-						"1"
+						"{{new_id_a2}}"
 					]
 				},
 				"description": "Elimina un cliente de la aplicación. La petición no tiene cuerpo. Se envía el ID del cliente que desea eliminarse por la URL de la petición."
@@ -306,6 +368,21 @@
 		},
 		{
 			"name": "Crear un nuevo cliente 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f71a1c43-c37e-45f7-8ef1-ed017af9caef",
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_a2\",data.id);",
+							"tests[\"No genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -316,7 +393,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Pepito\", \n\t\"metodoPago\":\"efectivo\"\n}"
+					"raw": "{\n\t\"nombre\": \"Fulanito\", \n\t\"metodoPago\":\"efectivo\"\n}"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
@@ -336,13 +413,26 @@
 			"response": []
 		},
 		{
-			"name": "Obtener un cliente inexistente",
+			"name": "Obtener un cliente que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b1be599-6c70-4a10-a909-c5af33cca8ca",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No se deberia obtener un cliente con un id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /clientes/0 no existe.\");"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/43342",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/0",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -352,7 +442,7 @@
 						"s2_restaurante-api",
 						"api",
 						"clientes",
-						"43342"
+						"0"
 					]
 				},
 				"description": "Obtiene un cliente que no ha sido creado. "
@@ -361,6 +451,19 @@
 		},
 		{
 			"name": "Edita un cliente que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "000fb9da-caf0-478e-98a9-17e5592853f5",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No se deberia actualizar un cliente con id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /clientes/0 no existe.\");"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -392,12 +495,25 @@
 		},
 		{
 			"name": "Elimina un cliente que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50682924-54f2-4c15-bc17-c3bba2323917",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No se deberia borrar un cliente con un id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /clientes/0 no existe.\");"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/34234",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/0",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -407,9 +523,22 @@
 						"s2_restaurante-api",
 						"api",
 						"clientes",
-						"34234"
+						"0"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borra el cliente 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": ""
+				},
+				"description": "Elimina el segundo cliente creado. "
 			},
 			"response": []
 		}
