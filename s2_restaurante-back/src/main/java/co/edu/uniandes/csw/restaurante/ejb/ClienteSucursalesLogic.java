@@ -113,7 +113,7 @@ public class ClienteSucursalesLogic {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar una sucursal del cliente con id = {0}", clientesId);
         ClienteEntity clienteEntity = clientePersistence.find(clientesId);
         SucursalEntity sucursalEntity = sucursalPersistence.find(sucursalesId);
-        sucursalEntity.getClientes().remove(clientesId);
+        sucursalEntity.getClientes().remove(clienteEntity);
         LOGGER.log(Level.INFO, "Termina proceso de borrar un libro del author con id = {0}", clientesId);
     }
 }
