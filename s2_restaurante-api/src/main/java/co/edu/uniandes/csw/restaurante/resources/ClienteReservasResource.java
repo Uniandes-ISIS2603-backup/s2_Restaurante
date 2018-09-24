@@ -6,9 +6,11 @@
 package co.edu.uniandes.csw.restaurante.resources;
 
 import co.edu.uniandes.csw.restaurante.dtos.ReservaDTO;
+import co.edu.uniandes.csw.restaurante.ejb.ClienteLogic;
 import co.edu.uniandes.csw.restaurante.ejb.ClienteReservasLogic;
 import co.edu.uniandes.csw.restaurante.ejb.ReservaLogic;
 import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
+import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -40,9 +42,12 @@ public class ClienteReservasResource {
     @Inject
     private ReservaLogic reservaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     
+    @Inject
+    private ClienteLogic clienteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    
     
     /**
-     * Asocia un libro existente con un autor existente
+     * Asocia una reserva existente con un cliente existente
      *
      * @param clientesId El ID del cliente a el cual se le va a asociar la reserva
      * @param reservasId El ID de la reserva que se asocia
@@ -71,14 +76,38 @@ public class ClienteReservasResource {
      * 
      */
     @GET
-    public List<ReservaDTO> getReservas(@PathParam("clientesId") Long clientesId) {
+    public List<ReservaDTO> getReservas(@PathParam("clientesId") Long clientesId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "ClienteReservaResource getReservas: input: {0}", clientesId);
+        if (clienteLogic.getCliente(clientesId) == null) {
+            throw new WebApplicationException("El recurso /cllientes/" + clientesId + " no existe.", 404);
+        }
         List<ReservaDTO> listaDTO = reservaListEntity2DTO(clienteReservaLogic.getReservas(clientesId));
         LOGGER.log(Level.INFO, "ClienteReservaResource getReservas: output: {0}", listaDTO.toString());
         return listaDTO;
     }
     
         /**
+     * Busca y devuelve todas las reservas de un cliente.
+     *
+     * @param clientesId Identificador del cliente que se esta buscando.
+     * Este debe ser una cadena de dígitos.
+     * @return JSON {@link ReservaDTO} - Las reservas encontradas del cliente
+     * 
+     */
+    
+    @GET
+    @Path("{reservasId: \\d+}") 
+    public ReservaDTO getReserva(@PathParam("clientesId") Long clientesId, @PathParam("reservasId") Long reservasId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "ClienteReservaResource getReserva: input: {0}", clientesId);
+        if (reservaLogic.getReserva(reservasId) == null) {
+            throw new WebApplicationException("El recurso /reservas/" + reservasId + " no existe.", 404);
+        }
+        ReservaDTO reservaDTO = new ReservaDTO(clienteReservaLogic.getReserva(clientesId, reservasId));
+        LOGGER.log(Level.INFO, "ClienteReservaResource getReserva: output: {0}", reservaDTO.getId());
+        return reservaDTO;
+    }
+    
+     /**
      * Convierte una lista de ReservaEntity a una lista de ReservaDTO.
      *
      * @param entityList Lista de ReservaEntity a convertir.
@@ -116,13 +145,13 @@ public class ClienteReservasResource {
      */
     @DELETE
     @Path("{reservasId: \\d+}")
-    public void removeBook(@PathParam("clientesId") Long clientesId, @PathParam("reservasId") Long reservasId) {
-        LOGGER.log(Level.INFO, "AuthorBooksResource deleteReserva: input: clientesId {0} , reservasId {1}", new Object[]{clientesId, reservasId});
+    public void removeReserva(@PathParam("clientesId") Long clientesId, @PathParam("reservasId") Long reservasId) {
+        LOGGER.log(Level.INFO, "ClienteReservasResource deleteReserva: input: clientesId {0} , reservasId {1}", new Object[]{clientesId, reservasId});
         if (reservaLogic.getReserva(reservasId) == null) {
             throw new WebApplicationException("El recurso /reservas/" + reservasId + " no existe.", 404);
         }
         clienteReservaLogic.removeReserva(clientesId, reservasId);
-        LOGGER.info("ClienteReservaResource deleteBook: output: void");
+        LOGGER.info("ClienteReservaResource deleteReserva: output: void");
     }
     
   

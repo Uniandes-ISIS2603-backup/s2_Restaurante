@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "e4cb59ce-1903-4a38-9069-ef1c1dd3b01f",
+		"name": "ClienteReservasTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear un cliente 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4f24d77-135d-4e75-988e-7013cbf7cf4d",
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_cliente\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\":\"Juan\", \"metodoPago\":\"Efectivo\"}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una sucursal 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "07bd6ef2-9bac-420c-ab15-dcd0c50f8ff8",
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_sucursal\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"direccion\":\"Calle 112\"}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/sucursales",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"sucursales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una mesa 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0dfa799-df6b-47c2-8074-13a18363ea47",
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_mesa\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"numero\":\"121\", \"sucursal\": { \"id\" : {{new_id_sucursal}} }}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/mesas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"mesas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una mesa 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc0694cf-4838-48f7-9731-95c276d78161",
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_mesa2\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"numero\":\"201\", \"sucursal\": { \"id\" : {{new_id_sucursal2}} }}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/mesas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"mesas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una reserva 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d44853e7-85e9-4c42-8d04-d25c03c9df15",
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_reserva\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cantidadPersonas\":\"3\",\n\t\"hora\":\"2014-02-01T21:10:56\",\n\t\"sucursal\": { \n\t\t\"id\" : {{new_id_sucursal}}},\n\t\"cliente\": \n\t\t{ \"id\" : {{new_id_cliente}} },\n\t\"mesa\": { \"id\" : {{new_id_mesa}} }\n\t\n\t\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"reservas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una reserva 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8271c82a-b523-4c1c-9f0f-f033f739fd63",
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_reserva2\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cantidadPersonas\":\"4\",\n\t\"hora\":\"2014-02-01T21:10:56\",\n\t\"sucursal\": { \n\t\t\"id\" : {{new_id_sucursal}}},\n\t\"cliente\": \n\t\t{ \"id\" : {{new_id_cliente}} },\n\t\"mesa\": { \"id\" : {{new_id_mesa2}} }\n\t\n\t\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/reservas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"reservas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dar las reservas de un cliente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "881aa09e-b6f8-48f3-a76b-b49acb0fddb5",
+						"type": "text/javascript",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get all\"] = responseCode.code === 200;",
+							"tests[\"reservas count\"] = data.length >= 0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/{{new_id_cliente}}/reservas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"{{new_id_cliente}}",
+						"reservas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dar las reservas de un cliente que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e3c8f320-1e45-4749-801f-20845c1f18d2",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No consulta con id que no existe\"] = responseCode.code === 412; ",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El cliente con el ID 0 no existe.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/0/reservas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"0",
+						"reservas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dar la reserva especificada de un cliente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eb3be43f-1d48-437d-a613-609e9c20824b",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/{{new_id_cliente}}/reservas/{{new_id_reserva}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"{{new_id_cliente}}",
+						"reservas",
+						"{{new_id_reserva}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dar la reserva inexistente especificada de un cliente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "55616504-a6ed-460f-b32c-33c8b021d43d",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No consulta con id que no existe\"] = responseCode.code === 404; ",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /reservas/0 no existe.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/{{new_id_cliente}}/reservas/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"{{new_id_cliente}}",
+						"reservas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una reserva de un cliente en particular",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "05b8d92a-a748-4225-9bb7-f97e68c4c12d",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No genera error en el delete\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/{{new_id_cliente}}/reservas/{{new_id_reserva}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"{{new_id_cliente}}",
+						"reservas",
+						"{{new_id_reserva}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una reserva de un cliente inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8560f3d6-16fb-4f9d-8052-41b14a47e212",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"No consulta con id que no existe\"] = responseCode.code === 404; ",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /reservas/0 no existe.\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/clientes/{{new_id_cliente}}/reservas/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s2_restaurante-api",
+						"api",
+						"clientes",
+						"{{new_id_cliente}}",
+						"reservas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

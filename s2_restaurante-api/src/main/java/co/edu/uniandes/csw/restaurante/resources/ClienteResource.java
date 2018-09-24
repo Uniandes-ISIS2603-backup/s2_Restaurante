@@ -166,11 +166,11 @@ public class ClienteResource {
      * servicio.
      * @return El servicio de reservas para ese cliente en paricular.
      */
-//    @Path("{clientesId: \\d+}/reservas")
-//    public Class<ClienteSucursalesResource> getClienteSucursalesResource(@PathParam("clientesId") Long clientesId) throws BusinessLogicException {
-//        if (clienteLogic.getCliente(clientesId) == null) {
-//            throw new WebApplicationException("El recurso /clientes/" + clientesId + " no existe.", 404);
-//        }
-//        return ClienteSucursalesResource.class;
-//    }
+    @Path("{clientesId: \\d+}/reservas")
+    public Class<ClienteReservasResource> getClienteSucursalesResource(@PathParam("clientesId") Long clientesId) throws BusinessLogicException {
+        if (clienteLogic.getCliente(clientesId) == null) {
+            throw new WebApplicationException("El recurso /clientes/" + clientesId + " no existe.", 404);
+        }
+        return ClienteReservasResource.class;
+    }
 }
