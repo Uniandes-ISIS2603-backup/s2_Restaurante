@@ -55,10 +55,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8000/s2_restaurante/clientes",
+							"raw": "http://{{ip}}:8000/s2_restaurante/clientes",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{ip}}"
 							],
 							"port": "8000",
 							"path": [
@@ -130,10 +130,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8000/s2_restaurante/clientes",
+							"raw": "http://{{ip}}:8000/s2_restaurante/clientes",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{ip}}"
 							],
 							"port": "8000",
 							"path": [
@@ -200,10 +200,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8000/s2_restaurante/clientes/id",
+							"raw": "http://{{ip}}:8000/s2_restaurante/clientes/id",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{ip}}"
 							],
 							"port": "8000",
 							"path": [
@@ -276,10 +276,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8000/s2_restaurante/clientes/id",
+							"raw": "http://{{ip}}:8000/s2_restaurante/clientes/id",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{ip}}"
 							],
 							"port": "8000",
 							"path": [
@@ -345,10 +345,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8000/s2_restaurante/clientes/id",
+							"raw": "http://{{ip}}:8000/s2_restaurante/clientes/id",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{ip}}"
 							],
 							"port": "8000",
 							"path": [

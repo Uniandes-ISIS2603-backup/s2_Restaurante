@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:8080/s2_restaurante-api/api/platos",
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -16,12 +16,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/platos",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -41,12 +41,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/s2_restaurante-api/api/platos",
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{ip}}"
 							],
-							"port": "8080",
+							"port": "{{puerto}}",
 							"path": [
 								"s2_restaurante-api",
 								"api",
@@ -63,7 +63,7 @@
 			]
 		},
 		{
-			"name": "http://localhost:8080/s2_restaurante-api/api/platos",
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -72,12 +72,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/platos",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -97,12 +97,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/s2_restaurante-api/api/platos",
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{ip}}"
 							],
-							"port": "8080",
+							"port": "{{puerto}}",
 							"path": [
 								"s2_restaurante-api",
 								"api",
@@ -119,7 +119,7 @@
 			]
 		},
 		{
-			"name": "http://localhost:8080/s2_restaurante-api/api/platos",
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -128,12 +128,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/platos",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -153,12 +153,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/s2_restaurante-api/api/platos",
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{ip}}"
 							],
-							"port": "8080",
+							"port": "{{puerto}}",
 							"path": [
 								"s2_restaurante-api",
 								"api",
@@ -175,7 +175,7 @@
 			]
 		},
 		{
-			"name": "http://localhost:8080/s2_restaurante-api/api/platos",
+			"name": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -184,12 +184,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/s2_restaurante-api/api/platos",
+					"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{ip}}"
 					],
-					"port": "8080",
+					"port": "{{puerto}}",
 					"path": [
 						"s2_restaurante-api",
 						"api",
@@ -209,12 +209,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/s2_restaurante-api/api/platos",
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante-api/api/platos",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{ip}}"
 							],
-							"port": "8080",
+							"port": "{{puerto}}",
 							"path": [
 								"s2_restaurante-api",
 								"api",
