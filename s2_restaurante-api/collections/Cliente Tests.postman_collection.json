@@ -55,7 +55,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{ip}}:8000/s2_restaurante/clientes",
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante/clientes",
 							"protocol": "http",
 							"host": [
 								"{{ip}}"
@@ -130,7 +130,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{ip}}:8000/s2_restaurante/clientes",
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante/clientes",
 							"protocol": "http",
 							"host": [
 								"{{ip}}"
@@ -200,7 +200,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{ip}}:8000/s2_restaurante/clientes/id",
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante/clientes/id",
 							"protocol": "http",
 							"host": [
 								"{{ip}}"
@@ -276,7 +276,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{ip}}:8000/s2_restaurante/clientes/id",
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante/clientes/id",
 							"protocol": "http",
 							"host": [
 								"{{ip}}"
@@ -345,7 +345,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{ip}}:8000/s2_restaurante/clientes/id",
+							"raw": "http://{{ip}}:{{puerto}}/s2_restaurante/clientes/id",
 							"protocol": "http",
 							"host": [
 								"{{ip}}"
