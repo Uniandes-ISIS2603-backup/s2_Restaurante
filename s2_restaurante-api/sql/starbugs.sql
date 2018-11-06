@@ -1,3 +1,20 @@
-
-
-
+insert into CLIENTEENTITY (nombre, metodopago) values ('Tedda Cutchie', 'Efectivo');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Burton Ansill', 'Efectivo');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Jennee Thayre', 'Efectivo');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Valencia Jenckes', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Burlie Hatt', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Clark Illesley', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Talbot Brickell', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Ruthie Scamadine', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Heath Jagger', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Torrie Hagland', 'Efectivo');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Rosanna Kneebone', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Clyde Truelock', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Obie Grzelewski', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Humbert Lemary', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Jocko Jancik', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Josepha Kennifeck', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Wilma Fronsek', 'Efectivo');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Guido Merrick', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Humphrey Govan', 'Efectivo');
+insert into CLIENTEENTITY (nombre, metodopago) values ('Janine Seydlitz', 'Efectivo');
