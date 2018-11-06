@@ -26,7 +26,16 @@ public class PlatoDTO {
      * precio del plato
      */
     private Double precio;
-    
+    /**
+     * Construye un ClienteDTO a partir de un ClienteEntity
+     *
+     * @param entity ClienteEntity
+     */
+    public PlatoDTO(PlatoEntity entity) {
+        this.id = entity.getId();
+        this.name = entity.getNombre();
+        this.precio = entity.getPrecio();
+    }
     /**
      * Retorna el Id del plato
      */
@@ -79,8 +88,8 @@ public class PlatoDTO {
      *
      * @param entity PlatoEntity
      */
-    public PlatoDTO(PlatoEntity entity) {
-       // this.id = entity.getId();
+    public PlatoDTO() {
+       
      
     }
     
@@ -90,10 +99,10 @@ public class PlatoDTO {
      * @return Entity con los valores del DTO
      */
     public PlatoEntity toEntity() {
-       PlatoEntity entity = new PlatoEntity();
-       //calificacion.setId(this.id);
-      // cliente.setNombre(this.nombre);
-       //cliente.setMetodoPago(this.metodoPago);
-       return entity;
+       PlatoEntity platoEntity = new PlatoEntity();
+       platoEntity.setId(this.id);
+      platoEntity.setNombre(this.name);
+       platoEntity.setPrecio(this.precio);
+       return platoEntity;
    }
 }
