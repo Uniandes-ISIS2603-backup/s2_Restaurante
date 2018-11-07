@@ -60,13 +60,13 @@ insert into MesaEntity (numero, sucursal_id) values (290, 2);
 insert into MesaEntity (numero, sucursal_id) values (192, 2);
 
 --Reservas
-insert into RESERVAENTITY (hora, cantidadPersonas) values ('2018-02-12 06:34:20', 5);
-insert into RESERVAENTITY (hora, cantidadPersonas) values ('2018-08-08 20:34:25', 5);
-insert into RESERVAENTITY (hora, cantidadPersonas) values ('2018-06-30 04:24:35', 2);
-insert into RESERVAENTITY (hora, cantidadPersonas) values ('2018-03-10 13:40:39', 4);
-insert into RESERVAENTITY (hora, cantidadPersonas) values ('2018-10-05 02:04:31', 3);
-insert into RESERVAENTITY (hora, cantidadPersonas) values ('2018-09-02 22:02:17', 4);
-insert into RESERVAENTITY (hora, cantidadPersonas) values ('2017-11-27 12:45:22', 2);
-insert into RESERVAENTITY (hora, cantidadPersonas) values ('2017-11-07 13:37:43', 1);
-insert into RESERVAENTITY (hora, cantidadPersonas) values ('2018-03-28 19:49:52', 4);
-insert into RESERVAENTITY (hora, cantidadPersonas) values ('2018-04-16 12:11:09', 4);
+insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-02-12 06:34:20', 5, 1, 1, 2);
+insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-08-08 20:34:25', 5, 1, 2, 1);
+insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-06-30 04:24:35', 2, 1, 3, 3);
+insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-03-10 13:40:39', 4, 2, 4, 5);
+insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-10-05 02:04:31', 3, 2, 5, 2);
+insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-09-02 22:02:17', 4, 2, 1, 1);
+insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2017-11-27 12:45:22', 2, 2, 2, 6);
+insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2017-11-07 13:37:43', 1, 3, 3, 7);
+insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-03-28 19:49:52', 4, 3, 4, 4);
+insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-04-16 12:11:09', 4, 3, 5, 4);
