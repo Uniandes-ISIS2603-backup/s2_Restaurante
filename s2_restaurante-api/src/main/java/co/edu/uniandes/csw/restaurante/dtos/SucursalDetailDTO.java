@@ -27,8 +27,7 @@ public class SucursalDetailDTO extends SucursalDTO implements Serializable {
 
     private ArrayList<CalificacionDTO> calificaciones;
 
-    private ArrayList<PlatoDTO> platos;
-
+ 
     private ArrayList<MesaDTO> mesas;
 
     private ArrayList<ClienteDTO> clientes;
@@ -48,10 +47,7 @@ public class SucursalDetailDTO extends SucursalDTO implements Serializable {
             for (CalificacionEntity entityCalificaciones : sucursalEntity.getCalificaciones()) {
                 calificaciones.add(new CalificacionDTO(entityCalificaciones));
             }
-            platos = new ArrayList<>();
-            for (PlatoEntity entityPlatos : sucursalEntity.getPlatos()) {
-                platos.add(new PlatoDTO(entityPlatos));
-            }
+           
             mesas = new ArrayList<>();
             for (MesaEntity entityMesas : sucursalEntity.getMesas()) {
                 mesas.add(new MesaDTO(entityMesas));
@@ -85,14 +81,6 @@ public class SucursalDetailDTO extends SucursalDTO implements Serializable {
 
     public void setCalificaciones(ArrayList<CalificacionDTO> calificaciones) {
         this.calificaciones = calificaciones;
-    }
-
-    public ArrayList<PlatoDTO> getPlatos() {
-        return platos;
-    }
-
-    public void setPlatos(ArrayList<PlatoDTO> platos) {
-        this.platos = platos;
     }
 
     public ArrayList<MesaDTO> getMesas() {
