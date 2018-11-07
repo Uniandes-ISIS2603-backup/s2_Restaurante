@@ -11,7 +11,7 @@ insert into CLIENTEENTITY (nombre, metodopago) values ('Isabel Garcia', 'Tarjeta
 
 --Sucursales
 insert into SucursalEntity (direccion) values ('AV. Carrera 68 N° 72 - 43');
-insert into SucursalEntity (direccion) values ('AV. Carrera 68 N° 72 - 43');
+insert into SucursalEntity (direccion) values ('Calle 98 # 51 B - 91 Sector Buenavista');
 insert into SucursalEntity (direccion) values ('Calle 22 Nº 6-28');
 
 
