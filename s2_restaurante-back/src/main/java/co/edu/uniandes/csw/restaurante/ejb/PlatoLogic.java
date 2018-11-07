@@ -54,7 +54,7 @@ public class PlatoLogic {
      *
      * @return Colección de objetos de PlatoEntity.
      */
-    public List<PlatoEntity> getPaltos() {
+    public List<PlatoEntity> getPlatos() {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los platos");
         List<PlatoEntity> lista = persistence.findAll();
         LOGGER.log(Level.INFO, "Termina proceso de consultar todos los platos");
