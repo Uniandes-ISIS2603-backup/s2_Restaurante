@@ -140,6 +140,14 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable {
         this.tarjeta = pTarjeta;
     }
 
+    public ArrayList<SucursalDTO> getSucursales() {
+        return sucursales;
+    }
+
+    public void setSucursales(ArrayList<SucursalDTO> sucursales) {
+        this.sucursales = sucursales;
+    }
+
     /**
      * Retorna la calificacion del cliente
      *

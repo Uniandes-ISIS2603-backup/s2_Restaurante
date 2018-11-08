@@ -15,11 +15,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 
 /**
@@ -28,6 +30,8 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author ja.ortega
  */
+@Produces("application/json")
+@Consumes("application/json")
 @Stateless
 public class ClienteTarjetaResource {
 

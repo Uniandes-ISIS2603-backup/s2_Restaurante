@@ -50,9 +50,7 @@ public class CalificacionEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private SucursalEntity sucursal;
 
-    @PodamExclude
-    @ManyToOne
-    private ClienteEntity cliente;
+    
 
     private Double puntaje;
 
@@ -72,12 +70,6 @@ public class CalificacionEntity extends BaseEntity implements Serializable {
         this.puntaje = puntaje;
     }
 
-    public ClienteEntity getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
-    }
+    
 
 }

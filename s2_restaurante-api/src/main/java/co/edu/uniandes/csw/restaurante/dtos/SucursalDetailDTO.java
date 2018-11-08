@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.restaurante.dtos;
 
 import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
-import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
+import co.edu.uniandes.csw.restaurante.entities.SucursalEntity;
 import co.edu.uniandes.csw.restaurante.entities.DomicilioEntity;
 import co.edu.uniandes.csw.restaurante.entities.MesaEntity;
 import co.edu.uniandes.csw.restaurante.entities.PlatoEntity;
@@ -30,8 +30,6 @@ public class SucursalDetailDTO extends SucursalDTO implements Serializable {
  
     private ArrayList<MesaDTO> mesas;
 
-    private ArrayList<ClienteDTO> clientes;
-
     public SucursalDetailDTO(SucursalEntity sucursalEntity) {
         super(sucursalEntity);
         if (sucursalEntity != null) {
@@ -51,10 +49,6 @@ public class SucursalDetailDTO extends SucursalDTO implements Serializable {
             mesas = new ArrayList<>();
             for (MesaEntity entityMesas : sucursalEntity.getMesas()) {
                 mesas.add(new MesaDTO(entityMesas));
-            }
-            clientes = new ArrayList<>();
-            for (ClienteEntity entityClientes : sucursalEntity.getClientes()) {
-                clientes.add(new ClienteDTO(entityClientes));
             }
         }
     }
@@ -91,14 +85,44 @@ public class SucursalDetailDTO extends SucursalDTO implements Serializable {
         this.mesas = mesas;
     }
 
-    public ArrayList<ClienteDTO> getClientes() {
-        return clientes;
+    /**
+     * Transformar un DTO a un Entity
+     *
+     * @return un SucursalEntity con base en el DTO actual
+     */
+    @Override
+    public SucursalEntity toEntity() {
+        SucursalEntity entity = super.toEntity();
+        //Agrega al nuevo Entity la tarjeta del DTO
+        if (calificaciones != null) {
+            ArrayList<CalificacionEntity> calificacionesEntity = new ArrayList<>();
+            for (CalificacionDTO calificacionDTO : calificaciones) {
+                calificacionesEntity.add(calificacionDTO.toEntity());
+            }
+            entity.setCalificaciones(calificacionesEntity);
+            if (domicilios != null) {
+                ArrayList<DomicilioEntity> domiciliosEntity = new ArrayList<>();
+                for (DomicilioDTO domicilioDTO : domicilios) {
+                    domiciliosEntity.add(domicilioDTO.toEntity());
+                }
+                entity.setDomiclios(domiciliosEntity);
+            }
+            if (mesas != null) {
+                ArrayList<MesaEntity> mesaEntity = new ArrayList<>();
+                for (MesaDTO mesaDTO : mesas) {
+                    mesaEntity.add(mesaDTO.toEntity());
+                }
+                entity.setMesas(mesaEntity);
+            }
+            if (reservas != null) {
+                ArrayList<ReservaEntity> reservaEntity = new ArrayList<>();
+                for (ReservaDTO reservaDTO : reservas) {
+                    reservaEntity.add(reservaDTO.toEntity());
+                }
+                entity.setReservas(reservaEntity);
+            }
+        }
+        return entity;
     }
-
-    public void setClientes(ArrayList<ClienteDTO> clientes) {
-        this.clientes = clientes;
-    }
-
-    
 
 }

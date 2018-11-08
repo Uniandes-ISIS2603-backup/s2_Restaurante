@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.restaurante.ejb;
 import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.restaurante.persistence.CalificacionPersistence;
-import co.edu.uniandes.csw.restaurante.persistence.ClientePersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,10 +36,7 @@ public class CalificacionLogic
      */
     public CalificacionEntity createCalificacion(CalificacionEntity calificacionEntity) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de creación de la calificacion");
-        /*Valida la regla de negocio de que el cliente no puede ser nulo */
-        if (calificacionEntity.getCliente()==null) {
-            throw new BusinessLogicException("el cliente no puede ser nulo");
-        }
+        
         /*Valida la regla de negocio del rango de puntaje */
         if (calificacionEntity.getPuntaje()>= 5.0 || calificacionEntity.getPuntaje() <= 0.0  )
         {

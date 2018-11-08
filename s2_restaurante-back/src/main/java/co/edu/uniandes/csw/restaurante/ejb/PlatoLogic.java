@@ -41,9 +41,6 @@ public class PlatoLogic {
         if (platoEntity.getPrecio()==null|| platoEntity.getPrecio()<0.0) {
             throw new BusinessLogicException("El nombre del precio no puede ser nulo o negativo");
         }
-        if (platoEntity.getSucursal()==null) {
-            throw new BusinessLogicException("el plato tiene que pertenecer a una sucuarsal");
-        }
         PlatoEntity newPlatoEntity = persistence.create(platoEntity);
         LOGGER.log(Level.INFO, "Termina proceso de creación del plato");
         return newPlatoEntity;

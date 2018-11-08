@@ -28,10 +28,7 @@ public class CalificacionDTO {
      * sucursal la cual se esta calificando
      */
     private SucursalDTO sucursal;
-    /**
-     * cliente que califica la sucursal 
-     */
-    private ClienteDTO cliente ;
+    
     
     /**
      * Retorna el puntaje de la calificacion
@@ -64,21 +61,8 @@ public class CalificacionDTO {
     public void setSucursal(SucursalDTO pSucursal) {
         this.sucursal = pSucursal;
     }
-    /**
-     * Retorna el cliente que califica
-     */
-    public ClienteDTO getCliente() {
-        return cliente;
-    }
 
-    /**
-     * Modifica el puntaje de la calificacion
-     *
-     * @param pCliente - nuevo ID
-     */
-    public void setCliente(ClienteDTO pCliente) {
-        this.cliente = pCliente;
-    }
+
     /**
      * Retorna el Id de la calificacion
      */
@@ -103,6 +87,11 @@ public class CalificacionDTO {
     public CalificacionDTO(CalificacionEntity entity) {
         this.id = entity.getId();
         this.puntaje = entity.getPuntaje();
+          if (entity.getSucursal() != null) {
+                this.sucursal = new SucursalDTO(entity.getSucursal());
+            } else {
+                this.sucursal = null;
+            }
        
     }
     

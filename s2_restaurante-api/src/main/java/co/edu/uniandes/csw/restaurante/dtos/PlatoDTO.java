@@ -28,9 +28,9 @@ public class PlatoDTO {
     private Double precio;
 
     /**
-     * Construye un ClienteDTO a partir de un ClienteEntity
+     * Construye un PlatoDTO a partir de un PlatoEntity
      *
-     * @param entity ClienteEntity
+     * @param entity PlatoEntity
      */
     public PlatoDTO(PlatoEntity entity) {
         this.id = entity.getId();
