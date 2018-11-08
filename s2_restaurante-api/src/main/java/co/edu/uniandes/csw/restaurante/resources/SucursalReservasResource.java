@@ -29,7 +29,7 @@ import javax.ws.rs.WebApplicationException;
  * la entidad de Sucursal y Reserva.
  * @author ja.ortega
  */
-@Path("sucursales")
+
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped

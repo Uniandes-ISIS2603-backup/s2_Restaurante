@@ -44,13 +44,14 @@ public class PlatoEntity extends BaseEntity implements Serializable {
 
 
     
-
-
+    @PodamExclude
+    @javax.persistence.ManyToOne()
+    SucursalEntity sucursal;
     /**
      * Nombre del plato
      */
     private String nombre;
-    
+
     /**
      * Precio del plato
      */
@@ -70,6 +71,15 @@ public class PlatoEntity extends BaseEntity implements Serializable {
 
     public void setPrecio(Double precio) {
         this.precio = precio;
+    }
+    
+    
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
     }
     
 

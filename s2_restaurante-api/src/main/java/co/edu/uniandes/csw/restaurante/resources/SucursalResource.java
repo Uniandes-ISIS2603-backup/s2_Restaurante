@@ -101,6 +101,27 @@ public class SucursalResource {
     }
     
     
+     /**
+     * Conexión con el servicio de reservas para una sucursal.
+     * {@link SucursalReservasResource}
+     *
+     * Este método conecta la ruta de /clientes con las rutas de /reservas que
+     * dependen del cliente, es una redirección al servicio que maneja el
+     * segmento de la URL que se encarga de las reservas.
+     *
+     * @param clientesId El ID del cliente con respecto al cual se accede al
+     * servicio.
+     * @return El servicio de reservas para ese cliente en paricular.
+     */
+    @Path("{sucursalesId: \\d+}/reservas")
+    public Class<SucursalReservasResource> getReservaSucursalesResource(@PathParam("sucursalesId") Long sucursalesId) throws BusinessLogicException {
+        if (sucursalLogic.getSucursal(sucursalesId) == null) {
+            throw new WebApplicationException("El recurso /sucursales/" + sucursalesId + " no existe.", 404);
+        }
+        return SucursalReservasResource.class;
+    }
+    
+    
     private List<SucursalDTO> listEntity2DetailDTO(List<SucursalEntity> entityList) {
         List<SucursalDTO> list = new ArrayList<>();
         for (SucursalEntity entity : entityList) {

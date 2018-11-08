@@ -55,4 +55,12 @@ public class MesaPersistence {
         return em.merge(mesaEntity);
     }
     
+    public List<MesaEntity> darMesasDeUnaSucursal(Long sucursalId)
+    {
+        LOGGER.log(Level.INFO, "Consultando las mesas de la sucursal n\u00famero {0}", sucursalId);
+        TypedQuery query = em.createQuery("select u from MesaEntity u where u.sucursal.id = :id", MesaEntity.class);
+         query.setParameter("id", sucursalId);
+        return query.getResultList();
+    }
+    
 }

@@ -12,9 +12,11 @@ import co.edu.uniandes.csw.restaurante.persistence.ClientePersistence;
 import co.edu.uniandes.csw.restaurante.persistence.MesaPersistence;
 import co.edu.uniandes.csw.restaurante.persistence.ReservaPersistence;
 import co.edu.uniandes.csw.restaurante.persistence.SucursalPersistence;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -62,6 +64,8 @@ public class ReservaLogic {
         
         if( !( (hora.get(Calendar.HOUR_OF_DAY)>=12 && hora.get(Calendar.HOUR_OF_DAY)<15) || (hora.get(Calendar.HOUR_OF_DAY)>=18 && hora.get(Calendar.HOUR_OF_DAY)<22) ) )
         {
+           LOGGER.log(Level.INFO, "Hora inválida");
+
            throw new BusinessLogicException("El restaurante solo atiende de 12M a 3 PM y de 6PM A 10PM");
         }
             
@@ -77,7 +81,19 @@ public class ReservaLogic {
           throw new BusinessLogicException("La mesa es inválida");
         }
         
+        boolean mesaEnSucursal = false;
+        List<MesaEntity> mesas = new ArrayList<>();
+        mesas = mesaPersistence.darMesasDeUnaSucursal(reservaEntity.getSucursal().getId());
         
+        for (MesaEntity mesa : mesas) {
+            if(Objects.equals(mesa.getId(), reservaEntity.getMesa().getId()))
+            {
+                mesaEnSucursal = true;
+            }
+        }
+        
+        if(!mesaEnSucursal) throw new BusinessLogicException("La mesa no pertenece a la sucursal especificada");
+ 
         if(persistence.sePuedeReservar(reservaEntity))
         {
             newReservaEntity = persistence.create(reservaEntity);

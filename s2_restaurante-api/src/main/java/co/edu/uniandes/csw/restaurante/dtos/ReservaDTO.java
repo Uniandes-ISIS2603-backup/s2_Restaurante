@@ -192,5 +192,12 @@ public class ReservaDTO{
         
         return entity;
     }
+
+    @Override
+    public String toString() {
+        return "ReservaDTO{" + "id=" + id + ", hora=" + hora + ", cantidadPersonas=" + cantidadPersonas + ", cliente=" + cliente + ", sucursal=" + sucursal + ", mesa=" + mesa + '}';
+    }
+    
+    
    
 }
