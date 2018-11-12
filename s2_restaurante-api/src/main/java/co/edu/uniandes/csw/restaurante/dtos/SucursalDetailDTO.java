@@ -52,6 +52,9 @@ public class SucursalDetailDTO extends SucursalDTO implements Serializable {
             }
         }
     }
+    public SucursalDetailDTO(){
+        super();
+    }
 
     public ArrayList<ReservaDTO> getReservas() {
         return reservas;

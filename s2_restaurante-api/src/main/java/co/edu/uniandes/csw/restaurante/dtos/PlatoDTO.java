@@ -6,12 +6,13 @@
 package co.edu.uniandes.csw.restaurante.dtos;
 
 import co.edu.uniandes.csw.restaurante.entities.PlatoEntity;
+import java.io.Serializable;
 
 /**
  *
  * @author iy.barbosa
  */
-public class PlatoDTO {
+public class PlatoDTO implements Serializable{
 
     /**
      * Identificador del plato
@@ -86,11 +87,7 @@ public class PlatoDTO {
         precio = pPrecio;
     }
 
-    /**
-     * Construye un PlatoDTO a partir de un PlatoEntity
-     *
-     * @param entity PlatoEntity
-     */
+ 
     public PlatoDTO() {
 
     }

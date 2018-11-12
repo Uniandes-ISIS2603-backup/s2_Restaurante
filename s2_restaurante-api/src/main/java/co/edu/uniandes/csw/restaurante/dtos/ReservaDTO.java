@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.restaurante.dtos;
 
 import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -13,9 +14,8 @@ import java.util.Date;
  *
  * @author ja.ortega
  */
-public class ReservaDTO{
+public class ReservaDTO implements Serializable{
 
-    private static final long serialVersionUID = 1L;
   
      /**
      * ID de la reserva
@@ -28,7 +28,7 @@ public class ReservaDTO{
     /**
      * Cantidad de personas para la reserva
      */
-    private int cantidadPersonas;
+    private Integer cantidadPersonas;
 
     /*
     * Relación a un cliente  
@@ -127,7 +127,7 @@ public class ReservaDTO{
      *
      * @return Cantidad de personas inscritas en la reserva
      */
-    public int getCantidadPersonas(){
+    public Integer getCantidadPersonas(){
         return cantidadPersonas;
     }
     
@@ -145,7 +145,7 @@ public class ReservaDTO{
      *
      * @param cantidadPersonas - nueva cantidad de personas
      */
-    public void setCantidadPersonas(int cantidadPersonas){
+    public void setCantidadPersonas(Integer cantidadPersonas){
         this.cantidadPersonas = cantidadPersonas;
     }
     

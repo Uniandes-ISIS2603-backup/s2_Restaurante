@@ -6,12 +6,13 @@
 package co.edu.uniandes.csw.restaurante.dtos;
 
 import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
+import java.io.Serializable;
 
 /**
  *
  * @author j.prieto
  */
-public class ClienteDTO {
+public class ClienteDTO implements Serializable{
 
     /**
      * Identificador del cliente
@@ -40,9 +41,12 @@ public class ClienteDTO {
      * @param entity ClienteEntity
      */
     public ClienteDTO(ClienteEntity entity) {
+        if(entity !=null)
+        {
         this.id = entity.getId();
         this.nombre = entity.getNombre();
         this.metodoPago = entity.getMetodoPago();
+        }
     }
 
     /**

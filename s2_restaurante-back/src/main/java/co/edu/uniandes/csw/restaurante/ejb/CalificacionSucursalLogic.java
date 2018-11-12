@@ -13,12 +13,14 @@ import co.edu.uniandes.csw.restaurante.persistence.SucursalPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author iy.barbosa
  */
+@Stateless
 public class CalificacionSucursalLogic {
     
     private static final Logger LOGGER = Logger.getLogger(CalificacionSucursalLogic.class.getName());

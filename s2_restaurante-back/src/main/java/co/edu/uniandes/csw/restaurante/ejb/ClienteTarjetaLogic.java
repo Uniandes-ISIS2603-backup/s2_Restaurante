@@ -13,6 +13,7 @@ import co.edu.uniandes.csw.restaurante.persistence.TarjetaPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
@@ -20,12 +21,7 @@ import javax.inject.Inject;
  * la entidad de Cliente y Tarjeta.
  * @author Juan Ortega
  */
-
-/**
- *
- *
- * @author ISIS2603
- */
+@Stateless
 public class ClienteTarjetaLogic {
     
     private static final Logger LOGGER = Logger.getLogger(ClienteTarjetaLogic.class.getName());

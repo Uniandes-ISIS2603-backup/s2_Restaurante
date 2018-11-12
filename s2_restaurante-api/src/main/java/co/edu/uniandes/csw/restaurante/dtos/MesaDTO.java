@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class MesaDTO implements Serializable {
 
     private Long id;
-    private int numero;
+    private Integer numero;
     
     /*
     * Relación a un cliente  

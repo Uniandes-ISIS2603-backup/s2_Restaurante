@@ -13,6 +13,7 @@ import co.edu.uniandes.csw.restaurante.persistence.ReservaPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
@@ -26,6 +27,7 @@ import javax.inject.Inject;
  *
  * @author ja.ortega
  */
+@Stateless
 public class ClienteReservasLogic {
     
     private static final Logger LOGGER = Logger.getLogger(ClienteReservasLogic.class.getName());

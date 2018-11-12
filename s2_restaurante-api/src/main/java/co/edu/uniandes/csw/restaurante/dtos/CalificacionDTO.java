@@ -8,13 +8,14 @@ package co.edu.uniandes.csw.restaurante.dtos;
 //import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
 
 import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
+import java.io.Serializable;
 
 
 /**
  *
  * @author iy.barbosa
  */
-public class CalificacionDTO {
+public class CalificacionDTO implements Serializable{
     
     /**
      * Identificador de la calificacion
@@ -78,7 +79,10 @@ public class CalificacionDTO {
     public void setId(Long pId){
         id = pId ;
     }
-    
+    public CalificacionDTO()
+    {
+        
+    }
     /**
      * Construye un PlatoDTO a partir de un PlatoEntity
      *
