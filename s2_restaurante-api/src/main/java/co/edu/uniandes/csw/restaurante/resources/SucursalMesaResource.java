@@ -35,10 +35,10 @@ public class SucursalMesaResource {
     private static final Logger LOGGER = Logger.getLogger(SucursalMesaResource.class.getName());
 
     @Inject
-    private SucursalMesaLogic SucursalMesaLogic;
+    private SucursalMesaLogic sucursalMesaLogic;
 
     @Inject
-    private MesaLogic MesaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    private MesaLogic mesaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     
     
     /**
@@ -54,10 +54,10 @@ public class SucursalMesaResource {
     @Path("{MesaId: \\d+}")
     public MesaDTO addMesa(@PathParam("clientesId") Long clientesId, @PathParam("MesasId") Long MesasId) {
         LOGGER.log(Level.INFO, "SucursalMesaResource addMesa: input: clientesId {0} , MesasId {1}", new Object[]{clientesId, MesasId});
-        if (MesaLogic.getMesa(MesasId) == null) {
+        if (mesaLogic.getMesa(MesasId) == null) {
             throw new WebApplicationException("El recurso /Mesas/" + MesasId + " no existe.", 404);
         }
-        MesaDTO dto = new MesaDTO(SucursalMesaLogic.addMesa(clientesId, MesasId));
+        MesaDTO dto = new MesaDTO(sucursalMesaLogic.addMesa(clientesId, MesasId));
         LOGGER.log(Level.INFO, "SucursalMesaResource addMesa: output: {0}", dto);
         return dto;
     }
@@ -75,10 +75,10 @@ public class SucursalMesaResource {
     @Path("{MesasId: \\d+}")
     public void removeBook(@PathParam("clientesId") Long clientesId, @PathParam("MesasId") Long MesasId) {
         LOGGER.log(Level.INFO, "AuthorBooksResource deleteMesa: input: clientesId {0} , MesasId {1}", new Object[]{clientesId, MesasId});
-        if (MesaLogic.getMesa(MesasId) == null) {
+        if (mesaLogic.getMesa(MesasId) == null) {
             throw new WebApplicationException("El recurso /Mesas/" + MesasId + " no existe.", 404);
         }
-        SucursalMesaLogic.removeMesa(clientesId, MesasId);
+        sucursalMesaLogic.removeMesa(clientesId, MesasId);
         LOGGER.info("SucursalMesaResource deleteBook: output: void");
     }
     

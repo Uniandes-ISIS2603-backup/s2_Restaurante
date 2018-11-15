@@ -10,10 +10,7 @@
     <packaging>pom</packaging>
     <name>s2_starbugs</name>
  
-    <modules>
-        <module>s2_restaurante-back</module>
-        <module>s2_restaurante-api</module>
-    </modules>
+    <modules></modules>
     
     <repositories>
         <repository>
