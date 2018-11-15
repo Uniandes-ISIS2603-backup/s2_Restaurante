@@ -5,8 +5,6 @@
  */
 package co.edu.uniandes.csw.restaurante.dtos;
 
-//import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
-
 import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
 import java.io.Serializable;
 
@@ -106,9 +104,9 @@ public class CalificacionDTO implements Serializable{
      */
     public CalificacionEntity toEntity() {
        CalificacionEntity entity = new CalificacionEntity();
-       //calificacion.setId(this.id);
-      // cliente.setNombre(this.nombre);
-       //cliente.setMetodoPago(this.metodoPago);
+       entity.setId(this.id);
+       entity.setPuntaje(this.puntaje);
+       entity.setSucursal(this.sucursal.toEntity());
        return entity;
     }
 

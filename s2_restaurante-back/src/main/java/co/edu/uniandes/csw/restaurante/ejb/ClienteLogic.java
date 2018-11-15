@@ -24,7 +24,6 @@ SOFTWARE.
 package co.edu.uniandes.csw.restaurante.ejb;
 
 import co.edu.uniandes.csw.restaurante.entities.ClienteEntity;
-import co.edu.uniandes.csw.restaurante.entities.SucursalEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.restaurante.persistence.ClientePersistence;
 import java.util.List;

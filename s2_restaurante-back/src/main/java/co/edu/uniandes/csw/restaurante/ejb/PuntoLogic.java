@@ -27,7 +27,6 @@ import co.edu.uniandes.csw.restaurante.entities.PuntoEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.restaurante.persistence.PuntoPersistence;
 import co.edu.uniandes.csw.restaurante.persistence.TarjetaPersistence;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -87,34 +86,34 @@ public class PuntoLogic {
     /**
      * Busca un punto por ID
      *
-     * @param PuntosId El id del punto a buscar
+     * @param puntosId El id del punto a buscar
      * @return El punto encontrado, null si no lo encuentra.
      */
-    public PuntoEntity getPunto(Long PuntosId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar el punto con id = {0}", PuntosId);
-        PuntoEntity PuntoEntity = persistence.find(PuntosId);
-        if (PuntoEntity == null) {
-            LOGGER.log(Level.SEVERE, "El punto con el id = {0} no existe", PuntosId);
+    public PuntoEntity getPunto(Long puntosId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar el punto con id = {0}", puntosId);
+        PuntoEntity puntoEntity = persistence.find(puntosId);
+        if (puntoEntity == null) {
+            LOGGER.log(Level.SEVERE, "El punto con el id = {0} no existe", puntosId);
         }
-        LOGGER.log(Level.INFO, "Termina proceso de consultar el punto con id = {0}", PuntosId);
-        return PuntoEntity;
+        LOGGER.log(Level.INFO, "Termina proceso de consultar el punto con id = {0}", puntosId);
+        return puntoEntity;
     }
 
     /**
      * Actualizar un punto por ID
      *
-     * @param PuntosId El ID del punto a actualizar
-     * @param PuntoEntity La entidad del punto con los cambios deseados
+     * @param puntosId El ID del punto a actualizar
+     * @param puntoEntity La entidad del punto con los cambios deseados
      * @return La entidad del punto luego de actualizarla
      * @throws BusinessLogicException Si el IBN de la actualización es inválido
      */
-    public PuntoEntity updatePunto(Long PuntosId, PuntoEntity PuntoEntity) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el punto con id = {0}", PuntosId);
-        if (!validateFecha(PuntoEntity.getFecha())) {
+    public PuntoEntity updatePunto(Long puntosId, PuntoEntity puntoEntity) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar el punto con id = {0}", puntosId);
+        if (!validateFecha(puntoEntity.getFecha())) {
             throw new BusinessLogicException("La fecha es inválida");
         }
-        PuntoEntity newEntity = persistence.update(PuntoEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar el punto con id = {0}", PuntoEntity.getId());
+        PuntoEntity newEntity = persistence.update(puntoEntity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar el punto con id = {0}", puntoEntity.getId());
         return newEntity;
     }
 
@@ -137,6 +136,6 @@ public class PuntoLogic {
      * @return true si el ISBN es valido.
      */
     private boolean validateFecha(Date isbn) {
-        return !(isbn == null);
+        return (isbn != null);
     }
 }

@@ -10,7 +10,6 @@ import co.edu.uniandes.csw.restaurante.entities.DomicilioEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.restaurante.persistence.ClientePersistence;
 import co.edu.uniandes.csw.restaurante.persistence.DomicilioPersistence;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -22,18 +21,13 @@ import javax.inject.Inject;
  * @author Juan Ortega
  */
 
-/**
- *
- *
- * @author ISIS2603
- */
  @Stateless
 public class ClienteDomicilioLogic {
     
     private static final Logger LOGGER = Logger.getLogger(ClienteDomicilioLogic.class.getName());
 
     @Inject
-    private DomicilioPersistence DomicilioPersistence;
+    private DomicilioPersistence domicilioPersistence;
 
     @Inject
     private ClientePersistence clientePersistence;
@@ -43,33 +37,33 @@ public class ClienteDomicilioLogic {
      * Asocia una Domicilio existente a un Cliente
      *
      * @param clientesId Identificador de la instancia de Clietne
-     * @param DomiciliosId Identificador de la instancia de Domicilio
+     * @param domiciliosId Identificador de la instancia de Domicilio
      * @return Instancia de DomicilioEntity que fue asociada a un Cliente
      */
-    public DomicilioEntity addDomicilio(Long clientesId, Long DomiciliosId) {
+    public DomicilioEntity addDomicilio(Long clientesId, Long domiciliosId) {
         LOGGER.log(Level.INFO, "Inicia proceso de asociarle una Domicilio al cliente con id = {0}", clientesId);
         ClienteEntity clienteEntity = clientePersistence.find(clientesId);
-        DomicilioEntity DomicilioEntity = DomicilioPersistence.find(DomiciliosId);
-        DomicilioEntity.setCliente(clienteEntity);
+        DomicilioEntity domicilioEntity = domicilioPersistence.find(domiciliosId);
+        domicilioEntity.setCliente(clienteEntity);
         LOGGER.log(Level.INFO, "Termina proceso de asociarle una Domicilio al cliente con id = {0}", clientesId);
-        return DomicilioPersistence.find(DomiciliosId);
+        return domicilioPersistence.find(domiciliosId);
     }
     
        /**
      * Retorna una Domicilio asociada a un cliente
      *
      * @param clientesId El id del cliente a buscar.
-     * @param DomiciliosId El id de la Domicilio a buscar
+     * @param domiciliosId El id de la Domicilio a buscar
      * @return La Domicilio encontrada del cliente dado.
      * @throws BusinessLogicException Si la Domicilio no se encuentra asociada al cliente 
      */
-    public DomicilioEntity getDomicilio(Long clientesId, Long DomiciliosId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar la Domicilio con id = {0} del cliente con id = " + clientesId, DomiciliosId);
-        DomicilioEntity DomicilioEntity = DomicilioPersistence.find(DomiciliosId);
-        LOGGER.log(Level.INFO, "Termina proceso de consultar la Domicilio con id = {0} del cliente con id = " + clientesId, DomiciliosId);
-        if(DomicilioEntity ==null)
+    public DomicilioEntity getDomicilio(Long clientesId, Long domiciliosId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar la Domicilio con id = {0} del cliente con id = " + clientesId, domiciliosId);
+        DomicilioEntity domicilioEntity = domicilioPersistence.find(domiciliosId);
+        LOGGER.log(Level.INFO, "Termina proceso de consultar la Domicilio con id = {0} del cliente con id = " + clientesId, domiciliosId);
+        if(domicilioEntity ==null)
         {
-            return DomicilioEntity;
+            return domicilioEntity;
         }
         throw new BusinessLogicException("La Domicilio no está asociada a el cliente");
     }
@@ -82,9 +76,9 @@ public class ClienteDomicilioLogic {
     public void removeDomicilio(Long clientesId, Long domiciliosId) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar una Domicilio con id = {0}", clientesId);
         ClienteEntity clienteEntity = clientePersistence.find(clientesId);
-        DomicilioEntity DomicilioEntity = DomicilioPersistence.find(domiciliosId);
-        clienteEntity.getDomicilios().remove(DomicilioEntity);
-        DomicilioPersistence.delete(domiciliosId);
+        DomicilioEntity domicilioEntity = domicilioPersistence.find(domiciliosId);
+        clienteEntity.getDomicilios().remove(domicilioEntity);
+        domicilioPersistence.delete(domiciliosId);
         LOGGER.log(Level.INFO, "Termina proceso de borrar una Domicilio del cliente con id = {0}", clientesId);
     }
     

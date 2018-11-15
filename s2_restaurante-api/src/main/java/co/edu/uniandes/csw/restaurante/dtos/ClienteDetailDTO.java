@@ -30,17 +30,17 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable {
     private ArrayList<CalificacionDTO> calificaciones;
 
     /**
-     * Lista con las reservas hechas por el cliente
+     * ArrayLista con las reservas hechas por el cliente
      */
     private ArrayList<ReservaDTO> reservas;
 
     /**
-     * Lista con los domicilios hechos por el cliente
+     * ArrayLista con los domicilios hechos por el cliente
      */
     private ArrayList<DomicilioDTO> domicilios;
 
     /**
-     * Lista con las sucursales hechos por el cliente
+     * ArrayLista con las sucursales hechos por el cliente
      */
     private ArrayList<SucursalDTO> sucursales;
 
@@ -59,22 +59,22 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable {
 
         if (entity != null) {
             tarjeta = new TarjetaDTO(entity.getTarjeta());
-            //Crea la lista de calificaciones y le adiciona las que tiene el entity
+            //Crea la ArrayLista de calificaciones y le adiciona las que tiene el entity
             calificaciones = new ArrayList<>();
             for (CalificacionEntity entityCalificacion : entity.getCalificaciones()) {
                 calificaciones.add(new CalificacionDTO(entityCalificacion));
             }
-            //Crea la lista de reservas y le adiciona las que tiene el entity
+            //Crea la ArrayLista de reservas y le adiciona las que tiene el entity
             reservas = new ArrayList<>();
             for (ReservaEntity entityReserva : entity.getReservas()) {
                 reservas.add(new ReservaDTO(entityReserva));
             }
-            //Crea la lista de domicilios y le adiciona las que tiene el entity
+            //Crea la ArrayLista de domicilios y le adiciona las que tiene el entity
             domicilios = new ArrayList<>();
             for (DomicilioEntity entityDomicilio : entity.getDomicilios()) {
                 domicilios.add(new DomicilioDTO(entityDomicilio));
             }
-            //Crea la lista de sucursales y le adiciona las que tiene el entity
+            //Crea la ArrayLista de sucursales y le adiciona las que tiene el entity
             sucursales = new ArrayList<>();
             for (SucursalEntity entitySucursal : entity.getSucursales()) {
                 sucursales.add(new SucursalDTO(entitySucursal));
@@ -102,7 +102,7 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable {
                 calificacionesEntity.add(calificacionDTO.toEntity());
             }
             entity.setCalificaciones(calificacionesEntity);
-            //Agrega al nuevo Entity la lista de domicilios del DTO
+            //Agrega al nuevo Entity la ArrayLista de domicilios del DTO
             if (domicilios != null) {
                 ArrayList<DomicilioEntity> domiciliosEntity = new ArrayList<>();
                 for (DomicilioDTO domicilioDTO : domicilios) {
@@ -110,14 +110,14 @@ public class ClienteDetailDTO extends ClienteDTO implements Serializable {
                 }
                 entity.setDomicilios(domiciliosEntity);
             }
-//            //Agrega al nuevo Entity la lista de reservas del DTO 
-//            if (reservas != null) {
-//                ArrayList<ReservaEntity> reservasEntity = new ArrayList<>();
-//                for (ReservaDTO reservaDTO : reservas) {
-//                    reservasEntity.add(reservaDTO.toEntity());
-//                }
-//                entity.setReservas(reservasEntity);
-//            }
+            //Agrega al nuevo Entity la ArrayLista de reservas del DTO 
+            if (reservas != null) {
+                ArrayList<ReservaEntity> reservasEntity = new ArrayList<>();
+                for (ReservaDTO reservaDTO : reservas) {
+                    reservasEntity.add(reservaDTO.toEntity());
+                }
+                entity.setReservas(reservasEntity);
+            }
         }
         return entity;
     }

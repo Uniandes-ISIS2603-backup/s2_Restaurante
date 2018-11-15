@@ -38,7 +38,7 @@ public class ClienteDomicilioResource {
     private ClienteDomicilioLogic clienteDomicilioLogic;
 
     @Inject
-    private DomicilioLogic DomicilioLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    private DomicilioLogic domicilioLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     
     
     /**
@@ -54,7 +54,7 @@ public class ClienteDomicilioResource {
     @Path("{DomicilioId: \\d+}")
     public DomicilioDTO addDomicilio(@PathParam("clientesId") Long clientesId, @PathParam("DomiciliosId") Long DomiciliosId) {
         LOGGER.log(Level.INFO, "ClienteDomicilioResource addDomicilio: input: clientesId {0} , DomiciliosId {1}", new Object[]{clientesId, DomiciliosId});
-        if (DomicilioLogic.getDomicilio(DomiciliosId) == null) {
+        if (domicilioLogic.getDomicilio(DomiciliosId) == null) {
             throw new WebApplicationException("El recurso /Domicilios/" + DomiciliosId + " no existe.", 404);
         }
         DomicilioDTO dto = new DomicilioDTO(clienteDomicilioLogic.addDomicilio(clientesId, DomiciliosId));
@@ -75,7 +75,7 @@ public class ClienteDomicilioResource {
     @Path("{DomiciliosId: \\d+}")
     public void removeBook(@PathParam("clientesId") Long clientesId, @PathParam("DomiciliosId") Long DomiciliosId) {
         LOGGER.log(Level.INFO, "AuthorBooksResource deleteDomicilio: input: clientesId {0} , DomiciliosId {1}", new Object[]{clientesId, DomiciliosId});
-        if (DomicilioLogic.getDomicilio(DomiciliosId) == null) {
+        if (domicilioLogic.getDomicilio(DomiciliosId) == null) {
             throw new WebApplicationException("El recurso /Domicilios/" + DomiciliosId + " no existe.", 404);
         }
         clienteDomicilioLogic.removeDomicilio(clientesId, DomiciliosId);

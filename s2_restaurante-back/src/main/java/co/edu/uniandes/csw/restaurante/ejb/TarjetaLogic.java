@@ -23,7 +23,6 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.restaurante.ejb;
 
-import co.edu.uniandes.csw.restaurante.entities.PuntoEntity;
 import co.edu.uniandes.csw.restaurante.entities.TarjetaEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.restaurante.persistence.TarjetaPersistence;

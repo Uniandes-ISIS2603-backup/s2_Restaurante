@@ -34,12 +34,10 @@ public class TarjetaDetailDTO extends TarjetaDTO implements Serializable{
     public TarjetaDetailDTO(TarjetaEntity tarjetaEntity)
     {
         super(tarjetaEntity);
-        if (tarjetaEntity != null) {
-            if (tarjetaEntity.getPuntos()!= null) {
-                puntos = new ArrayList<>();
-                for (PuntoEntity entityBook : tarjetaEntity.getPuntos()) {
-                    puntos.add(new PuntoDTO(entityBook));
-                }
+        if (tarjetaEntity !=null &&tarjetaEntity.getPuntos()!= null) {
+            puntos = new ArrayList<>();
+            for (PuntoEntity entityBook : tarjetaEntity.getPuntos()) {
+                puntos.add(new PuntoDTO(entityBook));
             }
         }
     }
