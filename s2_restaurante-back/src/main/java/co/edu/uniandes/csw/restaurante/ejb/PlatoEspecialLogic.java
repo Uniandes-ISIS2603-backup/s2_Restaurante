@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.restaurante.ejb;
-
 import co.edu.uniandes.csw.restaurante.entities.PlatoEspecialEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.restaurante.persistence.PlatoEspecialPersistence;
