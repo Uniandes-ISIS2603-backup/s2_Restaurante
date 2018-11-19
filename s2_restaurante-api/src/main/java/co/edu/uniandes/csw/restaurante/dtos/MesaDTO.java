@@ -7,7 +7,10 @@ package co.edu.uniandes.csw.restaurante.dtos;
 
 
 import co.edu.uniandes.csw.restaurante.entities.MesaEntity;
+import co.edu.uniandes.csw.restaurante.resources.ReservaResource;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +20,8 @@ public class MesaDTO implements Serializable {
 
     private Long id;
     private Integer numero;
-    
+    private static final Logger LOGGER = Logger.getLogger(MesaDTO.class.getName());
+
     /*
     * Relación a un cliente  
     * dado que esta tiene cardinalidad 1.
@@ -66,9 +70,12 @@ public class MesaDTO implements Serializable {
     
     public MesaEntity toEntity() {
         MesaEntity entity = new MesaEntity();
+        LOGGER.log(Level.INFO, "Mesa createReserva: input: {0}", this.id);
+        LOGGER.log(Level.INFO, "Mesa createReserva: input: {0}", this.numero);
+        if(this.numero != null)  entity.setNumero(this.numero);
+      
         entity.setId(this.id);
-        entity.setNumero(this.numero);
-        
+     
         if (this.sucursal != null) {
             entity.setSucursal(this.sucursal.toEntity());
         }
