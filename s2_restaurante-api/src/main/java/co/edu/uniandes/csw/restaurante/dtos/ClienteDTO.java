@@ -34,6 +34,7 @@ public class ClienteDTO implements Serializable{
      */
     public ClienteDTO() {
     }
+    
 
     /**
      * Construye un ClienteDTO a partir de un ClienteEntity

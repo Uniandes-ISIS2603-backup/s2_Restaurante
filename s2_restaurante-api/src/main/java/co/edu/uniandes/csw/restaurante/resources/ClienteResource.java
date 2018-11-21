@@ -117,10 +117,13 @@ public class ClienteResource {
     public ClienteDetailDTO updateCliente(@PathParam("clientesId") Long clientesId, ClienteDTO cliente) throws BusinessLogicException /*throws BusinessLogicException*/ {
         LOGGER.log(Level.INFO, "ClienteResource updateCliente: input: clientesId: {0} , cliente: {1}", new Object[]{clientesId, cliente.toString()});
         cliente.setId(clientesId);
-        if (clienteLogic.getCliente(clientesId) == null) {
+        ClienteDetailDTO buscado= new ClienteDetailDTO(clienteLogic.getCliente(clientesId));
+        if (buscado == null) {
             throw new WebApplicationException("El recurso /clientes/" + clientesId + " no existe.", 404);
         }
-        ClienteDetailDTO detailDTO = new ClienteDetailDTO(clienteLogic.updateCliente(clientesId, cliente.toEntity()));
+        buscado.setNombre(cliente.getNombre());
+        buscado.setMetodoPago(cliente.getMetodoPago());
+        ClienteDetailDTO detailDTO = new ClienteDetailDTO(clienteLogic.updateCliente(clientesId, buscado.toEntity()));
         LOGGER.log(Level.INFO, "ClienteResource updateCliente: output: {0}", detailDTO.toString());
         return detailDTO;
     }

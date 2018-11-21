@@ -100,7 +100,7 @@ public class ClienteLogic {
      * @param clienteEntity Instancia de AuthorEntity con los nuevos datos.
      * @return Instancia de ClienteEntity con los datos actualizados.
      */
-    public ClienteEntity updateCliente(Long clientesId, ClienteEntity clienteEntity) {
+    public ClienteEntity updateCliente(Long clientesId, ClienteEntity clienteEntity) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar el cliente con id = {0}", clientesId);
         ClienteEntity newClienteEntity = persistence.update(clienteEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el cliente con id = {0}", clientesId);
@@ -123,5 +123,5 @@ public class ClienteLogic {
         }
         persistence.delete(clientesId);
         LOGGER.log(Level.INFO, "Termina proceso de borrar el cliente con id = {0}", clientesId);
-    }    
+    }
 }
