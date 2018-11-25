@@ -112,7 +112,7 @@ public class ClienteResource {
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
      * Error de lógica que se genera cuando no se puede actualizar el cliente.
      */
-    @PUT
+    @PUT 
     @Path("{clientesId: \\d+}")
     public ClienteDetailDTO updateCliente(@PathParam("clientesId") Long clientesId, ClienteDTO cliente) throws BusinessLogicException /*throws BusinessLogicException*/ {
         LOGGER.log(Level.INFO, "ClienteResource updateCliente: input: clientesId: {0} , cliente: {1}", new Object[]{clientesId, cliente.toString()});

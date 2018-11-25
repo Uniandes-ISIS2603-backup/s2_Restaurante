@@ -180,7 +180,7 @@ public class ClienteLogicTest {
      * Prueba para actualizar un Cliente.
      */
     @Test
-    public void updateClienteTest() {
+    public void updateClienteTest() throws BusinessLogicException {
         ClienteEntity entity = data.get(0);
         ClienteEntity pojoEntity = factory.manufacturePojo(ClienteEntity.class);
 
