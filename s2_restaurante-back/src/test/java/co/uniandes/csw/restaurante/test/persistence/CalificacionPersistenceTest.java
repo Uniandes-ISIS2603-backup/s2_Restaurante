@@ -1,10 +1,29 @@
- /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*
+MIT License
+
+Copyright (c) 2017 Universidad de los Andes - ISIS2603
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
  */
 package co.uniandes.csw.restaurante.test.persistence;
 
+import co.edu.uniandes.csw.restaurante.entities.SucursalEntity;
 import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
 import co.edu.uniandes.csw.restaurante.persistence.CalificacionPersistence;
 import java.util.ArrayList;
@@ -13,11 +32,11 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
+import org.junit.Assert;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,13 +44,15 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
+ * Pruebas de persistencia de Calificacions
  *
- * @author iy.barbosa
+ * @author ISIS2603
  */
 @RunWith(Arquillian.class)
 public class CalificacionPersistenceTest {
+
     @Inject
-    private CalificacionPersistence calificacionPersistencia;
+    private CalificacionPersistence calificacionPersistence;
 
     @PersistenceContext
     private EntityManager em;
@@ -40,7 +61,9 @@ public class CalificacionPersistenceTest {
     UserTransaction utx;
 
     private List<CalificacionEntity> data = new ArrayList<CalificacionEntity>();
-    
+	
+    private List<SucursalEntity> dataSucursal = new ArrayList<SucursalEntity>();
+
     /**
      * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
      * El jar contiene las clases, el descriptor de la base de datos y el
@@ -81,6 +104,7 @@ public class CalificacionPersistenceTest {
      */
     private void clearData() {
         em.createQuery("delete from CalificacionEntity").executeUpdate();
+        em.createQuery("delete from SucursalEntity").executeUpdate();
     }
 
     /**
@@ -90,72 +114,58 @@ public class CalificacionPersistenceTest {
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-
-            CalificacionEntity entity = factory.manufacturePojo(CalificacionEntity.class);
-
+            SucursalEntity entity = factory.manufacturePojo(SucursalEntity.class);
             em.persist(entity);
-
+            dataSucursal.add(entity);
+        }
+        for (int i = 0; i < 3; i++) {
+            CalificacionEntity entity = factory.manufacturePojo(CalificacionEntity.class);
+            if (i == 0) {
+                entity.setSucursal(dataSucursal.get(0));
+            }
+            em.persist(entity);
             data.add(entity);
         }
     }
 
     /**
-     * Prueba para crear una Reserva.
+     * Prueba para crear un Calificacion.
      */
     @Test
-    public void createReservaTest() {
+    public void createCalificacionTest() {
+
         PodamFactory factory = new PodamFactoryImpl();
         CalificacionEntity newEntity = factory.manufacturePojo(CalificacionEntity.class);
-        CalificacionEntity result = calificacionPersistencia.create(newEntity);
+        CalificacionEntity result = calificacionPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
 
         CalificacionEntity entity = em.find(CalificacionEntity.class, result.getId());
-
-        Assert.assertEquals(newEntity.getId(), entity.getId());
-    }
-    /**
-     * Prueba para consultar la lista de Calificaciones.
-     */
-    @Test
-    public void getCalificacionesTest() {
-        List<CalificacionEntity> list = calificacionPersistencia.findAll();
-        Assert.assertEquals(data.size(), list.size());
-        for (CalificacionEntity ent : list) {
-            boolean found = false;
-            for (CalificacionEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
     }
 
     /**
-     * Prueba para consultar una Calificacion.
+     * Prueba para consultar un Calificacion.
      */
     @Test
     public void getCalificacionTest() {
         CalificacionEntity entity = data.get(0);
-        CalificacionEntity newEntity = calificacionPersistencia.find(entity.getId());
+        CalificacionEntity newEntity = calificacionPersistence.find(dataSucursal.get(0).getId(), entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getId(), newEntity.getId());
     }
 
     /**
-     * Prueba para eliminar una Calificacion.
+     * Prueba para eliminar un Calificacion.
      */
     @Test
     public void deleteCalificacionTest() {
         CalificacionEntity entity = data.get(0);
-        calificacionPersistencia.delete(entity.getId());
+        calificacionPersistence.delete(entity.getId());
         CalificacionEntity deleted = em.find(CalificacionEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
     /**
-     * Prueba para actualizar una Calificacion.
+     * Prueba para actualizar un Calificacion.
      */
     @Test
     public void updateCalificacionTest() {
@@ -165,13 +175,8 @@ public class CalificacionPersistenceTest {
 
         newEntity.setId(entity.getId());
 
-        calificacionPersistencia.update(newEntity);
+        calificacionPersistence.update(newEntity);
 
         CalificacionEntity resp = em.find(CalificacionEntity.class, entity.getId());
-
-        Assert.assertEquals(newEntity.getId(), resp.getId());
     }
-
-    
-    
 }
