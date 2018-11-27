@@ -103,3 +103,15 @@ insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente
 insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2017-11-07 13:37:43', 1, 3, 3, 7);
 insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-03-28 19:49:52', 4, 3, 4, 4);
 insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-04-16 12:11:09', 4, 3, 5, 4);
+
+--Calificaciones
+insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (1, 5, 9, 1);
+insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (2, 4, 1, 2);
+insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (3, 4, 2, 2);
+insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (4, 2, 8, 3);
+insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (5, 5, 5, 1);
+insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (6, 3, 1, 3);
+insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (7, 4, 7, 1);
+insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (8, 5, 8, 3);
+insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (9, 2, 5, 2);
+insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (10, 4, 6, 2);
