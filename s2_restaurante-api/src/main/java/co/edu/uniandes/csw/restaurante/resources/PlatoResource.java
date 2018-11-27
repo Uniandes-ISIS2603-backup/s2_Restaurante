@@ -39,7 +39,7 @@ public class PlatoResource {
     @Inject
     private PlatoLogic platoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    private static final Logger LOGGER = Logger.getLogger(ClienteResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PlatoResource.class.getName());
     /**
      * Busca y devuelve todos los libros que existen en la aplicacion.
      *
