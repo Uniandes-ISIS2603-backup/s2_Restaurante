@@ -24,6 +24,10 @@ public class PlatoDTO implements Serializable{
      */
     private String name;
     /**
+     * imagen del platp
+     */
+    private String imagen;
+    /**
      * precio del plato
      */
     private Double precio;
@@ -39,6 +43,7 @@ public class PlatoDTO implements Serializable{
         this.id = entity.getId();
         this.name = entity.getNombre();
         this.precio = entity.getPrecio();
+        this.imagen= entity.getImagen();
         if (entity.getSucursal() != null) {
                 this.sucursal = new SucursalDTO(entity.getSucursal());
             } else {
@@ -60,6 +65,12 @@ public class PlatoDTO implements Serializable{
      */
     public String getName() {
         return name;
+    }
+     /**
+     * Retorna el nombre del plato
+     */
+    public String getImagen() {
+        return imagen ;
     }
 
     /**
@@ -94,6 +105,14 @@ public class PlatoDTO implements Serializable{
     public void setName(String pName) {
         name = pName;
     }
+    /**
+     * Modifica el nombre del plato
+     *
+     * * @param pName - nuevo ID
+     */
+    public void setImagen(String pImaen) {
+        imagen = pImaen;
+    }
 
     /**
      * Modifica el precio del plato
@@ -119,6 +138,7 @@ public class PlatoDTO implements Serializable{
         platoEntity.setId(this.id);
         platoEntity.setNombre(this.name);
         platoEntity.setPrecio(this.precio);
+        platoEntity.setImagen(imagen);
         if (this.sucursal != null) {
             platoEntity.setSucursal(this.sucursal.toEntity());
         }
@@ -128,6 +148,6 @@ public class PlatoDTO implements Serializable{
     
     @Override
     public String toString() {
-        return "PlatoDTO{" + "id=" + id + ", nombre=" + name + ", precio=" + precio + ", sucursal=" + sucursal + '}';
+        return "PlatoDTO{" + "id=" + id + ", nombre=" + name + ", precio=" + precio + ", sucursal=" + sucursal + ", imagen=" + imagen +  '}';
     }
 }

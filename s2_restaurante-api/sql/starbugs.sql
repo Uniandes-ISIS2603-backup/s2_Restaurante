@@ -49,16 +49,16 @@ insert into SucursalEntity (direccion) values ('Calle 22 Nº 6-28');
 
 
 --Platos
-insert into PLATOENTITY (nombre, precio) values ('Ajiaco', 17500);
-insert into PLATOENTITY (nombre, precio) values ('Bandeja Paisa', 20000);
-insert into PLATOENTITY (nombre, precio) values ('Empanaditas', 5000);
-insert into PLATOENTITY (nombre, precio) values ('Mondongo', 12000);
-insert into PLATOENTITY (nombre, precio) values ('Arepa Santanderiana', 6000);
-insert into PLATOENTITY (nombre, precio) values ('Costillitas', 22000);
-insert into PLATOENTITY (nombre, precio) values ('Embueltos', 5000);
-insert into PLATOENTITY (nombre, precio) values ('Patacón', 7000);
-insert into PLATOENTITY (nombre, precio) values ('Mute', 17000);
-insert into PLATOENTITY (nombre, precio) values ('Postre tres leches', 8000);
+insert into PLATOENTITY (nombre, precio, imagen) values ('Ajiaco', 17500,'https://t1.uc.ltmcdn.com/images/5/7/6/img_como_hacer_ajiaco_42675_600.jpg');
+insert into PLATOENTITY (nombre, precio, imagen) values ('Bandeja Paisa', 20000,'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fcdn-image.myrecipes.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fmedium_2x%2Fpublic%2Fbandejapaisa.jpg%3Fitok%3Dp6WzxIDI&w=1000&c=sc&poi=face&q=70');
+insert into PLATOENTITY (nombre, precio, imagen ) values ('Empanaditas', 5000, 'https://antojandoando.com/wp-content/uploads/2015/08/empanadas-detalle-pq3.jpg');
+insert into PLATOENTITY (nombre, precio, imagen ) values ('Mondongo', 12000, 'https://t2.rg.ltmcdn.com/es/images/6/5/4/img_mondongo_criollo_venezolano_34456_600.jpg');
+insert into PLATOENTITY (nombre, precio, imagen ) values ('Arepa Santanderiana', 6000, 'https://antojandoando.com/wp-content/uploads/2015/10/arepas-plato-pq.jpg');
+insert into PLATOENTITY (nombre, precio, imagen ) values ('Costillitas', 22000, 'https://cocinayrecetas-static.hola.com/cocinothai/files/2016/07/Costillas-de-cerdo-al-horno-Thai-Feath1.jpg');
+insert into PLATOENTITY (nombre, precio, imagen) values ('Envueltos', 5000, 'https://static.vix.com/es/sites/default/files/styles/large/public/imj/elgranchef/R/Receta-de-envueltos-tipicos-2.jpg?itok=i_Z3WGHk');
+insert into PLATOENTITY (nombre, precio, imagen) values ('Patacón', 7000,'http://haitiancooking.com/wp-content/uploads/2013/12/plantains-575x262.jpg');
+insert into PLATOENTITY (nombre, precio, imagen ) values ('Mute', 17000,'http://buenomuybueno.com/wp-content/uploads/2017/05/mute2.jpg');
+insert into PLATOENTITY (nombre, precio, imagen ) values ('Postre tres leches', 8000, 'https://www.elespectador.com/sites/default/files/cromos/image_main/jiji.jpg');
 
 --Mesas
 insert into MesaEntity (numero, sucursal_id) values (199, 1);
