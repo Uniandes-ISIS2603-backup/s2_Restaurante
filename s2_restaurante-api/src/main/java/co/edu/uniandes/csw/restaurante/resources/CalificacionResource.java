@@ -47,7 +47,7 @@ import javax.ws.rs.WebApplicationException;
 /**
  * Clase que implementa el recurso "calificaciones".
  *
- * @author ISIS2603
+ * @author j.prieto
  * @version 1.0
  */
 @Produces("application/json")

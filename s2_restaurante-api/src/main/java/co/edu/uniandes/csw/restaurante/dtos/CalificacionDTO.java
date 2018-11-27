@@ -8,13 +8,12 @@ package co.edu.uniandes.csw.restaurante.dtos;
 import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
 import java.io.Serializable;
 
-
 /**
  *
  * @author iy.barbosa
  */
-public class CalificacionDTO implements Serializable{
-    
+public class CalificacionDTO implements Serializable {
+
     /**
      * Identificador de la calificacion
      */
@@ -27,15 +26,14 @@ public class CalificacionDTO implements Serializable{
      * sucursal la cual se esta calificando
      */
     private SucursalDTO sucursal;
-    
-    
+
     /**
      * Retorna el puntaje de la calificacion
      */
     public Double getPuntaje() {
         return puntaje;
     }
-    
+
     /**
      * Modifica el puntaje de la calificacion
      *
@@ -44,7 +42,7 @@ public class CalificacionDTO implements Serializable{
     public void setPuntaje(Double pPuntaje) {
         this.puntaje = pPuntaje;
     }
-    
+
     /**
      * Retorna la sucuarsal que se esta calificando
      */
@@ -61,26 +59,26 @@ public class CalificacionDTO implements Serializable{
         this.sucursal = pSucursal;
     }
 
-
     /**
      * Retorna el Id de la calificacion
      */
-    public Long getId(){
-        return id ;
+    public Long getId() {
+        return id;
     }
-    
+
     /**
-     * Modifica el Id  de la calificacion
+     * Modifica el Id de la calificacion
      *
      * @param pId - nuevo ID
      */
-    public void setId(Long pId){
-        id = pId ;
+    public void setId(Long pId) {
+        id = pId;
     }
-    public CalificacionDTO()
-    {
-        
+
+    public CalificacionDTO() {
+
     }
+
     /**
      * Construye un PlatoDTO a partir de un PlatoEntity
      *
@@ -89,27 +87,27 @@ public class CalificacionDTO implements Serializable{
     public CalificacionDTO(CalificacionEntity entity) {
         this.id = entity.getId();
         this.puntaje = entity.getPuntaje();
-          if (entity.getSucursal() != null) {
-                this.sucursal = new SucursalDTO(entity.getSucursal());
-            } else {
-                this.sucursal = null;
-            }
-       
+        if (entity.getSucursal() != null) {
+            this.sucursal = new SucursalDTO(entity.getSucursal());
+        } else {
+            this.sucursal = null;
+        }
+
     }
-    
-     /**
+
+    /**
      * Convierte un DTO a Entity
      *
      * @return Entity con los valores del DTO
      */
     public CalificacionEntity toEntity() {
-       CalificacionEntity entity = new CalificacionEntity();
-       entity.setId(this.id);
-       entity.setPuntaje(this.puntaje);
-       entity.setSucursal(this.sucursal.toEntity());
-       return entity;
+        CalificacionEntity entity = new CalificacionEntity();
+        entity.setId(this.id);
+        entity.setPuntaje(this.puntaje);
+        if (this.sucursal != null) {
+            entity.setSucursal(this.sucursal.toEntity());
+        }
+        return entity;
     }
 
-   
-    
 }
