@@ -22,8 +22,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @javax.persistence.Entity
 public class ClienteEntity extends BaseEntity implements Serializable {
 
-        
-    private static final long serialVersionUID =1L;
+    private static final long serialVersionUID = 1L;
 
     @PodamExclude
     @OneToOne
@@ -44,7 +43,7 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @ManyToMany
     private List<SucursalEntity> sucursales = new ArrayList<>();
-    
+
     /**
      * Nombre del cliente
      */
@@ -54,6 +53,11 @@ public class ClienteEntity extends BaseEntity implements Serializable {
      * Método de pago del cliente
      */
     private String metodoPago;
+
+    /**
+     * Identificación del cliente
+     */
+    private Long identificacion;
 
     /**
      * Retorna el nombre del cliente
@@ -85,6 +89,22 @@ public class ClienteEntity extends BaseEntity implements Serializable {
      */
     public void setMetodoPago(String pMetodoPago) {
         this.metodoPago = pMetodoPago;
+    }
+
+    /**
+     * Obtiene la identificación del cliente
+     * @return - identificación del cliente
+     */
+    public Long getIdentificacion() {
+        return identificacion;
+    }
+
+    /**
+     * Modifica la identificación del cliente
+     * @param identificacion - nueva identificación del cliente
+     */
+    public void setIdentificacion(Long identificacion) {
+        this.identificacion = identificacion;
     }
 
     /**
@@ -159,10 +179,18 @@ public class ClienteEntity extends BaseEntity implements Serializable {
         this.calificaciones = calificaciones;
     }
 
+    /**
+     * Obtiene las sucursales a las que está asociado el cliente
+     * @return - lista de las sucursales a las que se asocia el cliente
+     */
     public List<SucursalEntity> getSucursales() {
         return sucursales;
     }
 
+    /**
+     * Modifica las sucursales a las que está asociado un cliente
+     * @param sucursales - sucursales asociadas a un cliente
+     */
     public void setSucursales(List<SucursalEntity> sucursales) {
         this.sucursales = sucursales;
     }

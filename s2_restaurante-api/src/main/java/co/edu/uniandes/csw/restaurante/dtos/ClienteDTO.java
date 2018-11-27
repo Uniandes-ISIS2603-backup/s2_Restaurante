@@ -28,6 +28,11 @@ public class ClienteDTO implements Serializable{
      * Método de pago del cliente
      */
     private String metodoPago;
+    
+    /**
+     * Identificacion del cliente
+     */
+    private Long identificacion;
 
     /**
      * Constructor vacio
@@ -47,6 +52,7 @@ public class ClienteDTO implements Serializable{
         this.id = entity.getId();
         this.nombre = entity.getNombre();
         this.metodoPago = entity.getMetodoPago();
+        this.identificacion = entity.getIdentificacion();
         }
     }
 
@@ -98,6 +104,22 @@ public class ClienteDTO implements Serializable{
     public void setMetodoPago(String pMetodoPago) {
         this.metodoPago = pMetodoPago;
     }
+    
+    /**
+     * Obtiene la identificación del cliente
+     * @return - retorna la identificación del cliente
+     */
+    public Long getIdentificacion(){
+        return this.identificacion;
+    }
+    
+    /**
+     * Modifica la identificación del cliente
+     * @param pIdentificacion - nueva identificación del cliente
+     */
+    public void setIdentificacion(Long pIdentificacion){
+        this.identificacion = pIdentificacion;
+    } 
 
     /**
      * Convierte un DTO a Entity
@@ -109,6 +131,7 @@ public class ClienteDTO implements Serializable{
         clienteEntity.setId(this.getId());
         clienteEntity.setNombre(this.getNombre());
         clienteEntity.setMetodoPago(this.getMetodoPago());
+        clienteEntity.setIdentificacion(this.getIdentificacion());
         return clienteEntity;
     }
 }

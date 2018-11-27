@@ -32,15 +32,15 @@ ALTER TABLE SUCURSALENTITY ALTER COLUMN id RESTART WITH 1;
 
 
 --Clientes
-insert into CLIENTEENTITY (nombre, metodopago) values ('Luis Alberto Rodriguez', 'Efectivo');
-insert into CLIENTEENTITY (nombre, metodopago) values ('Maria Paula Barreto', 'Efectivo');
-insert into CLIENTEENTITY (nombre, metodopago) values ('Jorge Ortiz', 'Efectivo');
-insert into CLIENTEENTITY (nombre, metodopago) values ('Luz Marina Lopez', 'Tarjeta');
-insert into CLIENTEENTITY (nombre, metodopago) values ('Carlos Robles', 'Tarjeta');
-insert into CLIENTEENTITY (nombre, metodopago) values ('Pablo Hernandez', 'Tarjeta');
-insert into CLIENTEENTITY (nombre, metodopago) values ('Julian Jaramillo', 'Tarjeta');
-insert into CLIENTEENTITY (nombre, metodopago) values ('Alfonso Sanchez', 'Tarjeta');
-insert into CLIENTEENTITY (nombre, metodopago) values ('Isabel Garcia', 'Tarjeta');
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Luis Alberto Rodriguez', 'Efectivo', 9568867532);
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Maria Paula Barreto', 'Efectivo', , 6605763793);
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Jorge Ortiz', 'Efectivo', 9968230489);
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Luz Marina Lopez', 'Tarjeta', 9440301878);
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Carlos Robles', 'Tarjeta', 9240605585);
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Pablo Hernandez', 'Tarjeta', 4002755452);
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Julian Jaramillo', 'Tarjeta', 9353472503);
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Alfonso Sanchez', 'Tarjeta', 7337206811);
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Isabel Garcia', 'Tarjeta', 4814206860);
 
 --Sucursales
 insert into SucursalEntity (direccion) values ('AV. Carrera 68 N° 72 - 43');
