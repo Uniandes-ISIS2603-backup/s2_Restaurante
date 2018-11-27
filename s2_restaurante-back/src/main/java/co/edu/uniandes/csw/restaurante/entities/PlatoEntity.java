@@ -42,9 +42,20 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @javax.persistence.Entity
 public class PlatoEntity extends BaseEntity implements Serializable {
 
-
-    
+    private static final long serialVersionUID =1L;
    
+    @PodamExclude
+    @javax.persistence.ManyToOne()
+    SucursalEntity sucursal;
+    
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
+    }
+    
     /**
      * Nombre del plato
      */
@@ -54,7 +65,18 @@ public class PlatoEntity extends BaseEntity implements Serializable {
      * Precio del plato
      */
     private Double precio;
+     /**
+     * imagen del plato
+     */
+    private String imagen;
 
+ public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String nombre) {
+        this.imagen = nombre;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -69,10 +91,6 @@ public class PlatoEntity extends BaseEntity implements Serializable {
 
     public void setPrecio(Double precio) {
         this.precio = precio;
-    }
-    
+    }    
 
-    
-
-    
 }
