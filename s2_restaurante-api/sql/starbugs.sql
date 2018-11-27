@@ -33,7 +33,7 @@ ALTER TABLE SUCURSALENTITY ALTER COLUMN id RESTART WITH 1;
 
 --Clientes
 insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Luis Alberto Rodriguez', 'Efectivo', 9568867532);
-insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Maria Paula Barreto', 'Efectivo', , 6605763793);
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Maria Paula Barreto', 'Efectivo', 6605763793);
 insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Jorge Ortiz', 'Efectivo', 9968230489);
 insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Luz Marina Lopez', 'Tarjeta', 9440301878);
 insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Carlos Robles', 'Tarjeta', 9240605585);
@@ -41,6 +41,7 @@ insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Pablo He
 insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Julian Jaramillo', 'Tarjeta', 9353472503);
 insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Alfonso Sanchez', 'Tarjeta', 7337206811);
 insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Isabel Garcia', 'Tarjeta', 4814206860);
+insert into CLIENTEENTITY (nombre, metodopago, identificacion) values ('Carolina Perez', 'Tarjeta', 3463181248);
 
 --Sucursales
 insert into SucursalEntity (direccion) values ('AV. Carrera 68 N° 72 - 43');
@@ -105,13 +106,13 @@ insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente
 insert into RESERVAENTITY (hora, cantidadPersonas, sucursal_id, mesa_id, cliente_id) values ('2018-04-16 12:11:09', 4, 3, 5, 4);
 
 --Calificaciones
-insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (1, 5, 9, 1);
-insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (2, 4, 1, 2);
-insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (3, 4, 2, 2);
-insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (4, 2, 8, 3);
-insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (5, 5, 5, 1);
-insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (6, 3, 1, 3);
-insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (7, 4, 7, 1);
-insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (8, 5, 8, 3);
-insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (9, 2, 5, 2);
-insert into CALIFICACIONENTITY (ID, PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (10, 4, 6, 2);
+insert into CALIFICACIONENTITY (PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (5, 9, 1);
+insert into CALIFICACIONENTITY (PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (4, 1, 2);
+insert into CALIFICACIONENTITY (PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (4, 2, 2);
+insert into CALIFICACIONENTITY (PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (2, 8, 3);
+insert into CALIFICACIONENTITY (PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (5, 5, 1);
+insert into CALIFICACIONENTITY (PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (3, 1, 3);
+insert into CALIFICACIONENTITY (PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (4, 7, 1);
+insert into CALIFICACIONENTITY (PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (5, 8, 3);
+insert into CALIFICACIONENTITY (PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (2, 5, 2);
+insert into CALIFICACIONENTITY (PUNTAJE, CLIENTE_ID, SUCURSAL_ID) values (4, 6, 2);
