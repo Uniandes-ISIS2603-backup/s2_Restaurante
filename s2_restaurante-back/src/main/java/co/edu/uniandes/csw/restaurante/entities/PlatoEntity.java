@@ -65,7 +65,18 @@ public class PlatoEntity extends BaseEntity implements Serializable {
      * Precio del plato
      */
     private Double precio;
+     /**
+     * imagen del plato
+     */
+    private String imagen;
 
+ public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String nombre) {
+        this.imagen = nombre;
+    }
     public String getNombre() {
         return nombre;
     }

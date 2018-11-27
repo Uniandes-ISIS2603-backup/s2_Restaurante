@@ -31,7 +31,7 @@ public class SucursalEntity extends BaseEntity implements Serializable {
 
     @PodamExclude
     @OneToMany(mappedBy = "sucursal", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = javax.persistence.FetchType.LAZY)
-    private List<PlatoEspecialEntity> platos;
+    private List<PlatoEntity> platos;
 
     @PodamExclude
     @OneToMany(mappedBy = "sucursal", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = javax.persistence.FetchType.LAZY)
@@ -69,11 +69,11 @@ public class SucursalEntity extends BaseEntity implements Serializable {
         this.calificaciones = calificaciones;
     }
 
-    public List<PlatoEspecialEntity> getPlatos() {
+    public List<PlatoEntity> getPlatos() {
         return platos;
     }
 
-    public void setPlatos(List<PlatoEspecialEntity> platos) {
+    public void setPlatos(List<PlatoEntity> platos) {
         this.platos = platos;
     }
 
