@@ -42,6 +42,8 @@ public class SucursalEntity extends BaseEntity implements Serializable {
     private List<MesaEntity> mesas;
     
     private Double promedio;
+    
+    private Long numMesas;
 
     public List<ClienteEntity> getClientes() {
         return clientes;
@@ -104,6 +106,21 @@ public class SucursalEntity extends BaseEntity implements Serializable {
     public void setDireccion(String pDireccion) {
         this.direccion = pDireccion;
     }
+    
+    public void setNumMesas(Long pNum)
+    {
+        this.numMesas = pNum;
+    }
+    
+    public Long getNumMesas()
+    {
+        long num = 0;
+        if(!mesas.isEmpty())
+        {
+           num = mesas.size();
+        }
+        return num;
+    }   
     
     public Double getPromedio()
     {
