@@ -140,6 +140,7 @@ public class TarjetaPersistenceTest {
     public void deleteTarjetaTest() {
         TarjetaEntity entity = data.get(0);
         tarjetaPersistence.delete(entity.getId());
+        tarjetaPersistence.findByCliente(entity.getCliente());
         TarjetaEntity deleted = em.find(TarjetaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }

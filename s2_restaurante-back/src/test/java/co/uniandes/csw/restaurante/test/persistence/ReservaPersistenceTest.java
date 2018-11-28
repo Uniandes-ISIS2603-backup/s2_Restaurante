@@ -152,6 +152,7 @@ public class ReservaPersistenceTest {
     public void deleteReservaTest() {
         ReservaEntity entity = data.get(0);
         reservaPersistencia.delete(entity.getId());
+        reservaPersistencia.sePuedeReservar(entity);
         ReservaEntity deleted = em.find(ReservaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }

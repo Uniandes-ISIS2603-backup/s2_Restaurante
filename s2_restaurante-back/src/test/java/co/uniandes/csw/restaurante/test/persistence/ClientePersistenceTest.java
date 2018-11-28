@@ -154,19 +154,13 @@ public class ClientePersistenceTest {
     /**
      * Prueba para consultar un Cliente.
      */
+    
     @Test
     public void getClienteTest() {
-        List<ClienteEntity> list = clientePersistence.findAll();
-        Assert.assertEquals(data.size(), list.size());
-        for (ClienteEntity ent : list) {
-            boolean found = false;
-            for (ClienteEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
+        ClienteEntity entity = data.get(0);
+        ClienteEntity newEntity = clientePersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
     }
 
     /**

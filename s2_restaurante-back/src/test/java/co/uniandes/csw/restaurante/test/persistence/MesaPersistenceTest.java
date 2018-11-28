@@ -131,6 +131,7 @@ public class MesaPersistenceTest {
     public void deleteMesaTest() {
         MesaEntity entity = data.get(0);
         mesaPersistencia.delete(entity.getId());
+        mesaPersistencia.darMesasDeUnaSucursal(entity.getId());
         MesaEntity deleted = em.find(MesaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -144,6 +145,7 @@ public class MesaPersistenceTest {
         newEntity.setId(entity.getId());
 
         mesaPersistencia.update(newEntity);
+        
 
         MesaEntity resp = em.find(MesaEntity.class, entity.getId());
 
