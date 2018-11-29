@@ -17,6 +17,10 @@ public class SucursalDTO implements Serializable {
     private Long id;
   
     private String direccion;
+    
+    private Double promedio;
+    
+    private Long numMesas;
 
     public SucursalDTO() {
     }
@@ -25,7 +29,8 @@ public class SucursalDTO implements Serializable {
         if (sucursalEntity != null) {
             this.id = sucursalEntity.getId();
             this.direccion = sucursalEntity.getDireccion();
-          
+            this.promedio = sucursalEntity.getPromedio();
+            this.numMesas = sucursalEntity.getNumMesas();
         }
     }
 
@@ -45,10 +50,32 @@ public class SucursalDTO implements Serializable {
         this.id = pId;
     }
    
+    public Double getPromedio()
+    {
+        return promedio;
+    }
+    
+    public void setPromedio(Double pPromedio)
+    {
+        this.promedio = pPromedio;
+    }
+    
+    public void setNumMesas(Long pMesas)
+    {
+        this.numMesas = pMesas;
+    }
+    
+    public Long getNumMesas()
+    {
+        return numMesas;
+    }
+            
     public SucursalEntity toEntity() {
         SucursalEntity entity = new SucursalEntity();
         entity.setId(this.id);
         entity.setDireccion(this.direccion);
+        entity.setPromedio(this.promedio);
+        entity.setNumMesas(this.numMesas);
         return entity;
     }
     
