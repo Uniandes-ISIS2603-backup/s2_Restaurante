@@ -22,6 +22,10 @@ public class DomicilioDTO implements Serializable{
      */
     private Long id;
     /**
+     * id de la zona
+     */
+    private Long idZona;
+    /**
      * contructor vacio
      */
     public DomicilioDTO() {
@@ -36,9 +40,19 @@ public class DomicilioDTO implements Serializable{
         if (domicilioEntity != null) {
             this.id = domicilioEntity.getId();
             this.precio = domicilioEntity.getPrecio();
+            this.idZona = domicilioEntity.getIdZona();
             
         }
     } 
+
+    public Long getIdZona() {
+        return idZona;
+    }
+
+    public void setIdZona(Long idZona) {
+        this.idZona = idZona;
+    }
+    
     /**
      * da el id del domicilio
      * @return id del domicilio
@@ -78,6 +92,7 @@ public class DomicilioDTO implements Serializable{
     public DomicilioEntity toEntity() {
        DomicilioEntity domicilioEntity = new DomicilioEntity();
         domicilioEntity.setId(this.id);
+        domicilioEntity.setIdZona(this.idZona);
         return domicilioEntity;
     }
     

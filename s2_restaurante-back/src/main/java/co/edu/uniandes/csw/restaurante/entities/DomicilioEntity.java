@@ -37,7 +37,14 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
      * Precio domicilio
      */
     private Float precio;
-
+    /**
+     * zona del domicilio
+     */
+    private Long idZona;
+    /**
+     * da el precio del domicilio
+     * @return precio
+     */
     public Float getPrecio() {
         return precio;
     }
@@ -52,6 +59,14 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
 
     public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
+    }
+
+    public Long getIdZona() {
+        return idZona;
+    }
+
+    public void setIdZona(Long idZona) {
+        this.idZona = idZona;
     }
     
 }
