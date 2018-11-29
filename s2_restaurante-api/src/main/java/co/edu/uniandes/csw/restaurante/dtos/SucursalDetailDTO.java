@@ -6,11 +6,7 @@
 package co.edu.uniandes.csw.restaurante.dtos;
 
 import co.edu.uniandes.csw.restaurante.entities.CalificacionEntity;
-import co.edu.uniandes.csw.restaurante.entities.SucursalEntity;
-import co.edu.uniandes.csw.restaurante.entities.DomicilioEntity;
-import co.edu.uniandes.csw.restaurante.entities.MesaEntity;
 import co.edu.uniandes.csw.restaurante.entities.PlatoEntity;
-import co.edu.uniandes.csw.restaurante.entities.ReservaEntity;
 import co.edu.uniandes.csw.restaurante.entities.SucursalEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,71 +17,38 @@ import java.util.ArrayList;
  */
 public class SucursalDetailDTO extends SucursalDTO implements Serializable {
 
-    private ArrayList<ReservaDTO> reservas;
-
-    private ArrayList<DomicilioDTO> domicilios;
-
+    
+    
     private ArrayList<CalificacionDTO> calificaciones;
 
- 
-    private ArrayList<MesaDTO> mesas;
+    private ArrayList<PlatoDTO> platos;
 
-    public SucursalDetailDTO(SucursalEntity sucursalEntity) {
-        super(sucursalEntity);
-        if (sucursalEntity != null) {
-            reservas = new ArrayList<>();
-            for (ReservaEntity entityReservas : sucursalEntity.getReservas()) {
-                reservas.add(new ReservaDTO(entityReservas));
-            }
-            domicilios = new ArrayList<>();
-            for (DomicilioEntity entityDomicilios : sucursalEntity.getDomicilios()) {
-                domicilios.add(new DomicilioDTO(entityDomicilios));
-            }
-            calificaciones = new ArrayList<>();
-            for (CalificacionEntity entityCalificaciones : sucursalEntity.getCalificaciones()) {
-                calificaciones.add(new CalificacionDTO(entityCalificaciones));
-            }
-           
-            mesas = new ArrayList<>();
-            for (MesaEntity entityMesas : sucursalEntity.getMesas()) {
-                mesas.add(new MesaDTO(entityMesas));
-            }
-        }
-    }
-    public SucursalDetailDTO(){
+    public SucursalDetailDTO() {
         super();
     }
 
-    public ArrayList<ReservaDTO> getReservas() {
-        return reservas;
-    }
+    /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity, SucursalEntity a converit a DTO
+     */
+    public SucursalDetailDTO(SucursalEntity entity) {
+        super(entity);
+        //Crea un SucursalDTO con el entity que llega
 
-    public void setReservas(ArrayList<ReservaDTO> reservas) {
-        this.reservas = reservas;
-    }
+        if (entity != null) {
+            
+            calificaciones = new ArrayList<>();
+            for (CalificacionEntity entityCalificacion : entity.getCalificaciones()) {
+                calificaciones.add(new CalificacionDTO(entityCalificacion));
+            }
+            
+            platos = new ArrayList<>();
+            for (PlatoEntity entityPlato : entity.getPlatos()) {
+                platos.add(new PlatoDTO(entityPlato));
+            }
 
-    public ArrayList<DomicilioDTO> getDomicilios() {
-        return domicilios;
-    }
-
-    public void setDomicilios(ArrayList<DomicilioDTO> domicilios) {
-        this.domicilios = domicilios;
-    }
-
-    public ArrayList<CalificacionDTO> getCalificaciones() {
-        return calificaciones;
-    }
-
-    public void setCalificaciones(ArrayList<CalificacionDTO> calificaciones) {
-        this.calificaciones = calificaciones;
-    }
-
-    public ArrayList<MesaDTO> getMesas() {
-        return mesas;
-    }
-
-    public void setMesas(ArrayList<MesaDTO> mesas) {
-        this.mesas = mesas;
+        }
     }
 
     /**
@@ -96,36 +59,53 @@ public class SucursalDetailDTO extends SucursalDTO implements Serializable {
     @Override
     public SucursalEntity toEntity() {
         SucursalEntity entity = super.toEntity();
-        //Agrega al nuevo Entity la tarjeta del DTO
+        
+        //Agrega al nuevo Entity la calificación del DTO
         if (calificaciones != null) {
             ArrayList<CalificacionEntity> calificacionesEntity = new ArrayList<>();
             for (CalificacionDTO calificacionDTO : calificaciones) {
                 calificacionesEntity.add(calificacionDTO.toEntity());
             }
             entity.setCalificaciones(calificacionesEntity);
-            if (domicilios != null) {
-                ArrayList<DomicilioEntity> domiciliosEntity = new ArrayList<>();
-                for (DomicilioDTO domicilioDTO : domicilios) {
-                    domiciliosEntity.add(domicilioDTO.toEntity());
+            
+            if (platos != null) {
+                ArrayList<PlatoEntity> platosEntity = new ArrayList<>();
+                for (PlatoDTO platoDTO : platos) {
+                    platosEntity.add(platoDTO.toEntity());
                 }
-                entity.setDomiclios(domiciliosEntity);
-            }
-            if (mesas != null) {
-                ArrayList<MesaEntity> mesaEntity = new ArrayList<>();
-                for (MesaDTO mesaDTO : mesas) {
-                    mesaEntity.add(mesaDTO.toEntity());
-                }
-                entity.setMesas(mesaEntity);
-            }
-            if (reservas != null) {
-                ArrayList<ReservaEntity> reservaEntity = new ArrayList<>();
-                for (ReservaDTO reservaDTO : reservas) {
-                    reservaEntity.add(reservaDTO.toEntity());
-                }
-                entity.setReservas(reservaEntity);
+                entity.setPlatos(platosEntity);
             }
         }
         return entity;
     }
 
+    
+
+    
+
+    public ArrayList<PlatoDTO> getPlatos() {
+        return platos;
+    }
+
+    public void setPlatos(ArrayList<PlatoDTO> platos) {
+        this.platos = platos;
+    }
+
+    /**
+     * Retorna la calificacion del sucursal
+     *
+     * @return - Calificación del sucursal
+     */
+    public ArrayList<CalificacionDTO> getCalificaciones() {
+        return this.calificaciones;
+    }
+
+    /**
+     * Modifica la calificación del sucursal
+     *
+     * @param pCalificaciones - Nueva calificación
+     */
+    public void setCalificaciones(ArrayList<CalificacionDTO> pCalificaciones) {
+        this.calificaciones = pCalificaciones;
+    }
 }

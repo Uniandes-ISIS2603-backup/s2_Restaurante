@@ -21,6 +21,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 @javax.persistence.Entity
 public class SucursalEntity extends BaseEntity implements Serializable {
 
+    private static final long serialVersionUID =1L;
+    
     @PodamExclude
     @OneToMany(mappedBy = "sucursal", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = javax.persistence.FetchType.LAZY)
     private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();

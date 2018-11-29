@@ -83,7 +83,7 @@ public class ClienteReservasResource {
     public List<ReservaDTO> getReservas(@PathParam("clientesId") Long clientesId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "ClienteReservaResource getReservas: input: {0}", clientesId);
         if (clienteLogic.getCliente(clientesId) == null) {
-            throw new WebApplicationException("El recurso /cllientes/" + clientesId + " no existe.", 404);
+            throw new WebApplicationException("El recurso /clientes/" + clientesId + " no existe.", 404);
         }
         List<ReservaDTO> listaDTO = reservaListEntity2DTO(clienteReservaLogic.getReservas(clientesId));
         LOGGER.log(Level.INFO, "ClienteReservaResource getReservas: output: {0}", listaDTO.toString());

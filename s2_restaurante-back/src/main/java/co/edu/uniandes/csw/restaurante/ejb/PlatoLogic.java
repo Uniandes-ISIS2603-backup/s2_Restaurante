@@ -62,7 +62,7 @@ public class PlatoLogic {
      * Obtiene los datos de una instancia de platos a partir de su ID.
      *
      * @param platoId Identificador de la instancia a consultar
-     * @return Instancia de PlatoEntity con los datos del Cliente consultado.
+     * @return Instancia de PlatoEntity con los datos del plato consultado.
      */
     public PlatoEntity getPlato(Long platoId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el plato con id = {0}", platoId);
@@ -85,7 +85,7 @@ public class PlatoLogic {
     public PlatoEntity updatePlato(Long platoId, PlatoEntity platoEntity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar el plato con id = {0}", platoId);
         PlatoEntity newPlatoEntity = persistence.update(platoEntity);
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar el cliente con id = {0}", platoId);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar el plato con id = {0}", platoId);
         return newPlatoEntity;
     }
 
@@ -101,10 +101,10 @@ public class PlatoLogic {
 
         PlatoEntity plato = persistence.find(platoId);
         if (plato == null) {
-            throw new BusinessLogicException("No se encontró el palto con el ID: " + platoId + ".");
+            throw new BusinessLogicException("No se encontró el plato con el ID: " + platoId + ".");
         }
         persistence.delete(platoId);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar el cliente con id = {0}", platoId);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar el plato con id = {0}", platoId);
     }
     
 }

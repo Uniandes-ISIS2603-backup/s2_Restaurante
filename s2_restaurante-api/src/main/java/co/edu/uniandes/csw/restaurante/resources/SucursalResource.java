@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.restaurante.resources;
 
 import co.edu.uniandes.csw.restaurante.dtos.SucursalDTO;
+import co.edu.uniandes.csw.restaurante.dtos.SucursalDetailDTO;
 import co.edu.uniandes.csw.restaurante.ejb.SucursalLogic;
 import co.edu.uniandes.csw.restaurante.entities.SucursalEntity;
 import co.edu.uniandes.csw.restaurante.exceptions.BusinessLogicException;
@@ -53,25 +54,26 @@ public class SucursalResource {
     }
 
     @GET
-    @Path("{sucursalesId: \\d+}")
-    public SucursalDTO getSucursal(@PathParam("sucursalesId") Long sucursalesId) {
+    public List<SucursalDetailDTO> getSucursales() {
+        LOGGER.info("SucursalResource getSucursales: input: void");
+        List<SucursalDetailDTO> listaSucursales = listEntity2DetailDTO(sucursalLogic.getSucursales());
+        LOGGER.log(Level.INFO, "SucursalResource getSucursales: output: {0}", listaSucursales.toString());
+        return listaSucursales;
+    }
 
-        LOGGER.log(Level.INFO, "SucursalesResource getSucursal: input: {0}", sucursalesId);
+    
+    @GET
+    //Como recibimos dígitos, ponemos d+
+    @Path("{sucursalesId: \\d+}")
+    public SucursalDetailDTO getSucursal(@PathParam("sucursalesId") Long sucursalesId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "SucursalResource getSucursal: input: {0}", sucursalesId);
         SucursalEntity sucursalEntity = sucursalLogic.getSucursal(sucursalesId);
         if (sucursalEntity == null) {
             throw new WebApplicationException("El recurso /sucursales/" + sucursalesId + " no existe.", 404);
         }
-        SucursalDTO dto = new SucursalDTO(sucursalEntity);
-        LOGGER.log(Level.INFO, "SucursalResource getSucursal: output: {0}", dto.toString());
-        return dto;
-    }
-
-    @GET
-    public List<SucursalDTO> getSucursales() {
-        LOGGER.info("SucursalesResouce getSucursales: input: void");
-        List<SucursalDTO> listaSucursales = (List<SucursalDTO>) listEntity2DetailDTO(sucursalLogic.getSucursales());
-        LOGGER.log(Level.INFO, "SucursalResouce getSucursal: output: {0}", listaSucursales.toString());
-        return listaSucursales;
+        SucursalDetailDTO detailDTO = new SucursalDetailDTO(sucursalEntity);
+        LOGGER.log(Level.INFO, "SucursalResource getSucursal: output: {0}", detailDTO.toString());
+        return detailDTO;
     }
 
     @PUT
@@ -102,13 +104,13 @@ public class SucursalResource {
      * Conexión con el servicio de reservas para una sucursal.
      * {@link SucursalReservasResource}
      *
-     * Este método conecta la ruta de /clientes con las rutas de /reservas que
-     * dependen del cliente, es una redirección al servicio que maneja el
+     * Este método conecta la ruta de /sucursales con las rutas de /reservas que
+     * dependen del sucursal, es una redirección al servicio que maneja el
      * segmento de la URL que se encarga de las reservas.
      *
-     * @param clientesId El ID del cliente con respecto al cual se accede al
+     * @param sucursalesId El ID del sucursal con respecto al cual se accede al
      * servicio.
-     * @return El servicio de reservas para ese cliente en paricular.
+     * @return El servicio de reservas para ese sucursal en paricular.
      */
     @Path("{sucursalesId: \\d+}/reservas")
     public Class<SucursalReservasResource> getReservaSucursalesResource(@PathParam("sucursalesId") Long sucursalesId) throws BusinessLogicException {
@@ -118,10 +120,10 @@ public class SucursalResource {
         return SucursalReservasResource.class;
     }
 
-    private List<SucursalDTO> listEntity2DetailDTO(List<SucursalEntity> entityList) {
-        List<SucursalDTO> list = new ArrayList<>();
+    private List<SucursalDetailDTO> listEntity2DetailDTO(List<SucursalEntity> entityList) {
+        List<SucursalDetailDTO> list = new ArrayList<>();
         for (SucursalEntity entity : entityList) {
-            list.add(new SucursalDTO(entity));
+            list.add(new SucursalDetailDTO(entity));
         }
         return list;
     }
@@ -145,6 +147,14 @@ public class SucursalResource {
             throw new WebApplicationException("El recurso /sucursales/" + sucursalId + "/calificaciones no existe.", 404);
         }
         return CalificacionResource.class;
+    }
+    
+    @Path("{sucursalesId: \\d+}/platos")
+    public Class<SucursalPlatosResource> getPlatoSucursalesResource(@PathParam("sucursalesId") Long sucursalesId) throws BusinessLogicException {
+        if (sucursalLogic.getSucursal(sucursalesId) == null) {
+            throw new WebApplicationException("El recurso /sucursales/" + sucursalesId + " no existe.", 404);
+        }
+        return SucursalPlatosResource.class;
     }
 
 }
